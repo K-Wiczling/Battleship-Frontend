@@ -1,0 +1,11 @@
+.bts-test{
+    background-color: rgb(124, 124, 124);
+    color: rgb(58, 1, 0);
+    height: 150px;
+    border-top: 3px solid black;
+    display: block;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    padding: 10px 10px;
+}
