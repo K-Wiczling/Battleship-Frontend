@@ -11,20 +11,16 @@ class Tile {
         switch (this.state) {
             case 0:{
                 return "empty";
-                break;
             }
             
             case 1:{
                 return "Ship";
-                break;
             }
             case 2:{
                 return "hited";
-                break;
             }
             case 4:{
                 return "empty-hit";
-                break;
             }
         
             default:
@@ -32,3 +28,4 @@ class Tile {
         }
     }
 }
+export default Tile;

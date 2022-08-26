@@ -1,0 +1,10 @@
+.splash-screen{
+    background-color: rgb(35, 17, 102);
+    color: rgb(208, 219, 238);
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1f;
+    align-items:  auto;
+    justify-content: space-around;
+}
