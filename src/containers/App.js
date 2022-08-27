@@ -4,52 +4,75 @@ import SplashScreen from '../components/SplashScreen';
 import './css/App.css';
 import Game from './Game';
 import MainMenu from './MainMenu';
+import modes from '../classes/globalParam';
+import ErrorBoundries from '../components/ErrorBoundries';
 
 class  App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      isMenu: false,
-      isPlaying: false,
-      gameMode: ""
+      //For testing set to game
+      mode: modes.game,
+
+      //To be removed from production
+      test: "tessting.."
+      //----------------------------
     }
   }
-  StartPlay = () =>{
-    this.setState({isPlaying : true})
-    this.setState({isMenu : false})
+  StartGame = () => {
+    this.setState({mode: modes.game});
+  }
+  OpenMenu = () => {
+    this.setState({mode: modes.menu});
+  }
+  ShowSplash = () => {
+    this.setState({mode: modes.splash});
   }
   
-  OpenMenu = () => {
-    this.setState({isMenu : true})
+  ChangeMode = (setMode) =>{
+    this.setState({mode : setMode})
   }
+  
   render(){
-    console.log(this.state.isPlaying , this.state.isMenu);
-    //start game
-    if(this.state.isPlaying  && !this.state.isMenu){
-      return (
-        <>
-          <div className="app">
-              <Game game={this.state} />
-          </div>
-          <BtsTest test={`testing...`} />
-        </>
-      );
-    
-    }
-    //Open menu
-    else if(!this.state.isPlaying && this.state.isMenu){
-      return(
-        <MainMenu onclick={this.StartPlay} />
+    switch (this.state.mode) {
+
+      //Show Splashscreen
+      case modes.splash:{
+        return(<SplashScreen onclick={this.OpenMenu} />);
+      }
+      
+      //Open Menu
+      case modes.menu:{
+        return(
+          <ErrorBoundries>
+            <MainMenu onclick={this.StartGame} />
+          </ErrorBoundries>
+          );
+      }
+
+      //Start Game
+      case modes.game:{
+        return (
+          <ErrorBoundries>
+            <div className="app">
+                <Game game={this.state} testing={this.Test} />
+            </div>
+
+            <BtsTest test={this.state.test} />
+          </ErrorBoundries>
         );
+      }
+      default: { break;}  
+            
     }
-    // show splash screen
-    else{
-      return(
-        <SplashScreen onclick={this.OpenMenu} />
-        );
-    
-    }
+
   }
+
+  //To be removed from production
+  Test = (text) => {
+    this.setState({test: text});
+  }
+  //----------------------------
 }
 
 export default App;

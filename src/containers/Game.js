@@ -7,6 +7,10 @@ class  Game extends Component{
     constructor(props){
         super(props)
         this.gm = new gameMenager();
+
+        //To be removed from production
+        this.Test("Game is curently testing it self...");
+        //----------------------------
     }
     
     render(){      
@@ -17,6 +21,12 @@ class  Game extends Component{
             </div>
     );
   }
+
+  //To be removed in production
+  Test = (txt) =>{
+    this.props.testing(txt);
+  }
+  //----------------------------
 }
 
 export default Game;
