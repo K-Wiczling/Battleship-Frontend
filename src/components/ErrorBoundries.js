@@ -5,7 +5,7 @@ class ErrorBoundries extends Component {
     constructor(props){
         super(props)
         this.state= {
-            error: false
+            error: true
         }
     }
     componentDidCatch(){
@@ -14,7 +14,7 @@ class ErrorBoundries extends Component {
     render(){
         if(this.state.error){
             return(
-                <ErrorBox errorText={"error hapend"} />
+                <ErrorBox errorTitle={"Error 1"} errorContent={"some error text,  something went wrong"} />
             );
         }else{
             return this.props.children;

@@ -1,11 +1,12 @@
 import React from 'react';
-import "./css/Button.css"
+import "./css/ErrorBox.css"
 
-const  ErrorBox = ({errorText}) => {
+const  ErrorBox = ({errorTitle, errorContent }) => {
   
     return (
         <div className='error-box'>
-            <h2>{errorText}</h2>
+            <h3>{errorTitle}</h3>
+            <p>{errorContent}</p>
         </div>
     );
   }
