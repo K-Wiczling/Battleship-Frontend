@@ -7,3 +7,10 @@ export const players = {
     player: "player",
     enemy: "enemy"
 }
+export const tileState = {
+    hit: "hit",
+    empty: "empty",
+    hitted: "hitted",
+    ship: "ship"
+}
+export const compareTileState = [ "hit", "empty", "hitted", "ship"]

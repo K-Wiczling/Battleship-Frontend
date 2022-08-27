@@ -53,7 +53,7 @@ class  App extends Component{
       //Start Game
       case modes.game:{
         return (
-          <ErrorBoundries>
+          <ErrorBoundries child="Game Compontent">
             <div className="app">
                 <Game game={this.state} testing={this.Test} />
             </div>

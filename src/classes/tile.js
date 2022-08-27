@@ -1,31 +1,27 @@
+import { compareTileState } from "./globalParam";
+
 class Tile {
-    constructor(point){
-        this.x = point.x;
-        this.y = point.y;
-        this.state = 0;
+    constructor(point, state){
+        this.pos = point;
+        this.tielState = state;
     }
-    ChangeState(newState){
-        this.state = newState;
-    }
-    StateConventer(){
-        switch (this.state) {
-            case 0:{
-                return "empty";
-            }
-            
-            case 1:{
-                return "Ship";
-            }
-            case 2:{
-                return "hited";
-            }
-            case 4:{
-                return "empty-hit";
-            }
-        
-            default:
-                break;
+    ChangeState = (newTileState) =>{
+        if(this.Checktate(newTileState)){
+            this.tielState = newTileState;
+        }else{
+            console.error("tile state dose not exist");
         }
     }
+    Checktate = (toCompare) =>{
+        let result = 0;
+        result += compareTileState.filter(c =>{
+            if(toCompare === c) {
+               return 1;
+            }
+        })
+        return result === 1 ? true : false
+        
+    }
+
 }
 export default Tile;

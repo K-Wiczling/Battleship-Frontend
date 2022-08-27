@@ -7,6 +7,7 @@ class gameMenager{
         this.enemy = new Player(players.enemy)
     }
     Setup(){
+        this.player.SetupBoard();
         return this.player;
     }
     Clicked(whichBoard, position){

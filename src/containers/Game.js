@@ -6,10 +6,13 @@ class  Game extends Component{
     constructor(props){
         super(props)
         this.gm = new gameMenager();
+        this.gm.Setup();
+
     }
     TileClick = (whichBoard, position) => {
         this.Test(`Clicked ${whichBoard} at position (${position.x};${position.y})`);
         this.gm.Clicked(whichBoard, position);
+        
     }
     render(){      
 
