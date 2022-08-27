@@ -5,7 +5,7 @@ class ErrorBoundries extends Component {
     constructor(props){
         super(props)
         this.state= {
-            error: true
+            error: false
         }
     }
     componentDidCatch(){

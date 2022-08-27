@@ -1,11 +1,16 @@
 import Player from "./player";
+import {players} from "./globalParam"
+
 class gameMenager{
     constructor(){
-        this.player1 = new Player("Gonzo");
-        this.player2 = new Player("")
+        this.player = new Player(players.player);
+        this.enemy = new Player(players.enemy)
     }
     Setup(){
-        return this.player1;
+        return this.player;
+    }
+    Clicked(whichBoard, position){
+        console.log(whichBoard, position);
     }
 }
 export default gameMenager;

@@ -4,7 +4,7 @@ import SplashScreen from '../components/SplashScreen';
 import './css/App.css';
 import Game from './Game';
 import MainMenu from './MainMenu';
-import modes from '../classes/globalParam';
+import {modes} from '../classes/globalParam';
 import ErrorBoundries from '../components/ErrorBoundries';
 
 class  App extends Component{

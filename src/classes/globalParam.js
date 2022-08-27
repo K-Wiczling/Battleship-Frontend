@@ -1,6 +1,9 @@
-const modes = {
+export const modes = {
     splash: "mode-splash",
     menu: "mode-menu",
     game: "mode-game"
 }
-export default modes;
+export const players = {
+    player: "player",
+    enemy: "enemy"
+}
