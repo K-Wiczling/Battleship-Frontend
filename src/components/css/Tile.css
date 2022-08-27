@@ -1,0 +1,12 @@
+.tile{
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    display: inline-block;
+    font-size: 12px;
+    
+}
+.tile:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}

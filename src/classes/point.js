@@ -1,26 +1,14 @@
 //Class to store position of the click
-import { TestLog } from "./test";
 export default class Point {
-    constructor(x, y, player, abc) {
+    constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.player = player
-      this.conversionTable = abc;
-      this.Convert();
     }
-    //converting input to 0-9
-    Convert(){
-        let i = 0;
-        this.conversionTable.forEach(item =>{
-            if(this.x === item){
-                this.x = i-1;
-            }
-            ++i;
-        })
 
+    GetX(){
+        return this.x;
     }
-    //DEBUGING
-    Show(){
-        TestLog(this.player + " player: (X: " + this.x + "; Y: " + this.y + ") ");
+    GetY(){
+        return this.y;
     }
   }

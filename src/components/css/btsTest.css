@@ -1,7 +1,8 @@
+/* For production purpose only */
 .bts-test{
-    background-color: rgb(124, 124, 124);
-    color: rgb(58, 1, 0);
-    height: 150px;
+    background-color: rgb(57, 57, 57);
+    color: #fff;
+    height: 80px;
     border-top: 3px solid black;
     display: block;
     width: 100vw;

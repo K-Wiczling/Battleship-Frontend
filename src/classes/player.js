@@ -1,8 +1,19 @@
+import Tile from "./tile";
+import Point from "./point";
 class Player {
     constructor(name){
-        this.board = [];
+        this.board = [[]];
+        this.ships = [];
         this.name = name;
-        this.boardSize = 10
+        this.boardSize = 10;
+    }
+    Ships() {
+        this.ships = {
+            double: 4,
+            triple: 3,
+            quadra: 2,
+            panta: 1
+        }
     }
     SetupBoard(){
         for (let i = 0; i < this.boardSize; i++) {
@@ -12,4 +23,5 @@ class Player {
         }
     }
 }
+export default Player
 
