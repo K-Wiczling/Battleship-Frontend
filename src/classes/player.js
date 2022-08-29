@@ -35,7 +35,6 @@ class Player {
                 this.board[i][j] = new Tile(new Point(i,j))
             }
         }
-        console.log(this.board);
     }
 }
 export default Player

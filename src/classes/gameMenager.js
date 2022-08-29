@@ -11,7 +11,6 @@ class gameMenager{
         return this.player;
     }
     Clicked(whichBoard, position){
-        console.log(whichBoard, position);
     }
 }
 export default gameMenager;
