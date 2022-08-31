@@ -1,16 +1,14 @@
 import Player from "./player";
-import {players} from "./globalParam"
+import server from "./server";
 
 class gameMenager{
-    constructor(){
-        this.player = new Player(players.player);
-        this.enemy = new Player(players.enemy)
+    constructor(players, tilestates){
+        this.player = new Player(players.player, tilestates);
+        this.enemy = new Player(players.enemy, tilestates);
     }
-    Setup(){
-        this.player.SetupBoard();
-        return this.player;
+    ClickedBoard(whichBoard, position){
+        return server.getClasicBoard();
     }
-    Clicked(whichBoard, position){
-    }
+
 }
 export default gameMenager;

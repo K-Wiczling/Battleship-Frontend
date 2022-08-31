@@ -1,22 +1,8 @@
-import Tile from "./tile";
-import Point from "./point";
-
-const board = [
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10],
-    [1,2,3,4,5,6,7,8,9,10]
-  ];
+import Board from "./board";
 
 class Player {
     constructor(name){
-        this.board = board;
+        this.board = new Board();
         this.ships = [];
         this.name = name;
         this.boardSize = 10;
@@ -29,12 +15,8 @@ class Player {
             panta: 1
         }
     }
-    SetupBoard(){
-        for (let i = 0; i < this.boardSize; i++) {
-            for (let j = 0; j < this.boardSize; j++){
-                this.board[i][j] = new Tile(new Point(i,j))
-            }
-        }
+    getShot(position, tileState){
+        this.board.ChangeTileState(position, tileState);
     }
 }
 export default Player

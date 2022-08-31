@@ -1,15 +1,14 @@
-import { tileState } from "./globalParam";
-
 class Tile {
-    constructor(point, state){
+    constructor(point, state, tileStates){
         this.pos = point;
+        this.tileStates = tileStates;
         this.tileState = state;
     }
     ChangeState = (newTileState) =>{
-        this.Checktate(newTileState) ? this.tileState = newTileState : console.log("tile state unknown");
+        this.Checkstate(newTileState) ? this.tileState = newTileState : console.log("tile state unknown");
     }
-    Checktate = (toCompare) =>{ 
-        for (let s in tileState) { return s === toCompare ? true : false; }
+    Checkstate = (toCompare) =>{ 
+        for (let s in this.tileStates) { return s === toCompare ? true : false; }
     }
 
 }

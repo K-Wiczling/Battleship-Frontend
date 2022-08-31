@@ -1,25 +1,15 @@
-import React from 'react';
-import Point from '../classes/point';
+//css
 import "./css/Draw.css"
+// react stuff
+import React from 'react';
+//Components
 import Tile from './Tile';
+//classes
+import Point from '../classes/point';
 
-const board = [
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11],
-  [1,2,3,4,5,6,7,8,9,10,11]
-];
-const abc = ["X", "A", "B" , "C", "D", "E", "F", "G", "H", "I", "J"];
-const  Draw =({whichBoard, onTileClick}) => {
-    
-    
+const  Draw =({whichBoard, onTileClick, board}) => {  
+  
+  let insert = "";
   return (
     <div className='board'>
       {
@@ -30,16 +20,8 @@ const  Draw =({whichBoard, onTileClick}) => {
                 r.map((d, j) =>{
                   let k = `${i}r${j}`;
 
-                  let insert = " ";
-                  if(i === 0 && j === 0){
-                    insert =  abc[i];
-                  }else if(i === 0 && j !== 0 ){
-                    insert =  j;
-                  }else if(i !== 0 && j === 0 ){
-                    insert =  abc[i];
-                  }else{
-                    insert = `${i}${j}`;
-                  }
+                  insert = board[i][j];
+                  
                   let tileAtributes = {
                     position: new Point(i,j),
                     whichBoard: whichBoard
