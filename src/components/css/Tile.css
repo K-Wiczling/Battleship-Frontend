@@ -7,8 +7,24 @@
     font-size: 12px;
     text-align: center;
     padding-top: 10px ;
+
     
 }
 .tile:hover{
     background-color: rgba(0, 0, 0, 0.1);
+}
+.empty-tile{
+    background-color: white;
+}
+.hit-tile{
+    background-color: black;
+}
+.hitted-tile{
+
+}
+.ship-tile{
+
+}
+.EmptyTile{
+
 }

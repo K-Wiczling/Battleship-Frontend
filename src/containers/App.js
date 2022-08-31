@@ -7,7 +7,6 @@ import React, { Component } from 'react';
 //Components
 import SplashScreen from '../components/SplashScreen';
 import ErrorBoundries from '../components/ErrorBoundries';
-import BtsTest from '../components/btsTest';
 
 //containers
 import Game from './Game';
@@ -24,9 +23,7 @@ class  App extends Component{
     this.state = {
       //For testing set to game
       mode: this.modes.game,
-      //To be removed from production
-      test: "tessting.."
-      //----------------------------
+
     }
   }
   StartGame = () => {
@@ -67,8 +64,6 @@ class  App extends Component{
             <div className="app">
                 <Game gameState={this.state} testing={this.Test} />
             </div>
-
-            <BtsTest test={this.state.test} />
           </ErrorBoundries>
         );
       }
@@ -78,11 +73,6 @@ class  App extends Component{
 
   }
 
-  //To be removed from production
-  Test = (text) => {
-    this.setState({test: text});
-  }
-  //----------------------------
 }
 
 export default App;

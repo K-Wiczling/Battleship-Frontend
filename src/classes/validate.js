@@ -1,9 +1,23 @@
-//Validating 
-export const validateGridInput = (p) => {
-    if(p.x >= 0 && p.x <= 9 && p.y >= 0 && p.y <= 9){
-        if(p.player === "own" || p.player === "enemy"){
-            return true;
-        }
-        return false
+import server from "./server";
+const params = server.Params;
+class Validate{
+    constructor() {
+        this.range = params.clasicBoard.length - 1;
+        this.player = params.players;
     }
+
+    ValidateClasicBoardClick = (whichBoard, position) => {
+        if(whichBoard === this.player.enemy || this.player.player){
+            if(position.x >= 1 && position.x <= 10){
+                if(position.y >= 1 && position.y <= 10){
+                    return true;
+                }
+            }
+                
+        }
+        return false;
+
+    }
+
 }
+export default Validate;

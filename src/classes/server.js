@@ -19,59 +19,51 @@ const globalParam = {
     // Clasic 10x10 game field for drawing
     clasicBoard: [
         ['x',1,2,3,4,5,6,7,8,9,10],
-        ['A','o','o','o','o','o','o','o','o','o','o'],
-        ['B','o','o','o','o','o','o','o','o','o','o'],
-        ['C','o','o','o','o','o','o','o','o','o','o'],
-        ['D','o','o','o','o','o','o','o','o','o','o'],
-        ['E','o','o','o','o','o','o','o','o','o','o'],
-        ['F','o','o','o','o','o','o','o','o','o','o'],
-        ['G','o','o','o','o','o','o','o','o','o','o'],
-        ['H','o','o','o','o','o','o','o','o','o','o'],
-        ['I','o','o','o','o','o','o','o','o','o','o'],
-        ['J','o','o','o','o','o','o','o','o','o','o'],
+        ['A','','','','','','','','','',''],
+        ['B','','','','','','','','','',''],
+        ['C','','','','','','','','','',''],
+        ['D','','','','','','','','','',''],
+        ['E','','','','','','','','','',''],
+        ['F','','','','','','','','','',''],
+        ['G','','','','','','','','','',''],
+        ['H','','','','','','','','','',''],
+        ['I','','','','','','','','','',''],
+        ['J','','','','','','','','','',''],
       ],
-    clasicBoardPlayer: [
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null,null,null,null,null],
-    ],
-
       
-    abc: ["X", "A", "B" , "C", "D", "E", "F", "G", "H", "I", "J"]
-}
+    abc: ["X", "A", "B" , "C", "D", "E", "F", "G", "H", "I", "J"],
+    gameState: {
+        pre: "pre",
+        setup: "setup",
+        game: "game",
+        end: "end"
+    }
 
+}
 
 class Server {
     constructor(){
         this.Params = this.fetchGlobalParams();
     }
-    fetchGlobalParams(){
-        return globalParam;
+
+    fetchGlobalParams = () =>{
+        return structuredClone(globalParam);
     }
     getClasicBoard = () =>{
-        return this.Params.clasicBoard;
+        return structuredClone(this.Params.clasicBoard);
     }
-    getClasicBoardPlayer = () => {
-        return this.Params.clasicBoardPlayer;
-    }
+    
     getModes = () =>{
-        return this.Params.modes;
+        return structuredClone(this.Params.modes);
     }
     getPlayers = () =>{
-        return this.Params.players;
+        return structuredClone(this.Params.players);
     }
     getTileState = () =>{
-        return this.Params.tileState;
+        return structuredClone(this.Params.tileState);
     }
     getAbc= () => {
-        return this.Params.abc;
+        return structuredClone(this.Params.abc);
     }
  }
 
