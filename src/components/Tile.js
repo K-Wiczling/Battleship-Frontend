@@ -1,11 +1,10 @@
 import React from 'react';
 import "./css/Tile.css"
 
-const  Tile =({onClick, tile}) => {
+const  Tile =(props) => {
   return (
-        <div className='tile' onClick={() => { onClick(tile.whichBoard, tile.position)}}>
-            {tile.position.x}<br/>
-            {tile.position.y}
+        <div className='tile' onClick={() => { props.onClick(props.tile.whichBoard, props.tile.position)}}>
+            {props.children}
         </div>
   );
 }

@@ -1,32 +1,39 @@
-import React, { Component } from 'react';
-import BtsTest from '../components/btsTest';
-import SplashScreen from '../components/SplashScreen';
+//css
 import './css/App.css';
-import Game from './Game';
-import MainMenu from './MainMenu';
-import {modes} from '../classes/globalParam';
+
+//React stuff
+import React, { Component } from 'react';
+
+//Components
+import SplashScreen from '../components/SplashScreen';
 import ErrorBoundries from '../components/ErrorBoundries';
 
+//containers
+import Game from './Game';
+import MainMenu from './MainMenu';
+
+//Classes
+import server from '../classes/server';
+
+//Main entrance to the app 
 class  App extends Component{
   constructor(props){
     super(props);
+    this.modes = server.getModes();
     this.state = {
       //For testing set to game
-      mode: modes.game,
+      mode: this.modes.game,
 
-      //To be removed from production
-      test: "tessting.."
-      //----------------------------
     }
   }
   StartGame = () => {
-    this.setState({mode: modes.game});
+    this.setState({mode: this.modes.game});
   }
   OpenMenu = () => {
-    this.setState({mode: modes.menu});
+    this.setState({mode: this.modes.menu});
   }
   ShowSplash = () => {
-    this.setState({mode: modes.splash});
+    this.setState({mode: this.modes.splash});
   }
   
   ChangeMode = (setMode) =>{
@@ -37,12 +44,12 @@ class  App extends Component{
     switch (this.state.mode) {
 
       //Show Splashscreen
-      case modes.splash:{
+      case this.modes.splash:{
         return(<SplashScreen onclick={this.OpenMenu} />);
       }
       
       //Open Menu
-      case modes.menu:{
+      case this.modes.menu:{
         return(
           <ErrorBoundries>
             <MainMenu onclick={this.StartGame} />
@@ -51,14 +58,12 @@ class  App extends Component{
       }
 
       //Start Game
-      case modes.game:{
+      case this.modes.game:{
         return (
-          <ErrorBoundries>
+          <ErrorBoundries child="Game Compontent">
             <div className="app">
-                <Game game={this.state} testing={this.Test} />
+                <Game gameState={this.state} testing={this.Test} />
             </div>
-
-            <BtsTest test={this.state.test} />
           </ErrorBoundries>
         );
       }
@@ -68,11 +73,6 @@ class  App extends Component{
 
   }
 
-  //To be removed from production
-  Test = (text) => {
-    this.setState({test: text});
-  }
-  //----------------------------
 }
 
 export default App;

@@ -5,7 +5,7 @@
     height: 80px;
     border-top: 3px solid black;
     display: block;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     bottom: 0;
     padding: 10px 10px;
