@@ -14,7 +14,7 @@ class Player {
         this.boardSize = 10;
         this.currentShipSize = 0;
     }
-    Ships() { 
+    Ships = ()  =>{ 
         this.ships = [
             new Ship(2, 4),
             new Ship(3,  3),
@@ -52,33 +52,24 @@ class Player {
     PutShip = (whichBoard, position) =>{
         if(whichBoard === this.name){
 
-            const allowed = this.ChcekIfPutAllowed(position)
-
-            if(allowed === true){
-                this.ChangeTile(position, params.tileState.ship);
-
-            }else if(allowed === server.Params.tileState.ship){
-
-                this.ChangeTile(position, params.tileState.empty);
-                this.IterateDiagonals(position, (point) =>{
-                    this.board[point.x][point.y].tileState = params.tileState.empty;
-                });
-
-            }else{
-                return false;
-            }
-            
+            if(this.board[position.x][position.y].tileState === params.tileState.ship )
+                this.UnsetShip(position)
+                
+            else if(this.ChcekIfPutAllowed(position))
+                this.SetShip(position);
+                
             //Ship put on the board successfuly, and board is upadated with not allowed states
-            this.UpdateNotAllowed(position);
+            this.UpdateNotAllowed(position)
             return true;
-
-        }else{
+        }
+        else{
             console.log(`There is no such player as ${whichBoard}`);
+            return false;
         }
 
     }
 
-    //Checking if you can put ship 
+    //Allowing ships to be set on the board
     ChcekIfPutAllowed = (position) =>{
         let info = "";
         let x = position.x;
@@ -88,6 +79,8 @@ class Player {
         if(this.board[x][y].tileState === state.notAllowed){
             return false;
         }
+        if(this.board[x][y].tileState === state.ship)
+            return false;
 
         //Zero depth
         if(this.board[x][y].tileState === state.empty){
@@ -118,10 +111,9 @@ class Player {
                 return false; 
             }
             
-        }else if(this.board[x][y].tileState === params.tileState.ship ){
-            return params.tileState.ship;
         }else{
-            console.log("somethig go wrong");
+            console.log(`somethig go wrong this is not proper state ${this.board[x][y].tileState}`);
+            return false;
         }
 
 
@@ -129,6 +121,7 @@ class Player {
     UpdateNotAllowed = (position) =>{
         const x = position.x;
         const y = position.y;
+
         for(let row of this.board){
             for(let tile of row){
                 if(tile.tileState === params.tileState.ship){
@@ -145,10 +138,20 @@ class Player {
 
     }
     //Simple tasks methods
+    SetShip = (position) => {
+        this.ChangeTile(position, params.tileState.ship);
+    }
+    UnsetShip = (position) => {
+        this.ChangeTile(position, params.tileState.empty);
+        this.IterateDiagonals(position, (point) =>{
+            this.board[point.x][point.y].tileState = params.tileState.empty;
+        });
+    }
     IterateDiagonals = (point, funk) => {
         const x = point.x;
         const y = point.y;
 
+        //First depth diagonal points
         const  diagonals = [
             new Point(x+1, y+1),
             new Point(x+1, y-1),
@@ -156,38 +159,40 @@ class Player {
             new Point(x-1, y-1),
         ];
 
-        for(let point of diagonals){
-            if(point.x <= 10 && point.x >= 1 && point.y <= 10 && point.y >= 1){
-                funk(point);
-            }
-        }
-
-        return false;
+        return this.DoOnFirstDepth(diagonals, funk);
     }
     IterateStraight = (point, funk) => {
-        //Chceck if diagonals are clear
         const x = point.x;
         const y = point.y;
 
+        //First depth straight points
         const  streights = [
             new Point(x, y+1),
             new Point(x, y-1),
             new Point(x+1, y),
             new Point(x-1, y),
         ];
-
-        for(let point of streights) 
-            funk(point);           
-
-        return false;
-
+        return this.DoOnFirstDepth(streights,funk);
        
+    }
+    DoOnFirstDepth = (direction, funk) =>{
+
+        //Perform given funkction on each First depth point
+        for(let point of direction) 
+            if(this.IfPointOnBoard(point)){
+                funk(point);
+            }        
+        return false;
     }
     CheckTile = (point) =>{
         return this.isShip(point) ? structuredClone(point) : false
     }
+    IfPointOnBoard = (point) =>{
+        const ifBoard = (point.x <= 10 && point.x >= 1) && (point.y <= 10 && point.y >= 1);
+        return ifBoard
+    }
     isShip = (point) => {
-        if((point.x <= 10 && point.x >= 0) && (point.y <= 10 && point.y >= 0)){
+        if((this.IfPointOnBoard(point))){
             return this.board[point.x][point.y].tileState === params.tileState.ship ? true : false;
         }else{
             return false

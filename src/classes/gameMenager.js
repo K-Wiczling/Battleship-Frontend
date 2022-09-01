@@ -65,6 +65,7 @@ class gameMenager{
                 return this.player.PutShip(whichBoard, position);
               
             }
+           
         }
 
     }
