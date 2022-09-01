@@ -24,11 +24,15 @@ class  Game extends Component{
     TileClick = (whichBoard, position) => {
         // Testing only
         this.Test(`Clicked ${whichBoard} at position (${position.x};${position.y})`);
+        if(whichBoard === server.Params.players.player && this.gm.gameState === server.Params.gameState.setup){
+            if(this.gm.ClickedBoard(whichBoard, position)){
+                this.setState({playerBoard: structuredClone(this.gm.player.board)});
+            }
 
-        if(whichBoard === server.Params.players.player){
-            this.setState({playerBoard: this.gm.ClickedBoard(whichBoard, position)});
-        }else{
-            this.setState({enemyBoard: this.gm.ClickedBoard(whichBoard, position)});
+        }else if(whichBoard === server.Params.players.enemy && this.gm.gameState === server.Params.gameState.game){
+            if(this.gm.ClickedBoard(whichBoard, position)){
+                this.setState({enemyBoard: structuredClone(this.gm.player.board)});
+            }
         }
     }
     render(){      
