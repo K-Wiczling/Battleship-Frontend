@@ -59,13 +59,17 @@ class Player {
 
             }else if(allowed === server.Params.tileState.ship){
 
-                console.log(this.currentShipSize);
                 this.ChangeTile(position, params.tileState.empty);
+                this.IterateDiagonals(position, (point) =>{
+                    this.board[point.x][point.y].tileState = params.tileState.empty;
+                });
+
             }else{
                 return false;
             }
             
-            this.UpdateNotAllowed();
+            //Ship put on the board successfuly, and board is upadated with not allowed states
+            this.UpdateNotAllowed(position);
             return true;
 
         }else{
@@ -89,10 +93,10 @@ class Player {
         if(this.board[x][y].tileState === state.empty){
             //first depth
             //Check if diagonals are clear
-            const diagonal = this.checkDiagonals(x, y);
+            const diagonal = this.IterateDiagonals(position,this.CheckTile);
             if(diagonal === false){
                 //Check for ships continuity
-                const straight = this.checkStraight(x,y);
+                const straight = this.IterateStraight(position, this.CheckTile);
                 if(straight === false){
                     this.currentShipSize = 1;
                     return true;
@@ -122,55 +126,69 @@ class Player {
 
 
     }
-    UpdateNotAllowed = () =>{
+    UpdateNotAllowed = (position) =>{
+        const x = position.x;
+        const y = position.y;
+        for(let row of this.board){
+            for(let tile of row){
+                if(tile.tileState === params.tileState.ship){
+                    this.IterateDiagonals(tile.point, (point) =>{
+                        this.board[point.x][point.y].tileState = params.tileState.notAllowed;
+                    });
+                }
+                else if(tile.tileState === params.tileState.empty){
+                    
+                }
+            }
+        }
+        
 
     }
     //Simple tasks methods
-    checkDiagonals = (x, y) => {
-        //Chceck if diagonals are clear
-        
+    IterateDiagonals = (point, funk) => {
+        const x = point.x;
+        const y = point.y;
 
-        if(this.isShip(x+1, y+1)){
-            return new Point(x+1, y+1);
+        const  diagonals = [
+            new Point(x+1, y+1),
+            new Point(x+1, y-1),
+            new Point(x-1, y+1),
+            new Point(x-1, y-1),
+        ];
+
+        for(let point of diagonals){
+            if(point.x <= 10 && point.x >= 1 && point.y <= 10 && point.y >= 1){
+                funk(point);
+            }
         }
-        if(this.isShip(x+1, y-1)){
-            
-            return new Point(x+1, y-1);
-        }
-        if(this.isShip(x-1, y+1)){
-            
-            return new Point(x-1, y+1);
-        }
-        if(this.isShip(x-1, y-1)){
-            return new Point(x-1, y-1);
-        }
+
         return false;
     }
-    checkStraight = (x, y) => {
+    IterateStraight = (point, funk) => {
         //Chceck if diagonals are clear
-        
+        const x = point.x;
+        const y = point.y;
 
-        if(this.isShip(x+1, y))
-        {
-            return new Point(x+1, y);
-        }
-        if(this.isShip(x-1, y))
-        {
-            return new Point(x-1, y);
-        }
-        if(this.isShip(x, y+1))
-        {
-            return new Point(x, y+1);
-        }
-        if(this.isShip(x, y-1))
-        {
-            return new Point(x, y-1);
-        }
+        const  streights = [
+            new Point(x, y+1),
+            new Point(x, y-1),
+            new Point(x+1, y),
+            new Point(x-1, y),
+        ];
+
+        for(let point of streights) 
+            funk(point);           
+
         return false;
+
+       
     }
-    isShip = (x, y) => {
-        if((x <= 10 && x >= 0) && (y <= 10 && y >= 0)){
-            return this.board[x][y].tileState === params.tileState.ship ? true : false;
+    CheckTile = (point) =>{
+        return this.isShip(point) ? structuredClone(point) : false
+    }
+    isShip = (point) => {
+        if((point.x <= 10 && point.x >= 0) && (point.y <= 10 && point.y >= 0)){
+            return this.board[point.x][point.y].tileState === params.tileState.ship ? true : false;
         }else{
             return false
         }

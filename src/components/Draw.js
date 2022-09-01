@@ -79,6 +79,14 @@ const  Draw =({whichBoard, onTileClick, board}) => {
                           </Tile>
                         )
                       }
+                      case ts.notAllowed:{
+
+                        return (
+                          <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
+                            <span>-</span>
+                          </Tile>
+                        )
+                      }
                       
                     
                       default:
