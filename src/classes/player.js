@@ -2,7 +2,10 @@ import Tile from "../classes/tile";
 import server from "./server";
 import Point from "./point";
 import Ship from "./ship"
+
 const params = server.Params;
+const diag = "diagonal";
+const str = "streight";
 
 class Player {
     constructor(name){
@@ -81,20 +84,41 @@ class Player {
         }
         if(this.board[x][y].tileState === state.ship)
             return false;
+        if(!this.IfPointOnBoard(position)){
+            console.log(`position out of the range x:${params.abc[position.x-1]} y:${position.y}`);
+            return false;
+        }
 
         //Zero depth
         if(this.board[x][y].tileState === state.empty){
             //first depth
+            let itterated = true;
+
+            this.IterateAround(position, diag, (point) => {
+                if(!this.board[point.x][point.y].tileState === params.tileState.empty){
+                    itterated = false;
+                }
+            });
+            
             //Check if diagonals are clear
-            const diagonal = this.IterateDiagonals(position,this.CheckTile);
-            if(diagonal === false){
-                //Check for ships continuity
-                const straight = this.IterateStraight(position, this.CheckTile);
-                if(straight === false){
+            if(itterated){
+
+                itterated = true;
+                this.IterateAround(position, str, (point) => {
+                    if(this.board[point.x][point.y].tileState === params.tileState.ship){
+                        itterated = false;
+                    }
+                });
+
+                //If there are no continuity
+                if(itterated){
                     this.currentShipSize = 1;
+                    console.log("not contiunity");
                     return true;
-                }else{
-                    const shipPos = straight;
+                }
+                //If continuity exist
+                else{
+                    console.log("continuity");
                     if(this.currentShipSize < this.BiggestShip()){
                         this.currentShipSize++;
                         return true;
@@ -106,7 +130,7 @@ class Player {
                     }
                 }
             }else{
-                info = `There are ships nearby at position ${params.abc[diagonal.x]}${diagonal.y}, ships are not allowed to touch on diagonals`;
+                info = `There are ships nearby the position of ${params.abc[position.x]}${position.y}, ships are not allowed on the neerest diagonals`;
                 console.log(info);
                 return false; 
             }
@@ -119,23 +143,16 @@ class Player {
 
     }
     UpdateNotAllowed = (position) =>{
-        const x = position.x;
-        const y = position.y;
-
         for(let row of this.board){
             for(let tile of row){
                 if(tile.tileState === params.tileState.ship){
-                    this.IterateDiagonals(tile.point, (point) =>{
+                    this.IterateAround(tile.point, diag, (point) =>{
                         this.board[point.x][point.y].tileState = params.tileState.notAllowed;
                     });
                 }
-                else if(tile.tileState === params.tileState.empty){
-                    
-                }
             }
         }
-        
-
+        return true;
     }
     //Simple tasks methods
     SetShip = (position) => {
@@ -143,11 +160,11 @@ class Player {
     }
     UnsetShip = (position) => {
         this.ChangeTile(position, params.tileState.empty);
-        this.IterateDiagonals(position, (point) =>{
+        this.IterateAround(position, diag, (point) =>{
             this.board[point.x][point.y].tileState = params.tileState.empty;
         });
     }
-    IterateDiagonals = (point, funk) => {
+    IterateAround = (point, axies, funk) => {
         const x = point.x;
         const y = point.y;
 
@@ -158,46 +175,39 @@ class Player {
             new Point(x-1, y+1),
             new Point(x-1, y-1),
         ];
-
-        return this.DoOnFirstDepth(diagonals, funk);
-    }
-    IterateStraight = (point, funk) => {
-        const x = point.x;
-        const y = point.y;
-
-        //First depth straight points
+        //First depth streight points
         const  streights = [
             new Point(x, y+1),
             new Point(x, y-1),
             new Point(x+1, y),
             new Point(x-1, y),
         ];
-        return this.DoOnFirstDepth(streights,funk);
-       
-    }
-    DoOnFirstDepth = (direction, funk) =>{
+        let direction; 
 
-        //Perform given funkction on each First depth point
-        for(let point of direction) 
+        if(axies === diag){
+            direction = diagonals
+        }
+        else if(axies === str){
+            direction = streights
+        }
+        else{
+            console.log(`direction not found${axies}`);
+            return false;
+        }
+
+        
+        for(let point of direction) {
             if(this.IfPointOnBoard(point)){
-                funk(point);
-            }        
-        return false;
-    }
-    CheckTile = (point) =>{
-        return this.isShip(point) ? structuredClone(point) : false
+                funk(point)
+            }
+        }
+        return true;
     }
     IfPointOnBoard = (point) =>{
         const ifBoard = (point.x <= 10 && point.x >= 1) && (point.y <= 10 && point.y >= 1);
         return ifBoard
     }
-    isShip = (point) => {
-        if((this.IfPointOnBoard(point))){
-            return this.board[point.x][point.y].tileState === params.tileState.ship ? true : false;
-        }else{
-            return false
-        }
-    }
+
     BiggestShip = () => {
         let biggestShip = 0;
         for(let ship of this.ships){
