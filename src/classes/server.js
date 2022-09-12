@@ -13,7 +13,8 @@ const globalParam = {
         hit: "hit",
         empty: "empty",
         hitted: "hitted",
-        ship: "ship"
+        ship: "ship",
+        notAllowed: "notAllowed"
     },
     
     // Clasic 10x10 game field for drawing

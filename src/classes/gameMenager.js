@@ -44,6 +44,7 @@ class gameMenager{
         if(this.gameState !== params.gameState.setup){
             return false;
         }
+        return true;
         
     }
     GameState = () =>{
@@ -53,31 +54,23 @@ class gameMenager{
         
     }
     ClickedBoard(whichBoard, position){
-        //validate click 
-        if(this.gameState === params.gameState.game || this.gameState === params.gameState.setup){
-            if(this.validate.ValidateClasicBoardClick(whichBoard, position)){
-                return this.ChangeTileState(whichBoard, position);
+        if(this.validate.ValidateClasicBoardClick(whichBoard, position)){
+
+            if(this.gameState === params.gameState.game){
+                //Shooting only allowed in game and only on the enemy board
+                return this.enemy.getShoot(whichBoard, position)
+
+            }else if(this.gameState === params.gameState.setup){
+               
+                return this.player.PutShip(whichBoard, position);
+              
             }
+           
         }
 
     }
-    ChangeTileState(whichBoard, position){
-        if(whichBoard === params.players.player){
     
-            this.player.getShot(position, params.tileState.hit);
-            const board = structuredClone(this.player.board);
-            return board
-
-        }else if(whichBoard === params.players.enemy){
-
-            this.enemy.getShot(position, params.tileState.hit);
-            const board = structuredClone(this.enemy.board);
-            return board;
-
-        }else{
-            console.log(`There is no such player as ${whichBoard}`);
-        }
-    }
+    
 
 }
 export default gameMenager;

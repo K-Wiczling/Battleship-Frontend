@@ -1,13 +1,13 @@
 //css
-import "./css/Draw.css"
+import "./Draw.css"
 // react stuff
 import React from 'react';
 //Components
-import Tile from './Tile';
+import Tile from '../../components/Tile/Tile';
 //classes
-import Point from '../classes/point';
-import EmptyTile from "./EmptyTile";
-import server from "../classes/server";
+import Point from '../../classes/point';
+import EmptyTile from "../EmptyTile/EmptyTile";
+import server from "../../classes/server";
 
 const  Draw =({whichBoard, onTileClick, board}) => {  
   
@@ -76,6 +76,14 @@ const  Draw =({whichBoard, onTileClick, board}) => {
                         return (
                           <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
                             <span>#</span>
+                          </Tile>
+                        )
+                      }
+                      case ts.notAllowed:{
+
+                        return (
+                          <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
+                            <span>-</span>
                           </Tile>
                         )
                       }

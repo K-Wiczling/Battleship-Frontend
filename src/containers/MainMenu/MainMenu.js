@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Button from '../components/Button';
-import Head from '../components/Head';
-import "./css/MainMenu.css"
+import Button from '../../components/Button/Button';
+import Head from '../../components/Head/Head';
+import "./MainMenu.css"
 
 class  MainMenu extends Component{
     constructor(props){

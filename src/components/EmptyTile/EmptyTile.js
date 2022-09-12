@@ -1,9 +1,9 @@
 import React from 'react';
-import "./css/Tile.css"
+import "./Tile.css"
 
 const  EmptyTile =(props) => {
   return (
-        <div className='tile empty' style={{ fontWeight:'bold' }} >
+        <div className='tile EmptyTile' >
             {props.children}
         </div>
   );

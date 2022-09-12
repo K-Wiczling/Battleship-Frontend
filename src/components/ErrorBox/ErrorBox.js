@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/ErrorBox.css"
+import "./ErrorBox.css"
 
 const  ErrorBox = ({errorTitle, errorContent }) => {
   

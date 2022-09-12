@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/btsTest.css";
+import "./btsTest.css";
 
 const funky = async function() {
     

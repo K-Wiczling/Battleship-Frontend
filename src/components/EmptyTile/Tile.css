@@ -1,12 +1,12 @@
 .tile{
     border: 1px solid black;
-    width: 30px;
-    height: 20px;
+    width: 40px;
+    height: 25px;
     padding: 0px;
     display: inline-block;
-    font-size: 12px;
+    font-size: 15px;
     text-align: center;
-    padding-top: 10px ;
+    padding-top: 15px ;
 
     
 }
@@ -26,5 +26,5 @@
 
 }
 .EmptyTile{
-
+    font-weight: bolder;
 }

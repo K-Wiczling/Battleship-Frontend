@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from './Head';
-import "./css/SplashScreen.css"
-import Button from './Button';
+import Head from '../Head/Head';
+import "./SplashScreen.css"
+import Button from '../Button/Button';
 
 const  SplashScreen = ({onclick}) => {
     return (
