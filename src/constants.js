@@ -1,1 +1,0 @@
-export const OPEN_MAIN_MENU = 'OPEN_MAIN_MENU';

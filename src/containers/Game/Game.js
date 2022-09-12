@@ -1,15 +1,19 @@
 //css
-import "./css/Game.css"
+import "./Game.css"
 //React stuff
 import React, { Component } from 'react';
 
 //Components
-import Draw from '../components/Draw';
-import BtsTest from "../components/btsTest"
+import Draw from '../../components/Draw/Draw';
+import BtsTest from "../../components/btsTest/btsTest"
 
 //Classes
-import gameMenager from "../classes/gameMenager"
-import server from '../classes/server';
+import gameMenager from "../../classes/gameMenager"
+import server from '../../classes/server';
+
+//Redux
+import {connect} from "react-redux"
+
 
 class  Game extends Component{
     constructor(props){
@@ -59,4 +63,5 @@ class  Game extends Component{
 
 }
 
+// export default connect(mapStateToProps, mapDispatchToProps)(Game);
 export default Game;

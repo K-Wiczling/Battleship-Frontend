@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/Head.css"
+import "./Head.css"
 
 const  Head = ({text}) => {
   
