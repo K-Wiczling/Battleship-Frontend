@@ -13,55 +13,68 @@ import server from '../../classes/server';
 
 //Redux
 import {connect} from "react-redux"
+import { tileClickPlayerBoard, tileClickEnemyBoard, insertInGameConsole, fillBothBoards } from "./game-actions";
 
+
+const gm = new gameMenager();
+
+const mapStateToProps = (state) =>{
+    return {
+        consoleText: state.changeGameConsole.consoleText,
+        consoleTime: state.changeGameConsole.consoleTime,
+        playerBoard: state.changeBoard.playerBoard,
+        enemyBoard: state.changeBoard.enemyBoard
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        setupBoards: () => {
+            return dispatch(fillBothBoards(gm.player.board, gm.enemy.board));
+        },
+        playerTileClick: (position) => {
+            if(gm.ClickedBoard(server.Params.players.player, position)){
+                return dispatch(tileClickPlayerBoard(gm.player.board));
+            };
+        },
+        enemyTileClick: (position) => {
+            if(gm.ClickedBoard(server.Params.enemy.player, position)){
+                return dispatch(tileClickEnemyBoard(gm.enemy.board));
+            }
+        },
+        changeTesting: (text, time) => dispatch(insertInGameConsole(text, time))
+    }
+}
 
 class  Game extends Component{
-    constructor(props){
-        super(props);
-        this.gm = new gameMenager();
-        this.state = {
-            testing: "testing...",
-            playerBoard: this.gm.player.board,
-            enemyBoard: this.gm.enemy.board
-        }
-    }
-    TileClick = (whichBoard, position) => {
-        // Testing only
-        this.Test(`Clicked ${whichBoard} at position (${position.x};${position.y})`);
-        if(whichBoard === server.Params.players.player && this.gm.gameState === server.Params.gameState.setup){
-            if(this.gm.ClickedBoard(whichBoard, position)){
-                this.setState({playerBoard: structuredClone(this.gm.player.board)});
-            }
 
-        }else if(whichBoard === server.Params.players.enemy && this.gm.gameState === server.Params.gameState.game){
-            if(this.gm.ClickedBoard(whichBoard, position)){
-                this.setState({enemyBoard: structuredClone(this.gm.player.board)});
-            }
-        }
+    componentDidMount(){
+        this.props.setupBoards();
     }
+
     render(){      
         return (
             <div className="Game">
                 <div className='player-board' >
-                    <Draw whichBoard={this.gm.player.name} board={this.state.playerBoard} onTileClick={this.TileClick}/>
+                    <Draw 
+                        whichBoard={gm.player.name} 
+                        board={this.props.playerBoard} 
+                        onTileClick={this.props.playerTileClick}
+                    />
                 </div>
                 <div className='enemy-board'>
-                    <Draw whichBoard={this.gm.enemy.name} board={this.state.enemyBoard} onTileClick={this.TileClick}/>
+                    <Draw 
+                        whichBoard={gm.enemy.name} 
+                        board={this.props.enemyBoard} 
+                        onTileClick={this.props.enemyTileClick}
+                    />
                 </div>
-                
-                <BtsTest test={this.state.testing} />
+                <BtsTest test={`${this.props.consoleTime} Game Master sad: ${this.props.consoleText}`} />
             </div>
     );
   }
 
-  //To be removed from production
-  Test = (txt) => {
-    this.setState({testing: txt});
-  }
-  //----------------------------
-
 
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Game);
-export default Game;
+// export default Game;
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

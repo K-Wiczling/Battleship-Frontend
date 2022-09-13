@@ -14,26 +14,27 @@ import MainMenu from '../MainMenu/MainMenu';
 
 //Redux
 import {connect} from "react-redux"
-import {changeMode} from "./actions"
+import {changeModes} from "./actions"
 import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from './constants';
 
 const mapStateToProps = (state) => {
   return {
-    mode: state.changeMode.mode
+    mode: state.changeMode.mode,
+    testing: state.changeGameConsole.consoleText,
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    openMenu: () => dispatch(changeMode(MODE_MAIN_MENU)),
-    showSplashScreen: () => dispatch(changeMode(MODE_SPLASH_SCREEN)),
-    startGame: () => dispatch(changeMode(MODE_GAME))
+    openMenu: () => dispatch(changeModes(MODE_MAIN_MENU)),
+    showSplashScreen: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
+    startGame: () => dispatch(changeModes(MODE_GAME)),
   }
 }
 //Main entrance to the app 
 class  App extends Component{
- 
+  componentDidMount(){
+  }
   render(){
-    
     switch (this.props.mode) {
 
       //Show Splashscreen
@@ -55,7 +56,7 @@ class  App extends Component{
         return (
           <ErrorBoundries child="Game Compontent">
             <div className="app">
-                <Game testing={this.Test} />
+                <Game />
             </div>
           </ErrorBoundries>
         );
