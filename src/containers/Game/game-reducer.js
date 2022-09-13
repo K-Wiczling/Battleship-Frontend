@@ -1,4 +1,4 @@
-import { UPDATE_PLAYER_BOARD, UPDATE_ENEMY_BOARD, INSERT_IN_GAME_CONSOLE } from "./game-constants";
+import { UPDATE_PLAYER_BOARD, UPDATE_ENEMY_BOARD, INSERT_IN_GAME_CONSOLE, UPDATE_BOTH_BOARDS } from "./game-constants";
 
 const  initialGameState = {
     playerBoard: [],
@@ -6,6 +6,9 @@ const  initialGameState = {
 }
 export const changeBoard = (state=initialGameState, action={}) => {
     switch (action.type) {
+        case UPDATE_BOTH_BOARDS: 
+            return Object.assign({}, state, {playerBoard: action.payload.player, enemyBoard: action.payload.enemy})
+            
         case UPDATE_PLAYER_BOARD:
             return Object.assign({}, state, {playerBoard: action.payload} )
 

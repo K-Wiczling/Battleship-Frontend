@@ -13,7 +13,7 @@ import server from '../../classes/server';
 
 //Redux
 import {connect} from "react-redux"
-import { tileClickPlayerBoard, tileClickEnemyBoard, insertInGameConsole } from "./game-actions";
+import { tileClickPlayerBoard, tileClickEnemyBoard, insertInGameConsole, fillBothBoards } from "./game-actions";
 
 
 const gm = new gameMenager();
@@ -28,15 +28,17 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = (dispatch) =>{
     return{
-
+        setupBoards: () => {
+            return dispatch(fillBothBoards(gm.player.board, gm.enemy.board));
+        },
         playerTileClick: (position) => {
             if(gm.ClickedBoard(server.Params.players.player, position)){
-                return dispatch(tileClickPlayerBoard(gm.player.board))
+                return dispatch(tileClickPlayerBoard(gm.player.board));
             };
         },
         enemyTileClick: (position) => {
             if(gm.ClickedBoard(server.Params.enemy.player, position)){
-                return dispatch(tileClickEnemyBoard(gm.enemy.board))
+                return dispatch(tileClickEnemyBoard(gm.enemy.board));
             }
         },
         changeTesting: (text, time) => dispatch(insertInGameConsole(text, time))
@@ -46,9 +48,7 @@ const mapDispatchToProps = (dispatch) =>{
 class  Game extends Component{
 
     componentDidMount(){
-        console.log(this.props);
-        this.props.changeTesting("finaly working", "14:41");
-        console.log(this.props);
+        this.props.setupBoards();
     }
 
     render(){      
@@ -68,7 +68,7 @@ class  Game extends Component{
                         onTileClick={this.props.enemyTileClick}
                     />
                 </div>
-                <BtsTest test={`${this.props.consoleTime}: Game Master sad: ${this.props.consoleText}`} />
+                <BtsTest test={`${this.props.consoleTime} Game Master sad: ${this.props.consoleText}`} />
             </div>
     );
   }
