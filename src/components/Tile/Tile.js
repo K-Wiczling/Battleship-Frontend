@@ -4,7 +4,6 @@ import "./Tile.css"
 import server from '../../classes/server';
 import {connect} from "react-redux"
 import { insertInGameConsole} from '../../containers/Game/game-actions';
-import Timeing from '../../classes/timeing';
 
 
 const mapStateToProps = (state) =>{
@@ -15,7 +14,7 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = (dispatch) =>{
   return{
-      insertInGameConsole: (text, time) => dispatch(insertInGameConsole(text, time))
+      insertInGameConsole: (msg, sender, info) => dispatch(insertInGameConsole(msg, info, sender))
   }
 }
 const  Tile = (props) => {
@@ -23,9 +22,13 @@ const  Tile = (props) => {
         <div 
           className='tile' 
           onClick={() => {
-                const t = new Timeing();
+            console.log(server.Params.gameConsoleSenderType.game);
             props.onClick(props.tile.position)
-            props.insertInGameConsole(`X: ${props.tile.position.x} Y:${props.tile.position.y}`, t.getCurrentTime())
+            props.insertInGameConsole(
+              `X: ${props.tile.position.x} Y:${props.tile.position.y}`,
+              server.Params.gameConsoleSenderType.game,
+              server.Params.gameConsoleMessageTypes.warning
+              )
           }}
         >
               {props.children}

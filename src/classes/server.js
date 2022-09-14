@@ -38,6 +38,19 @@ const globalParam = {
         setup: "setup",
         game: "game",
         end: "end"
+    },
+    gameConsoleMessageTypes:{
+        info: 'consoleTypeInfo',
+        warning: 'consoleTypeWarning',
+        error: 'consoleTypeError',
+        enemy: 'consoleTypeEnemy',
+        player: 'consoleTypePlayer'
+    },
+    gameConsoleSenderType:{
+        game: 'Game',
+        system: 'System',
+        enemy: 'Enemy',
+        plyer: 'Player'
     }
 
 }

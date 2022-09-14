@@ -1,11 +1,12 @@
-import gameMenager from "../../classes/gameMenager";
+import server from "../../classes/server";
+import Timing from "../../classes/timing";
 import { 
     UPDATE_PLAYER_BOARD, 
     UPDATE_ENEMY_BOARD, 
     INSERT_IN_GAME_CONSOLE, 
     UPDATE_BOTH_BOARDS,
 } from "./game-constants";
-
+const params = server.Params
 const  initialGameState = {
     gameMenager:{},
     playerBoard: [],
@@ -26,25 +27,30 @@ export const changeBoard = (state=initialGameState, action={}) => {
             return state
     }
 }
-//// export const setupGame = (state=initialGameState, action={}) => {
-//     switch (action.type) {
-        
-
-//         default:
-//             return state
-//     }
-// }
 
 
 const initialGameConsoleState = {
-    consoleTime: "",
-    consoleText: 'trhfhester...'
+    
+    log: [
+        {
+            id: 0,
+            consoleTime: Timing.getCurrentTime(),
+            consoleText: `Let's the game begin`,
+            messageSender: params.gameConsoleSenderType.game,
+            messageType: params.gameConsoleMessageTypes.info,
+        }
+
+    ]
 }
 export const changeGameConsole = (state=initialGameConsoleState, action={}) =>{
     switch (action.type) {
-        case INSERT_IN_GAME_CONSOLE:
-            return Object.assign({}, state, {consoleText: action.payload.text, consoleTime: action.payload.time})
-        
+        case INSERT_IN_GAME_CONSOLE:{
+            action.payload.id = state.log.length
+            return { 
+                ...state,
+                log: [action.payload, ...state.log ]
+            }
+        }
         default:
             return state;
     }
