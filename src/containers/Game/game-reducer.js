@@ -26,7 +26,7 @@ export const changeBoard = (state=initialGameState, action={}) => {
             return state
     }
 }
-// export const setupGame = (state=initialGameState, action={}) => {
+//// export const setupGame = (state=initialGameState, action={}) => {
 //     switch (action.type) {
         
 
