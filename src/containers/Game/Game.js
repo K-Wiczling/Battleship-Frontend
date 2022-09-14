@@ -20,12 +20,14 @@ import {
     fillBothBoards
 } from "./game-actions";
 
-
+//Singleton
 const gm = new gameMenager();
+
+
 
 const mapStateToProps = (state) =>{
     return {
-        gm: state.changeBoard.gm,
+        gameMenager: state.changeBoard.gameMenager,
         consoleText: state.changeGameConsole.consoleText,
         consoleTime: state.changeGameConsole.consoleTime,
         playerBoard: state.changeBoard.playerBoard,
@@ -56,7 +58,6 @@ const mapDispatchToProps = (dispatch) =>{
 class  Game extends Component{
     componentDidMount(){
         this.props.setupBoards(gm);
-        console.log(JSON.parse(this.props.gm));
     }
     render(){      
         return (
@@ -64,14 +65,12 @@ class  Game extends Component{
                 <div className='player-board' >
                     <Draw 
                         whichBoard={gm.player.name} 
-                        board={this.props.playerBoard} 
                         onTileClick={this.props.playerTileClick}
                     />
                 </div>
                 <div className='enemy-board'>
                     <Draw 
                         whichBoard={gm.enemy.name} 
-                        board={this.props.enemyBoard} 
                         onTileClick={this.props.enemyTileClick}
                     />
                 </div>

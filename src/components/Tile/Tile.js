@@ -9,7 +9,6 @@ import Timeing from '../../classes/timeing';
 
 const mapStateToProps = (state) =>{
   return {
-      gm: state.changeBoard.gm,
       consoleText: state.changeGameConsole.consoleText,
       consoleTime: state.changeGameConsole.consoleTime,
   }
@@ -24,7 +23,7 @@ const  Tile = (props) => {
         <div 
           className='tile' 
           onClick={() => {
-            const t = new Timeing();
+                const t = new Timeing();
             props.onClick(props.tile.position)
             props.insertInGameConsole(`X: ${props.tile.position.x} Y:${props.tile.position.y}`, t.getCurrentTime())
           }}

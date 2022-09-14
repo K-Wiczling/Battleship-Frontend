@@ -113,12 +113,12 @@ class Player {
                 //If there are no continuity
                 if(itterated){
                     this.currentShipSize = 1;
-                    console.log("not contiunity");
+                    // console.log("not contiunity");
                     return true;
                 }
                 //If continuity exist
                 else{
-                    console.log("continuity");
+                    // console.log("continuity");
                     if(this.currentShipSize < this.BiggestShip()){
                         this.currentShipSize++;
                         return true;
