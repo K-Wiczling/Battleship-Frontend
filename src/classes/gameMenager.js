@@ -7,10 +7,18 @@ const params = server.Params;
 class gameMenager{
 
     constructor(){
+        if(gameMenager.exists){
+            console.log("gm exist");  
+            return gameMenager.instance
+        }
         this.player = new Player(params.players.player);
         this.enemy = new Player(params.players.enemy);
         this.validate = new Validate();
         this.gameState = params.gameState.setup;
+        this.id = 0;
+        gameMenager.exists = true;
+        gameMenager.instance = this;
+        return this;
     }
     UpdateGame = () =>{
 
@@ -51,7 +59,9 @@ class gameMenager{
         
     }
     EndState = () =>{
-        
+    }
+    Funky = (id) =>{
+        this.id = id;
     }
     //Returns 
     // true - putting a ship is posible and ship is palced on the board

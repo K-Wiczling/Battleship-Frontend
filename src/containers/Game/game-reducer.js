@@ -7,7 +7,7 @@ import {
 } from "./game-constants";
 
 const  initialGameState = {
-    gm: JSON.stringify(new gameMenager()),
+    gameMenager:{},
     playerBoard: [],
     enemyBoard: []
 }
