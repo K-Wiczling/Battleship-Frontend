@@ -20,7 +20,7 @@ import {
     fillBothBoards
 } from "./game-actions";
 
-//Singleton
+//Singleton object that holds all game information
 const gm = new gameMenager();
 
 
