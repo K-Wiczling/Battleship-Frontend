@@ -8,7 +8,7 @@ import Draw from '../../components/Draw/Draw';
 import GameConsole from "../../components/GameConsole/GameConsole"
 
 //Classes
-import gameMenager from "../../classes/gameMenager"
+import gm from "../../classes/gameMenager"
 import server from '../../classes/server';
 
 //Redux
@@ -19,9 +19,6 @@ import {
     insertInGameConsole, 
     fillBothBoards
 } from "./game-actions";
-
-//Singleton object that holds all game information
-const gm = new gameMenager();
 
 const mapStateToProps = (state) =>{
     return {
@@ -36,18 +33,6 @@ const mapDispatchToProps = (dispatch) =>{
     return{
         setupBoards: () => {
             return dispatch(fillBothBoards(gm.player.board, gm.enemy.board));
-        },
-        playerTileClick: (position) => {
-            if(gm.ClickedBoard(server.Params.players.player, position)){
-                return dispatch(tileClickPlayerBoard(gm.player.board));
-            };
-        },
-        enemyTileClick: (position) => {
-            if(!gm.gameState === server.Params.gameState.setup){
-                if(gm.ClickedBoard(server.Params.enemy.player, position)){
-                    return dispatch(tileClickEnemyBoard(gm.enemy.board));
-                }
-            }
         }
     }
 }
@@ -62,13 +47,11 @@ class  Game extends Component{
                 <div className='player-board' >
                     <Draw 
                         whichBoard={gm.player.name} 
-                        onTileClick={this.props.playerTileClick}
                     />
                 </div>
                 <div className='enemy-board'>
                     <Draw 
                         whichBoard={gm.enemy.name} 
-                        onTileClick={this.props.enemyTileClick}
                     />
                 </div>
                 <GameConsole />

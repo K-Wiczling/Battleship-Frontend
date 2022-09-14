@@ -15,7 +15,7 @@ class gameMenager{
         this.enemy = new Player(params.players.enemy);
         this.validate = new Validate();
         this.gameState = params.gameState.setup;
-        this.id = 0;
+        this.message = "Fresh build";
         gameMenager.exists = true;
         gameMenager.instance = this;
         return this;
@@ -60,9 +60,10 @@ class gameMenager{
     }
     EndState = () =>{
     }
-    Funky = (id) =>{
-        this.id = id;
+    getMessage(){
+        return this.message;
     }
+
     //Returns 
     // true - putting a ship is posible and ship is palced on the board
     // false - putting a ship is NOT posible  
@@ -87,4 +88,7 @@ class gameMenager{
     
 
 }
-export default gameMenager;
+// export default gameMenager;
+
+const gm = new gameMenager();
+export default gm;

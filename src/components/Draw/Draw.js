@@ -43,7 +43,7 @@ const  Draw =(props) => {
                     insert = board[i][j];
                     if(i === 0 && j === 0) insert = "";
                     return (
-                      <EmptyTile key={key} tile={tileAtributes} className="EmptyTile" >
+                      <EmptyTile key={key} tile={tileAtributes} >
                         <span>{insert}</span>
                       </EmptyTile>
                     )
@@ -56,7 +56,7 @@ const  Draw =(props) => {
                     switch (board[i][j].tileState) {
                       case ts.empty:{
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} >
                             <span></span>
                           </Tile>
                         )
@@ -64,7 +64,7 @@ const  Draw =(props) => {
                         
                       case ts.hit:{
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ () =>{}} className="tile">
+                          <Tile key={key} tile={tileAtributes} onClick={ () =>{}} >
                             <span>X</span>
                           </Tile>
                         )
