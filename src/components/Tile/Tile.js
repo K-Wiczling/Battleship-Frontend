@@ -22,7 +22,6 @@ const  Tile = (props) => {
         <div 
           className='tile' 
           onClick={() => {
-            console.log(server.Params.gameConsoleSenderType.game);
             props.onClick(props.tile.position)
             props.insertInGameConsole(
               `X: ${props.tile.position.x} Y:${props.tile.position.y}`,

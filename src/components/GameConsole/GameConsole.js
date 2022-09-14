@@ -15,7 +15,6 @@ const GameConsole = (props) =>{
         <div className="game-console">
             {
                 props.log.map((line, i) =>{
-                    console.log(line);
                     return(
                         <ConsoleMessage key={i} log={line}/>
                     )
