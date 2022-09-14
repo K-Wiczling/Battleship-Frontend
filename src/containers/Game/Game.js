@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 //Components
 import Draw from '../../components/Draw/Draw';
-import BtsTest from "../../components/btsTest/btsTest"
+import GameConsole from "../../components/GameConsole/GameConsole"
 
 //Classes
 import gameMenager from "../../classes/gameMenager"
@@ -13,13 +13,19 @@ import server from '../../classes/server';
 
 //Redux
 import {connect} from "react-redux"
-import { tileClickPlayerBoard, tileClickEnemyBoard, insertInGameConsole, fillBothBoards } from "./game-actions";
+import { 
+    tileClickPlayerBoard, 
+    tileClickEnemyBoard, 
+    insertInGameConsole, 
+    fillBothBoards
+} from "./game-actions";
 
 
 const gm = new gameMenager();
 
 const mapStateToProps = (state) =>{
     return {
+        gm: state.changeBoard.gm,
         consoleText: state.changeGameConsole.consoleText,
         consoleTime: state.changeGameConsole.consoleTime,
         playerBoard: state.changeBoard.playerBoard,
@@ -37,20 +43,21 @@ const mapDispatchToProps = (dispatch) =>{
             };
         },
         enemyTileClick: (position) => {
-            if(gm.ClickedBoard(server.Params.enemy.player, position)){
-                return dispatch(tileClickEnemyBoard(gm.enemy.board));
+            if(!gm.gameState === server.Params.gameState.setup){
+                if(gm.ClickedBoard(server.Params.enemy.player, position)){
+                    return dispatch(tileClickEnemyBoard(gm.enemy.board));
+                }
             }
         },
-        changeTesting: (text, time) => dispatch(insertInGameConsole(text, time))
+        insertInGameConsole: (text, time) => dispatch(insertInGameConsole(text, time))
     }
 }
 
 class  Game extends Component{
-
     componentDidMount(){
-        this.props.setupBoards();
+        this.props.setupBoards(gm);
+        console.log(JSON.parse(this.props.gm));
     }
-
     render(){      
         return (
             <div className="Game">
@@ -68,7 +75,7 @@ class  Game extends Component{
                         onTileClick={this.props.enemyTileClick}
                     />
                 </div>
-                <BtsTest test={`${this.props.consoleTime} Game Master sad: ${this.props.consoleText}`} />
+                <GameConsole />
             </div>
     );
   }

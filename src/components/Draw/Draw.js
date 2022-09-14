@@ -8,9 +8,17 @@ import Tile from '../../components/Tile/Tile';
 import Point from '../../classes/point';
 import EmptyTile from "../EmptyTile/EmptyTile";
 import server from "../../classes/server";
+//Redux
+import { connect } from "react-redux";
 
-const  Draw =({whichBoard, onTileClick, board}) => {  
-  
+const mapStateToProps = (state) =>{
+  return {
+    playerBoard: state.changeBoard.playerBoard,
+    enemyBoard: state.changeBoard.enemyBoard
+  }
+}
+const  Draw =(props) => {  
+  let board = props.whichBoard === server.Params.players.player ? props.playerBoard : props.enemyBoard
   let insert = "";
   return (
     <div className='board'>
@@ -21,13 +29,13 @@ const  Draw =({whichBoard, onTileClick, board}) => {
               { 
                 row.map((cell, j) =>{
                   
-                  //idywidual key value for list components
+                  //individual key value for list components
                   let key = `${i}r${j}`;
                   
                   //Atributes passed down to Tile component
                   let tileAtributes = {
                     position: new Point(i,j),
-                    whichBoard: whichBoard
+                    whichBoard: props.whichBoard
                   };
                   
                   // For the first row and first column (cordinates) use EmptyTile component, ---> 
@@ -48,7 +56,7 @@ const  Draw =({whichBoard, onTileClick, board}) => {
                     switch (board[i][j].tileState) {
                       case ts.empty:{
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
                             <span></span>
                           </Tile>
                         )
@@ -74,7 +82,7 @@ const  Draw =({whichBoard, onTileClick, board}) => {
                       case ts.ship:{
 
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
                             <span>#</span>
                           </Tile>
                         )
@@ -82,7 +90,7 @@ const  Draw =({whichBoard, onTileClick, board}) => {
                       case ts.notAllowed:{
 
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
                             <span>-</span>
                           </Tile>
                         )
@@ -105,4 +113,4 @@ const  Draw =({whichBoard, onTileClick, board}) => {
     </div>
   );
 }
-export default Draw;
+export default connect(mapStateToProps)(Draw);
