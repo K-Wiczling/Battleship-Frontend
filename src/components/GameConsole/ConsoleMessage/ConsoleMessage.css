@@ -1,0 +1,16 @@
+.console-message{
+    padding: 2px 8px;
+    margin: 4px 2px;
+    border: 1px solid white;
+    font-family: monospace;
+    font-size: 1rem;
+}
+.console-time{
+    font-style: italic;
+}
+.console-sender{
+    font-weight: 600;
+}
+.console-text{
+    font-style: oblique;
+}

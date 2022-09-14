@@ -1,12 +1,12 @@
 /* For production purpose only */
-.bts-test{
+.game-console{
     background-color: rgb(57, 57, 57);
     color: #fff;
     height: 80px;
-    border-top: 3px solid black;
+    /* border-top: 3px solid black; */
     display: block;
     width: 100%;
     position: fixed;
     bottom: 0;
-    padding: 10px 10px;
+    overflow-y:auto;
 }
