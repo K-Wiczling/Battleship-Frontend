@@ -23,8 +23,6 @@ import {
 //Singleton object that holds all game information
 const gm = new gameMenager();
 
-
-
 const mapStateToProps = (state) =>{
     return {
         gameMenager: state.changeBoard.gameMenager,
@@ -50,8 +48,7 @@ const mapDispatchToProps = (dispatch) =>{
                     return dispatch(tileClickEnemyBoard(gm.enemy.board));
                 }
             }
-        },
-        insertInGameConsole: (text, time) => dispatch(insertInGameConsole(text, time))
+        }
     }
 }
 

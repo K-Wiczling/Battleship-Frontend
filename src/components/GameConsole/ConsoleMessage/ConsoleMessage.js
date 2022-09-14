@@ -5,7 +5,6 @@ import "./ConsoleMessage.css";
 const ConsoleMessage = ({log:{consoleText, consoleTime, messageSender, messageType}}) =>{
     const message = `${consoleTime} ${messageSender}: ${consoleText}`;
     let messageColor = "white";
-    // console.log(type);
     const msgType = server.Params.gameConsoleMessageTypes;
     switch (messageType) {
         case msgType.info: messageColor = "white"; break;
