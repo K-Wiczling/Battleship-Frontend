@@ -6,7 +6,7 @@ const  initialModeState = {
 export const changeMode = (state=initialModeState, action={}) => {
     switch (action.type) {
         case CHANGE_MODE:
-            return Object.assign({}, state, {mode: action.payload} )
+            return Object.assign({}, state, { mode: action.payload })
         default:
             return state
     }

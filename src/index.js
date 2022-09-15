@@ -5,7 +5,7 @@ import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
-import {createLogger } from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
 import { changeMode } from './containers/App/reducer';
@@ -13,8 +13,8 @@ import { changeBoard, changeGameConsole } from './containers/Game/game-reducer';
 
 //Redux section
 const logger = createLogger(); 
-const rootReducer = combineReducers({ changeMode, changeBoard, changeGameConsole});
-const store = configureStore({reducer: rootReducer}, applyMiddleware(logger));
+const rootReducer = combineReducers({ changeMode, changeBoard, changeGameConsole });
+const store = configureStore({ reducer: rootReducer }, applyMiddleware(logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

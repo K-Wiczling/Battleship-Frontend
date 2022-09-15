@@ -1,5 +1,5 @@
-class Ship{
-    constructor(size, count){
+class Ship {
+    constructor (size, count) {
         this.size = size;
         this.count = count;
     }

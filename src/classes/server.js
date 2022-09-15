@@ -39,14 +39,14 @@ const globalParam = {
         game: "game",
         end: "end"
     },
-    gameConsoleMessageTypes:{
+    gameConsoleMessageTypes: {
         info: 'consoleTypeInfo',
         warning: 'consoleTypeWarning',
         error: 'consoleTypeError',
         enemy: 'consoleTypeEnemy',
         player: 'consoleTypePlayer'
     },
-    gameConsoleSenderType:{
+    gameConsoleSenderType: {
         game: 'Game',
         system: 'System',
         enemy: 'Enemy',
@@ -56,27 +56,27 @@ const globalParam = {
 }
 
 class Server {
-    constructor(){
+    constructor() {
         this.Params = this.fetchGlobalParams();
     }
 
-    fetchGlobalParams = () =>{
+    fetchGlobalParams = () => {
         return structuredClone(globalParam);
     }
-    getClasicBoard = () =>{
+    getClasicBoard = () => {
         return structuredClone(this.Params.clasicBoard);
     }
     
-    getModes = () =>{
+    getModes = () => {
         return structuredClone(this.Params.modes);
     }
-    getPlayers = () =>{
+    getPlayers = () => {
         return structuredClone(this.Params.players);
     }
-    getTileState = () =>{
+    getTileState = () => {
         return structuredClone(this.Params.tileState);
     }
-    getAbc= () => {
+    getAbc = () => {
         return structuredClone(this.Params.abc);
     }
  }

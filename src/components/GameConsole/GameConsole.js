@@ -1,13 +1,11 @@
 import React from "react";
 import "./GameConsole.css";
 
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import ConsoleMessage from "./ConsoleMessage/ConsoleMessage";
 
-const mapStateToProps = (state)=>{
-    return{
-        log: state.changeGameConsole.log,
-    }
+const mapStateToProps = (state) => {
+    return { log: state.changeGameConsole.log, }
 }
 
 const GameConsole = (props) =>{

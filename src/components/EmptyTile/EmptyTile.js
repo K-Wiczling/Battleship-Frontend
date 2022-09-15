@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Tile.css"
 
-const  EmptyTile =(props) => {
+const  EmptyTile = (props) => {
   return (
         <div className='tile EmptyTile' >
             {props.children}

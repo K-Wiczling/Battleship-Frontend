@@ -4,12 +4,12 @@ import Validate from "../validate";
 
 const params = server.Params;
 
-class gameMenager{
+class gameMenager {
 
-    constructor(){
-        if(gameMenager.exists){
+    constructor () {
+        if (gameMenager.exists) {
             console.log("gm exist");  
-            return gameMenager.instance
+            return gameMenager.instance;
         }
         this.player = new Player(params.players.player);
         this.enemy = new Player(params.players.enemy);
@@ -19,7 +19,7 @@ class gameMenager{
         gameMenager.instance = this;
         return this;
     }
-    UpdateGame = () =>{
+    updateGame = () => {
 
         //Checking 
         switch (this.gameState) {
@@ -44,34 +44,34 @@ class gameMenager{
         }
     }
 
-    PreState = () =>{
+    preState = () => {
 
     }
-    SetupState = () =>{
+    setupState = () => {
         if(this.gameState !== params.gameState.setup){
             return false;
         }
         return true;
         
     }
-    GameState = () =>{
+    gameState = () => {
         
     }
-    EndState = () =>{
+    endState = () => {
     }
     
     //Returns 
     // true - putting a ship is posible and ship is palced on the board
     // false - putting a ship is NOT posible  
-    ClickedBoard = (whichBoard, position) => {
-        if(this.validate.ValidateClasicBoardClick(whichBoard, position)){
+    clickedBoard = (whichBoard, position) => {
+        if (this.validate.validateClasicBoardClick(whichBoard, position)) {
             
-            if(this.gameState === params.gameState.game){
+            if (this.gameState === params.gameState.game) {
                 //Shooting only allowed in game and only on the enemy board
                 return this.enemy.getShoot(whichBoard, position)
                 
-            }else if(this.gameState === params.gameState.setup)
-                return this.player.SetTile(whichBoard, position);
+            }else if (this.gameState === params.gameState.setup)
+                return this.player.setTile(whichBoard, position);
         }
     }
     

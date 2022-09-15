@@ -6,7 +6,9 @@ import {
     INSERT_IN_GAME_CONSOLE, 
     UPDATE_BOTH_BOARDS,
 } from "./game-constants";
+
 const params = server.Params
+
 const  initialGameState = {
     gameMenager:{},
     playerBoard: [],
@@ -15,13 +17,13 @@ const  initialGameState = {
 export const changeBoard = (state=initialGameState, action={}) => {
     switch (action.type) {
         case UPDATE_BOTH_BOARDS: 
-            return Object.assign({}, state, {playerBoard: action.payload.player, enemyBoard: action.payload.enemy})
+            return Object.assign({}, state, { playerBoard: action.payload.player, enemyBoard: action.payload.enemy })
 
         case UPDATE_PLAYER_BOARD:
-            return Object.assign({}, state, {playerBoard: action.payload} )
+            return Object.assign({}, state, { playerBoard: action.payload })
 
         case UPDATE_ENEMY_BOARD:
-            return Object.assign({}, state, {enemyBoard: action.payload} )
+            return Object.assign({}, state, { enemyBoard: action.payload })
 
         default:
             return state
@@ -30,17 +32,13 @@ export const changeBoard = (state=initialGameState, action={}) => {
 
 
 const initialGameConsoleState = {
-    
-    log: [
-        {
+    log: [{
             id: 0,
             consoleTime: Timing.getCurrentTime(),
             consoleText: `Let's the game begin`,
             messageSender: params.gameConsoleSenderType.game,
             messageType: params.gameConsoleMessageTypes.info,
-        }
-
-    ]
+        }]
 }
 export const changeGameConsole = (state=initialGameConsoleState, action={}) =>{
     switch (action.type) {

@@ -24,7 +24,7 @@ export const insertInGameConsole = (
     message="Game is working",
     type=server.Params.gameConsoleMessageTypes.info, 
     sender=server.Params.gameConsoleSenderType.game
-) =>{
+) => {
     return {
         type: INSERT_IN_GAME_CONSOLE,
         payload: {
@@ -37,7 +37,7 @@ export const insertInGameConsole = (
     }
 };
 
-export const fillBothBoards = (player, enemy) =>({
+export const fillBothBoards = (player, enemy) => ({
     type: UPDATE_BOTH_BOARDS,
     payload: {
         player: structuredClone(player), 

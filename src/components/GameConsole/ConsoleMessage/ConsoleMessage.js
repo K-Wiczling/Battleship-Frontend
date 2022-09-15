@@ -2,10 +2,11 @@ import React from "react";
 import server from "../../../classes/server";
 import "./ConsoleMessage.css";
 
-const ConsoleMessage = ({log:{consoleText, consoleTime, messageSender, messageType}}) =>{
+const ConsoleMessage = ({ log: { consoleText, consoleTime, messageSender, messageType } }) => {
     const message = `${consoleTime} ${messageSender}: ${consoleText}`;
     let messageColor = "white";
     const msgType = server.Params.gameConsoleMessageTypes;
+
     switch (messageType) {
         case msgType.info: messageColor = "white"; break;
         case msgType.warning: messageColor = "yellow"; break;
@@ -14,7 +15,7 @@ const ConsoleMessage = ({log:{consoleText, consoleTime, messageSender, messageTy
         case msgType.player: messageColor = "green"; break;
         default: messageColor = "lightblue"; break;
     }
-    return(
+    return (
         <div className="console-message" style={{color: messageColor}}>
             <span className="console-time">{consoleTime} </span>
             <span className="console-sender">{messageSender}: </span>

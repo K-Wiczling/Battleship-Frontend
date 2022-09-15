@@ -1,5 +1,5 @@
 class Tile {
-    constructor(point, state){
+    constructor (point, state) {
         this.point = point; 
         this.tileState = state;
     }

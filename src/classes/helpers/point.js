@@ -1,14 +1,15 @@
 //Class to store position of the click
-export default class Point {
-    constructor(x, y) {
+class Point {
+    constructor (x, y) {
       this.x = x;
       this.y = y;
     }
 
-    GetX(){
+    GetX () {
         return this.x;
     }
-    GetY(){
+    GetY () {
         return this.y;
     }
-  }
+}
+export default Point;

@@ -11,12 +11,12 @@ import GameConsole from "../../components/GameConsole/GameConsole"
 import gm from "../../classes/GameMenager/gameMenager"
 
 //Redux
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import { 
     fillBothBoards
 } from "./game-actions";
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
     return {
         gameMenager: state.changeBoard.gameMenager,
         consoleText: state.changeGameConsole.consoleText,
@@ -25,38 +25,31 @@ const mapStateToProps = (state) =>{
         enemyBoard: state.changeBoard.enemyBoard
     }
 }
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        setupBoards: () => {
-            return dispatch(fillBothBoards(gm.player.board, gm.enemy.board));
-        }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setupBoards: () => dispatch(fillBothBoards(gm.player.board, gm.enemy.board))
     }
 }
-
-class  Game extends Component{
-    componentDidMount(){
+class  Game extends Component {
+    componentDidMount () {
         this.props.setupBoards(gm);
     }
-    render(){      
+    render () {      
         return (
             <div className="Game">
                 <div className='player-board' >
                     <Draw 
-                        whichBoard={gm.player.name} 
+                        whichBoard={ gm.player.name } 
                     />
                 </div>
                 <div className='enemy-board'>
                     <Draw 
-                        whichBoard={gm.enemy.name} 
+                        whichBoard={ gm.enemy.name } 
                     />
                 </div>
                 <GameConsole />
             </div>
     );
   }
-
-
 }
-
-// export default Game;
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

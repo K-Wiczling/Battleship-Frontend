@@ -1,4 +1,4 @@
-.tile{
+.tile {
     border: 1px solid black;
     width: 40px;
     height: 25px;
@@ -7,24 +7,22 @@
     font-size: 15px;
     text-align: center;
     padding-top: 15px ;
-
-    
 }
-.tile:hover{
+.tile:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
-.empty-tile{
+.empty-tile {
     background-color: white;
 }
-.hit-tile{
+.hit-tile {
     background-color: black;
 }
-.hitted-tile{
+.hitted-tile {
 
 }
-.ship-tile{
+.ship-tile {
 
 }
-.EmptyTile{
+.EmptyTile {
     font-weight: bolder;
 }

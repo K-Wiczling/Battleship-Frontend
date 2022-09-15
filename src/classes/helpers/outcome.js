@@ -1,6 +1,5 @@
-class Outcome{
-    static buildOutcome(result=false,  message='outcome not createt properly', rest = {}){
-       
+class Outcome {
+    static buildOutcome (result=false,  message='outcome not createt properly', rest = {}) {
         return {
             result: result,
             msg: message,

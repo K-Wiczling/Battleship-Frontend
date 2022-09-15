@@ -4,22 +4,20 @@ import Point from "../helpers/point";
 import Ship from "./ship"
 import Outcome from '../helpers/outcome'
 
-
-
 class Player {
     params = server.Params;
     diag = "diagonal";
     str = "streight";
-    constructor(name){
+    constructor (name) {
         this.board = server.getClasicBoard();
-        this.SetupBoard();
+        this.setupBoard();
         this.ships = [];
-        this.Ships()
+        this.shipsSetup()
         this.name = name;
         this.boardSize = 10;
         this.currentShipSize = 0;
     }
-    Ships = ()  =>{ 
+    shipsSetup = ()  => { 
         this.ships = [
             new Ship(2, 4),
             new Ship(3,  3),
@@ -28,50 +26,51 @@ class Player {
         ];
     }
 
-    SetupBoard = () =>{
-        for(let i = 1; i < this.board.length; ++i){
-            for(let j = 1; j < this.board[i].length; ++j){          
+    setupBoard = () => {
+        for (let i = 1; i < this.board.length; ++i) {
+            for (let j = 1; j < this.board[i].length; ++j) {          
                 this.board[i][j] = new Tile(new Point(i,j), this.params.tileState.empty);
             }
         }
     
     }
-    ChangeTile = (position, newTileState) =>{
+    changeTile = (position, newTileState) => {
         for (let state in this.params.tileState) {
-            if(state === newTileState){
+            if (state === newTileState) {
                 this.board[position.x][position.y].tileState = newTileState
                 return true;
             }
         }
         return false;
     }
-    getShoot = (whichBoard, position) =>{
-        if(whichBoard === this.name){
-            this.ChangeTile(position, this.paramstileState.hit);
+    getShoot = (whichBoard, position) => {
+        if (whichBoard === this.name) {
+            this.changeTile(position, this.paramstileState.hit);
             return true;
-        }else{
+        } else {
             console.log(`There is no such player as ${whichBoard}`);
         }           
 
     }
-    SetTile = (whichBoard, position) =>{
-        if(whichBoard === this.name){
+    setTile = (whichBoard, position) => {
+        if (whichBoard === this.name) {
             let set = '[Not allowed] at';
-            if(this.board[position.x][position.y].tileState === this.params.tileState.ship )
-            {
+
+            if (this.board[position.x][position.y].tileState === this.params.tileState.ship ){
                 set = '[Removed] from';
-                this.UnsetShip(position)
-            } else if (this.ChcekIfPutAllowed(position)){
+                this.unsetShip(position)
+
+            } else if (this.chcekIfPutAllowed(position)) {
                 set = '[Set] on'
-                this.SetShip(position);
+                this.setShip(position);
             }
             
             //Ship put on the board successfuly, and board is upadated with not allowed states
-            this.UpdateNotAllowed(position)
+            this.updateNotAllowed(position)
             let out = Outcome.buildOutcome(true, `Ship is ${set} the position [${this.params.abc[position.x]}${position.y}]`)
+           
             return out;
-        }
-        else{
+        } else {
             let out = Outcome.buildOutcome(false, `There is no such player as ${whichBoard}`)
             return out;
         }
@@ -79,80 +78,77 @@ class Player {
     }
 
     //Allowing ships to be set on the board
-    ChcekIfPutAllowed = (position) =>{
+    chcekIfPutAllowed = (position) => {
         let info = "";
         let x = position.x;
         let y = position.y;
         let state = this.paramstileState;
         
-        if(this.board[x][y].tileState === this.params.tileState.notAllowed){
+        if (this.board[x][y].tileState === this.params.tileState.notAllowed) {
             return false;
         }
-        if(this.board[x][y].tileState === this.params.tileState.ship)
+        if (this.board[x][y].tileState === this.params.tileState.ship)
             return false;
-        if(!this.IfPointOnBoard(position)){
+        if (!this.ifPointOnBoard(position)) {
             console.log(`position out of the range x:${this.paramsabc[position.x-1]} y:${position.y}`);
             return false;
         }
 
         //Zero depth
-        if(this.board[x][y].tileState === this.params.tileState.empty){
+        if (this.board[x][y].tileState === this.params.tileState.empty) {
             //first depth
             let itterated = true;
 
-            this.IterateAround(position, this.diag, (point) => {
-                if(!this.board[point.x][point.y].tileState === this.params.tileState.empty){
+            this.iterateAround(position, this.diag, (point) => {
+                if (!this.board[point.x][point.y].tileState === this.params.tileState.empty)
                     itterated = false;
-                }
             });
             
             //Check if diagonals are clear
-            if(itterated){
-
+            if (itterated) {
                 itterated = true;
-                this.IterateAround(position, this.str, (point) => {
-                    if(this.board[point.x][point.y].tileState === this.params.tileState.ship){
+                this.iterateAround(position, this.str, (point) => {
+                    if(this.board[point.x][point.y].tileState === this.params.tileState.ship)
                         itterated = false;
-                    }
                 });
 
                 //If there are no continuity
-                if(itterated){
+                if (itterated) {
                     this.currentShipSize = 1;
                     // console.log("not contiunity");
                     return true;
-                }
                 //If continuity exist
-                else{
+                } else {
                     // console.log("continuity");
-                    if(this.currentShipSize < this.BiggestShip()){
+                    if (this.currentShipSize < this.biggestShip()) {
                         this.currentShipSize++;
                         return true;
-                    }else {
-                        
-                        this.ships[this.FindShipOfSize(this.currentShipSize)]--;
+                    } else {
+                        this.ships[this.findShipOfSize(this.currentShipSize)]--;
                         this.currentShipSize = 0;
                         return false;
                     }
                 }
-            }else{
-                info = `There are ships nearby the position of ${this.params.abc[position.x]}${position.y}, ships are not allowed on the neerest diagonals`;
+            } else {
+                info = `There are ships nearby the position of 
+                    ${this.params.abc[position.x]}${position.y},
+                    ships are not allowed on the neerest diagonals`;
                 console.log(info);
                 return false; 
             }
             
-        }else{
+        } else {
             console.log(`somethig go wrong this is not proper state ${this.board[x][y].tileState}`);
             return false;
         }
 
 
     }
-    UpdateNotAllowed = (position) =>{
-        for(let row of this.board){
-            for(let tile of row){
-                if(tile.tileState === this.params.tileState.ship){
-                    this.IterateAround(tile.point, this.diag, (point) =>{
+    updateNotAllowed = (position) => {
+        for (let row of this.board) {
+            for (let tile of row) {
+                if (tile.tileState === this.params.tileState.ship) {
+                    this.iterateAround(tile.point, this.diag, (point) => {
                         this.board[point.x][point.y].tileState = this.params.tileState.notAllowed;
                     });
                 }
@@ -161,16 +157,16 @@ class Player {
         return true;
     }
     //Simple tasks methods
-    SetShip = (position) => {
-        this.ChangeTile(position, this.params.tileState.ship);
+    setShip = (position) => {
+        this.changeTile(position, this.params.tileState.ship);
     }
-    UnsetShip = (position) => {
-        this.ChangeTile(position, this.params.tileState.empty);
-        this.IterateAround(position, this.diag, (point) =>{
+    unsetShip = (position) => {
+        this.changeTile(position, this.params.tileState.empty);
+        this.iterateAround(position, this.diag, (point) => {
             this.board[point.x][point.y].tileState = this.params.tileState.empty;
         });
     }
-    IterateAround = (point, axies, funk) => {
+    iterateAround = (point, axies, funk) => {
         const x = point.x;
         const y = point.y;
 
@@ -190,47 +186,42 @@ class Player {
         ];
         let direction; 
 
-        if(axies === this.diag){
+        if (axies === this.diag) {
             direction = diagonals
-        }
-        else if(axies === this.str){
+        } else if (axies === this.str) {
             direction = streights
-        }
-        else{
+        } else {
             console.log(`direction not found${axies}`);
             return false;
         }
 
         
-        for(let point of direction) {
-            if(this.IfPointOnBoard(point)){
+        for (let point of direction) {
+            if (this.ifPointOnBoard(point)) 
                 funk(point)
-            }
         }
         return true;
     }
-    IfPointOnBoard = (point) =>{
+    ifPointOnBoard = (point) => {
         const ifBoard = (point.x <= 10 && point.x >= 1) && (point.y <= 10 && point.y >= 1);
         return ifBoard
     }
 
-    BiggestShip = () => {
+    biggestShip = () => {
         let biggestShip = 0;
-        for(let ship of this.ships){
-            if(ship.count > 0){
-                if(ship.size > biggestShip){
+        for (let ship of this.ships) {
+            if (ship.count > 0) {
+                if (ship.size > biggestShip) 
                     biggestShip = ship.size;
-                }
             }
         }
         return biggestShip;
     }
-    FindShipOfSize = (size) =>{
+    findShipOfSize = (size) => {
         let indexOfShip = 0;
-        for(let ship of this.ships){
-            if(ship.size === size){
+        for (let ship of this.ships) {
+            if (ship.size === size)
                 return indexOfShip;
-            }
             ++indexOfShip;
         }
     }
