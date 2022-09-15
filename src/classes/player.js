@@ -2,12 +2,14 @@ import Tile from "../classes/tile";
 import server from "./server";
 import Point from "./point";
 import Ship from "./ship"
+import Outcome from './outcome'
 
-const params = server.Params;
-const diag = "diagonal";
-const str = "streight";
+
 
 class Player {
+    params = server.Params;
+    diag = "diagonal";
+    str = "streight";
     constructor(name){
         this.board = server.getClasicBoard();
         this.SetupBoard();
@@ -29,13 +31,13 @@ class Player {
     SetupBoard = () =>{
         for(let i = 1; i < this.board.length; ++i){
             for(let j = 1; j < this.board[i].length; ++j){          
-                this.board[i][j] = new Tile(new Point(i,j), server.Params.tileState.empty);
+                this.board[i][j] = new Tile(new Point(i,j), this.params.tileState.empty);
             }
         }
     
     }
     ChangeTile = (position, newTileState) =>{
-        for (let state in server.Params.tileState) {
+        for (let state in this.params.tileState) {
             if(state === newTileState){
                 this.board[position.x][position.y].tileState = newTileState
                 return true;
@@ -45,29 +47,33 @@ class Player {
     }
     getShoot = (whichBoard, position) =>{
         if(whichBoard === this.name){
-            this.ChangeTile(position, server.Params.tileState.hit);
+            this.ChangeTile(position, this.paramstileState.hit);
             return true;
         }else{
             console.log(`There is no such player as ${whichBoard}`);
         }           
 
     }
-    PutShip = (whichBoard, position) =>{
+    SetTile = (whichBoard, position) =>{
         if(whichBoard === this.name){
-
-            if(this.board[position.x][position.y].tileState === params.tileState.ship )
+            let set = '[Not allowed] at';
+            if(this.board[position.x][position.y].tileState === this.params.tileState.ship )
+            {
+                set = '[Removed] from';
                 this.UnsetShip(position)
-                
-            else if(this.ChcekIfPutAllowed(position))
+            } else if (this.ChcekIfPutAllowed(position)){
+                set = '[Set] on'
                 this.SetShip(position);
-                
+            }
+            
             //Ship put on the board successfuly, and board is upadated with not allowed states
             this.UpdateNotAllowed(position)
-            return true;
+            let out = Outcome.buildOutcome(true, `Ship is ${set} the position [${this.params.abc[position.x]}${position.y}]`)
+            return out;
         }
         else{
-            console.log(`There is no such player as ${whichBoard}`);
-            return false;
+            let out = Outcome.buildOutcome(false, `There is no such player as ${whichBoard}`)
+            return out;
         }
 
     }
@@ -77,25 +83,25 @@ class Player {
         let info = "";
         let x = position.x;
         let y = position.y;
-        let state = server.Params.tileState;
+        let state = this.paramstileState;
         
-        if(this.board[x][y].tileState === state.notAllowed){
+        if(this.board[x][y].tileState === this.params.tileState.notAllowed){
             return false;
         }
-        if(this.board[x][y].tileState === state.ship)
+        if(this.board[x][y].tileState === this.params.tileState.ship)
             return false;
         if(!this.IfPointOnBoard(position)){
-            console.log(`position out of the range x:${params.abc[position.x-1]} y:${position.y}`);
+            console.log(`position out of the range x:${this.paramsabc[position.x-1]} y:${position.y}`);
             return false;
         }
 
         //Zero depth
-        if(this.board[x][y].tileState === state.empty){
+        if(this.board[x][y].tileState === this.params.tileState.empty){
             //first depth
             let itterated = true;
 
-            this.IterateAround(position, diag, (point) => {
-                if(!this.board[point.x][point.y].tileState === params.tileState.empty){
+            this.IterateAround(position, this.diag, (point) => {
+                if(!this.board[point.x][point.y].tileState === this.params.tileState.empty){
                     itterated = false;
                 }
             });
@@ -104,8 +110,8 @@ class Player {
             if(itterated){
 
                 itterated = true;
-                this.IterateAround(position, str, (point) => {
-                    if(this.board[point.x][point.y].tileState === params.tileState.ship){
+                this.IterateAround(position, this.str, (point) => {
+                    if(this.board[point.x][point.y].tileState === this.params.tileState.ship){
                         itterated = false;
                     }
                 });
@@ -130,7 +136,7 @@ class Player {
                     }
                 }
             }else{
-                info = `There are ships nearby the position of ${params.abc[position.x]}${position.y}, ships are not allowed on the neerest diagonals`;
+                info = `There are ships nearby the position of ${this.params.abc[position.x]}${position.y}, ships are not allowed on the neerest diagonals`;
                 console.log(info);
                 return false; 
             }
@@ -145,9 +151,9 @@ class Player {
     UpdateNotAllowed = (position) =>{
         for(let row of this.board){
             for(let tile of row){
-                if(tile.tileState === params.tileState.ship){
-                    this.IterateAround(tile.point, diag, (point) =>{
-                        this.board[point.x][point.y].tileState = params.tileState.notAllowed;
+                if(tile.tileState === this.params.tileState.ship){
+                    this.IterateAround(tile.point, this.diag, (point) =>{
+                        this.board[point.x][point.y].tileState = this.params.tileState.notAllowed;
                     });
                 }
             }
@@ -156,12 +162,12 @@ class Player {
     }
     //Simple tasks methods
     SetShip = (position) => {
-        this.ChangeTile(position, params.tileState.ship);
+        this.ChangeTile(position, this.params.tileState.ship);
     }
     UnsetShip = (position) => {
-        this.ChangeTile(position, params.tileState.empty);
-        this.IterateAround(position, diag, (point) =>{
-            this.board[point.x][point.y].tileState = params.tileState.empty;
+        this.ChangeTile(position, this.params.tileState.empty);
+        this.IterateAround(position, this.diag, (point) =>{
+            this.board[point.x][point.y].tileState = this.params.tileState.empty;
         });
     }
     IterateAround = (point, axies, funk) => {
@@ -184,10 +190,10 @@ class Player {
         ];
         let direction; 
 
-        if(axies === diag){
+        if(axies === this.diag){
             direction = diagonals
         }
-        else if(axies === str){
+        else if(axies === this.str){
             direction = streights
         }
         else{

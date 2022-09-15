@@ -15,7 +15,6 @@ class gameMenager{
         this.enemy = new Player(params.players.enemy);
         this.validate = new Validate();
         this.gameState = params.gameState.setup;
-        this.message = "Fresh build";
         gameMenager.exists = true;
         gameMenager.instance = this;
         return this;
@@ -60,29 +59,20 @@ class gameMenager{
     }
     EndState = () =>{
     }
-    getMessage(){
-        return this.message;
-    }
-
+    
     //Returns 
     // true - putting a ship is posible and ship is palced on the board
     // false - putting a ship is NOT posible  
-    ClickedBoard(whichBoard, position){
+    ClickedBoard = (whichBoard, position) => {
         if(this.validate.ValidateClasicBoardClick(whichBoard, position)){
-
+            
             if(this.gameState === params.gameState.game){
                 //Shooting only allowed in game and only on the enemy board
                 return this.enemy.getShoot(whichBoard, position)
-
-            }else if(this.gameState === params.gameState.setup){
-               
-                //
-                return this.player.PutShip(whichBoard, position);
-              
-            }
-           
+                
+            }else if(this.gameState === params.gameState.setup)
+                return this.player.SetTile(whichBoard, position);
         }
-
     }
     
     
