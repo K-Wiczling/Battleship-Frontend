@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Tile.css"
-import gm from '../../classes/gameMenager'; 
+import gm from '../../classes/GameMenager/gameMenager'; 
 
 
 import server from '../../classes/server';

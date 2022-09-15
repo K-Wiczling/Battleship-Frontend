@@ -1,6 +1,6 @@
 import Player from "./player";
-import server from "./server";
-import Validate from "./validate";
+import server from "../server";
+import Validate from "../validate";
 
 const params = server.Params;
 

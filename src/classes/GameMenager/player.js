@@ -1,8 +1,8 @@
-import Tile from "../classes/tile";
-import server from "./server";
-import Point from "./point";
+import Tile from "./tile";
+import server from "../server";
+import Point from "../helpers/point";
 import Ship from "./ship"
-import Outcome from './outcome'
+import Outcome from '../helpers/outcome'
 
 
 

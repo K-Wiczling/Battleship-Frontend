@@ -5,7 +5,7 @@ import React from 'react';
 //Components
 import Tile from '../../components/Tile/Tile';
 //classes
-import Point from '../../classes/point';
+import Point from '../../classes/helpers/point';
 import EmptyTile from "../EmptyTile/EmptyTile";
 import server from "../../classes/server";
 //Redux

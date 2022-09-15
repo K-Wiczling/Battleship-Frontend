@@ -8,15 +8,11 @@ import Draw from '../../components/Draw/Draw';
 import GameConsole from "../../components/GameConsole/GameConsole"
 
 //Classes
-import gm from "../../classes/gameMenager"
-import server from '../../classes/server';
+import gm from "../../classes/GameMenager/gameMenager"
 
 //Redux
 import {connect} from "react-redux"
 import { 
-    tileClickPlayerBoard, 
-    tileClickEnemyBoard, 
-    insertInGameConsole, 
     fillBothBoards
 } from "./game-actions";
 

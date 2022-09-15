@@ -1,5 +1,5 @@
 import server from "../../classes/server";
-import Timing from "../../classes/timing";
+import Timing from "../../classes/helpers/timing";
 import { 
     UPDATE_PLAYER_BOARD, 
     UPDATE_ENEMY_BOARD, 
