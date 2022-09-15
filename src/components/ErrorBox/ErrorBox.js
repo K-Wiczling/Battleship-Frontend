@@ -1,6 +1,9 @@
-import React from 'react';
+//css
 import "./ErrorBox.css"
+//React
+import React from 'react';
 
+//Message shown when componet did not mount corectly
 const  ErrorBox = ({ errorTitle, errorContent }) => {
   
     return (

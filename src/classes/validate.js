@@ -1,12 +1,14 @@
 import server from "./server";
-const params = server.Params;
 
+//Main validator for the GameMenager
 class Validate {
+    params = server.Params;
     constructor () {
-        this.range = params.clasicBoard.length - 1;
-        this.player = params.players;
+        this.range = this.params.clasicBoard.length - 1;
+        this.player = this.params.players;
     }
 
+    //Valide if click is inside the boudries of the Clasic board
     validateClasicBoardClick = (whichBoard, position) => {
         if (whichBoard === this.player.enemy || this.player.player) {
             if (position.x >= 1 && position.x <= 10) {

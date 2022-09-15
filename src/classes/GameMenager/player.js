@@ -9,7 +9,7 @@ class Player {
     diag = "diagonal";
     str = "streight";
     constructor (name) {
-        this.board = server.getClasicBoard();
+        this.board = structuredClone(this.params.clasicBoard);
         this.setupBoard();
         this.ships = [];
         this.shipsSetup()

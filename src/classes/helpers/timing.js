@@ -1,11 +1,5 @@
 class Timing {
-    constructor () {
-        this.currentdate = new Date();
-        let h = this.currentdate.getHours();
-        let m = this.currentdate.getMinutes();
-        m = m <= 9 ? (`0${m}`) : m;
-        this.datetime = `${h}:${m}`
-    }
+    //Get the current time in the format [HH:MM]
     static getCurrentTime = () => {
         const currentdate = new Date();
         let h = currentdate.getHours();

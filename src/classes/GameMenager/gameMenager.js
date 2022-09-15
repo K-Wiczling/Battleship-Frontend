@@ -4,19 +4,18 @@ import Validate from "../validate";
 
 const params = server.Params;
 
-class gameMenager {
-
+class GameMenager {
     constructor () {
-        if (gameMenager.exists) {
-            console.log("gm exist");  
-            return gameMenager.instance;
-        }
+        if (GameMenager.exists)
+            return GameMenager.instance;
+
         this.player = new Player(params.players.player);
         this.enemy = new Player(params.players.enemy);
         this.validate = new Validate();
         this.gameState = params.gameState.setup;
-        gameMenager.exists = true;
-        gameMenager.instance = this;
+        
+        GameMenager.exists = true;
+        GameMenager.instance = this;
         return this;
     }
     updateGame = () => {
@@ -80,5 +79,5 @@ class gameMenager {
 }
 // export default gameMenager;
 
-const gm = new gameMenager();
+const gm = new GameMenager();
 export default gm;

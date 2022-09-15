@@ -1,11 +1,14 @@
-import React from 'react';
+//css
 import "./Button.css"
 
+//React
+import React from 'react';
+
+//Simple Button Component
 const  Button = ({text, onclick}) => {
-  
     return (
         <>
-            <button className='button' onClick={onclick}>{text}</button>
+            <button className='button' onClick={ onclick }>{ text }</button>
         </>
     );
   }

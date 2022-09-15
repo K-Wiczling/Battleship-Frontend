@@ -1,3 +1,4 @@
+//Single ship descrition, structure 
 class Ship {
     constructor (size, count) {
         this.size = size;

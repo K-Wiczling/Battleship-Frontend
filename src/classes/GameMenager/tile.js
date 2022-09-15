@@ -1,3 +1,4 @@
+//Single tile description, structure
 class Tile {
     constructor (point, state) {
         this.point = point; 
