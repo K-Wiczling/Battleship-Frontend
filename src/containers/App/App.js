@@ -56,7 +56,7 @@ class  App extends Component {
           </ErrorBoundries>
         );
       }
-
+      //By default return SplashScreen 
       default: return (<SplashScreen onclick={this.props.openMenu} />);
     }
   }

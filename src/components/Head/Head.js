@@ -1,6 +1,10 @@
-import React from 'react';
+//css
 import "./Head.css"
 
+//React
+import React from 'react';
+
+//Header component
 const  Head = ({ text }) => {
   
     return (
@@ -9,6 +13,4 @@ const  Head = ({ text }) => {
         </div>
     );
   }
-
-
 export default Head;

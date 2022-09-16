@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
-import Button from '../../components/Button/Button';
-import Head from '../../components/Head/Head';
+//css
 import "./MainMenu.css";
 
+//React
+import React, { Component } from 'react';
+
+//Components
+import Button from '../../components/Button/Button';
+import Head from '../../components/Head/Head';
+
+//Display main menu and take care of the whole logic in here
 class  MainMenu extends Component {
     constructor(props){
         super(props);

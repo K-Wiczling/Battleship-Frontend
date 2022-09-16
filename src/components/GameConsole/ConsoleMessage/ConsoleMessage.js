@@ -3,10 +3,13 @@ import server from "../../../classes/server";
 import "./ConsoleMessage.css";
 
 const ConsoleMessage = ({ log: { consoleText, consoleTime, messageSender, messageType } }) => {
+    
+    //Construct message from any given information
     const message = `${consoleTime} ${messageSender}: ${consoleText}`;
     let messageColor = "white";
     const msgType = server.Params.gameConsoleMessageTypes;
 
+    //Choose color of the message based on the type of the message
     switch (messageType) {
         case msgType.info: messageColor = "white"; break;
         case msgType.warning: messageColor = "yellow"; break;

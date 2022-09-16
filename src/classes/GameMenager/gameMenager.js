@@ -4,16 +4,23 @@ import Validate from "../validate";
 
 const params = server.Params;
 
+//Entry point for all the things corelated with the game itself on the model side
 class GameMenager {
     constructor () {
+        //Singletone
         if (GameMenager.exists)
             return GameMenager.instance;
 
+        //Hold Refrence to the bptch players
         this.player = new Player(params.players.player);
         this.enemy = new Player(params.players.enemy);
+        
+        
         this.validate = new Validate();
         this.gameState = params.gameState.setup;
         
+
+        //Singletone
         GameMenager.exists = true;
         GameMenager.instance = this;
         return this;

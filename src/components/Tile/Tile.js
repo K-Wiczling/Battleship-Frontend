@@ -1,9 +1,14 @@
-import React from 'react';
+//css
 import "./Tile.css"
+
+//React
+import React from 'react';
+
+//Classes
 import gm from '../../classes/GameMenager/gameMenager'; 
-
-
 import server from '../../classes/server';
+
+//Redux
 import { connect } from "react-redux"
 import { insertInGameConsole, tileClickEnemyBoard, tileClickPlayerBoard } from '../../containers/Game/game-actions';
 
@@ -22,22 +27,28 @@ const mapDispatchToProps = (dispatch) => {
       insertInGameConsole: (msg, sender, info) => dispatch(insertInGameConsole(msg, info, sender))
   }
 }
+//Represents single tile object grphically
 const  Tile = (props) => {
   return (
         <div 
           className='tile' 
           onClick={ () => {
+
+            //Processing the click iside the GameMenager
             let out = gm.clickedBoard(props.tile.whichBoard, props.tile.position);
             
+            //Player board click
             if (props.tile.whichBoard === server.Params.players.player) {
               if (out.result !== false)
                 props.playerTileClick(props.tile.position)
-              
+
+            //Enemy board click  
             } else {
               if (out.result !== false)
                 props.enemyTileClick(props.tile.position)
             }
 
+            //Send message to the GameConsole
             props.insertInGameConsole(
               out.msg,
               server.Params.gameConsoleSenderType.game,

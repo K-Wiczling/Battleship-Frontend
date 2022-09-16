@@ -5,9 +5,11 @@ import Ship from "./ship"
 import Outcome from '../helpers/outcome'
 
 class Player {
+    //Sortcuts for player class only use
     params = server.Params;
     diag = "diagonal";
     str = "streight";
+    
     constructor (name) {
         this.board = structuredClone(this.params.clasicBoard);
         this.setupBoard();
@@ -16,7 +18,9 @@ class Player {
         this.name = name;
         this.boardSize = 10;
         this.currentShipSize = 0;
+        this.insideMesseges = [];
     }
+    //Setup how much ships every sizes player should have
     shipsSetup = ()  => { 
         this.ships = [
             new Ship(2, 4),
@@ -26,6 +30,7 @@ class Player {
         ];
     }
 
+    //Fill the player board with tile classes
     setupBoard = () => {
         for (let i = 1; i < this.board.length; ++i) {
             for (let j = 1; j < this.board[i].length; ++j) {          
@@ -34,6 +39,7 @@ class Player {
         }
     
     }
+    //Change state of the single tile
     changeTile = (position, newTileState) => {
         for (let state in this.params.tileState) {
             if (state === newTileState) {
@@ -43,6 +49,7 @@ class Player {
         }
         return false;
     }
+    //
     getShoot = (whichBoard, position) => {
         if (whichBoard === this.name) {
             this.changeTile(position, this.paramstileState.hit);
@@ -52,8 +59,10 @@ class Player {
         }           
 
     }
+    //When setup mode is active set value of the tile depending on the current state
     setTile = (whichBoard, position) => {
         if (whichBoard === this.name) {
+            //Default clic is not allowed
             let set = '[Not allowed] at';
 
             if (this.board[position.x][position.y].tileState === this.params.tileState.ship ){
@@ -67,6 +76,7 @@ class Player {
             
             //Ship put on the board successfuly, and board is upadated with not allowed states
             this.updateNotAllowed(position)
+            //Prepoare message to later be shown in the GameConsole
             let out = Outcome.buildOutcome(true, `Ship is ${set} the position [${this.params.abc[position.x]}${position.y}]`)
            
             return out;
@@ -85,6 +95,7 @@ class Player {
         let state = this.paramstileState;
         
         if (this.board[x][y].tileState === this.params.tileState.notAllowed) {
+            let out = Outcome.buildOutcome(false, '')
             return false;
         }
         if (this.board[x][y].tileState === this.params.tileState.ship)
@@ -116,24 +127,31 @@ class Player {
                 if (itterated) {
                     this.currentShipSize = 1;
                     // console.log("not contiunity");
-                    return true;
+                    let out = Outcome.buildOutcome(true, "This is the first ship tile in row or column");
+                    this.insideMesseges.push(out);
+                    return out.result;
                 //If continuity exist
                 } else {
                     // console.log("continuity");
                     if (this.currentShipSize < this.biggestShip()) {
                         this.currentShipSize++;
-                        return true;
+
+                        let out = Outcome.buildOutcome(true, "This is next ship tile in the row or column");
+                        this.insideMesseges.push(out);
+                        return out.result;
                     } else {
                         this.ships[this.findShipOfSize(this.currentShipSize)]--;
                         this.currentShipSize = 0;
-                        return false;
+
+                        let out = Outcome.buildOutcome(true, "This is the first ship tile");
+                        this.insideMesseges.push(out);
+                        return out.result;
                     }
                 }
             } else {
                 info = `There are ships nearby the position of 
                     ${this.params.abc[position.x]}${position.y},
                     ships are not allowed on the neerest diagonals`;
-                console.log(info);
                 return false; 
             }
             
@@ -144,6 +162,7 @@ class Player {
 
 
     }
+    //Itarate throught the board to update if all the not allowed points
     updateNotAllowed = (position) => {
         for (let row of this.board) {
             for (let tile of row) {
@@ -166,6 +185,9 @@ class Player {
             this.board[point.x][point.y].tileState = this.params.tileState.empty;
         });
     }
+    //Itarate around given point on 
+    //All 4 diagonals 
+    //All 4 streights
     iterateAround = (point, axies, funk) => {
         const x = point.x;
         const y = point.y;
@@ -186,6 +208,7 @@ class Player {
         ];
         let direction; 
 
+        //Set direction of iteration
         if (axies === this.diag) {
             direction = diagonals
         } else if (axies === this.str) {
@@ -195,18 +218,20 @@ class Player {
             return false;
         }
 
-        
+        //Iterating al 4 points
         for (let point of direction) {
             if (this.ifPointOnBoard(point)) 
                 funk(point)
         }
         return true;
     }
+    //Check if given point is inside the game board
     ifPointOnBoard = (point) => {
         const ifBoard = (point.x <= 10 && point.x >= 1) && (point.y <= 10 && point.y >= 1);
         return ifBoard
     }
 
+    //Returns biggest ship that can be put on the board
     biggestShip = () => {
         let biggestShip = 0;
         for (let ship of this.ships) {
@@ -217,6 +242,7 @@ class Player {
         }
         return biggestShip;
     }
+    //Get the index of the ship with the given size
     findShipOfSize = (size) => {
         let indexOfShip = 0;
         for (let ship of this.ships) {

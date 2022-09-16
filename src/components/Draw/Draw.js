@@ -1,13 +1,17 @@
 //css
 import "./Draw.css"
-// react stuff
+
+//React stuff
 import React from 'react';
+
 //Components
 import Tile from '../../components/Tile/Tile';
+
 //classes
 import Point from '../../classes/helpers/point';
 import EmptyTile from "../EmptyTile/EmptyTile";
 import server from "../../classes/server";
+
 //Redux
 import { connect } from "react-redux";
 
@@ -18,8 +22,11 @@ const mapStateToProps = (state) => {
   }
 }
 const  Draw = (props) => {  
+  //Get the board
   let board = props.whichBoard === server.Params.players.player ? props.playerBoard : props.enemyBoard;
+  //Content of the single tile
   let insert = "";
+
   return (
     <div className='board'>
       {

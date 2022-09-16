@@ -3,6 +3,7 @@ import { CHANGE_MODE, MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from "./co
 const  initialModeState = {
     mode: MODE_GAME,
 }
+//Change game state
 export const changeMode = (state=initialModeState, action={}) => {
     switch (action.type) {
         case CHANGE_MODE:

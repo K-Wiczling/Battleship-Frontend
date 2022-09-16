@@ -14,12 +14,13 @@ export const tileClickPlayerBoard = (board) => ({
         payload: structuredClone(board)
 });
 
-//Player setup actions
+//Enemy click actions
 export const tileClickEnemyBoard = (board) => ({
         type: UPDATE_ENEMY_BOARD,
         payload: structuredClone(board)
 });
 
+//Add log message to the stack of the logs
 export const insertInGameConsole = (
     message="Game is working",
     type=server.Params.gameConsoleMessageTypes.info, 
@@ -37,6 +38,7 @@ export const insertInGameConsole = (
     }
 };
 
+//Setpup borads with information from the GameMenager
 export const fillBothBoards = (player, enemy) => ({
     type: UPDATE_BOTH_BOARDS,
     payload: {
