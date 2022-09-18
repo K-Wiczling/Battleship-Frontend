@@ -1,7 +1,7 @@
 import { CHANGE_MODE, MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from "./constants";
 
 const  initialModeState = {
-    mode: MODE_GAME,
+    mode: MODE_MAIN_MENU,
 }
 //Change game state
 export const changeMode = (state=initialModeState, action={}) => {

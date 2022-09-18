@@ -42,7 +42,7 @@ class  App extends Component {
       case MODE_MAIN_MENU: {
         return(
           <ErrorBoundries>
-            <MainMenu onclick={this.props.startGame} />
+            <MainMenu />
           </ErrorBoundries>
           );
       }

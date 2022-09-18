@@ -8,7 +8,7 @@ import React from 'react';
 const  MenuTab = (props) => {
   
     return (
-        <div className="ship-display">
+        <div className="menu-tab">
             
         </div>
     );
