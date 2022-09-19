@@ -12,7 +12,34 @@ const globalParam = {
         player: "player",
         enemy: "enemy"
     },
+    
+    //Posible enemy types
+    enemyTpes : {
+        AI: 'enemyTypeAI',
+        Multi: 'enemyTypeMulti'
+    },
 
+    //AI Difficulty levels
+    aiDifficulty: {
+        none: 'aiDifficultyNone', //Multiplayer
+        easy: 'aiDifficultyEasy',
+        medium: 'aiDifficultyMedium',
+        hard: 'aiDifficultyHard',
+    },
+
+    //What kind of fleet player want to play with
+    fleetType: {
+        clasic: 'fleetTypeClasic',
+        Long: 'fleetTypeLong',
+        Short: 'fleetTypeShort'
+    },
+    //Board sizes
+    boardSize: {
+        clasic: 'boardSizeClasic-10x10',
+        small: 'boardSizeSmall-5x5',
+        big: 'boardSizeBig-20x20',
+    },
+    
     //All posible states that Tile can be at
     tileState : {
         hit: "hit",

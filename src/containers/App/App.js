@@ -21,6 +21,7 @@ const mapStateToProps = (state) => {
   return {
     mode: state.changeMode.mode,
     testing: state.changeGameConsole.consoleText,
+    gameSetup: state.setupGame
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -33,6 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 //Main entrance to the app 
 class  App extends Component {
   render () {
+    console.log(this.props.gameSetup);
     switch (this.props.mode) {
       //Show Splashscreen
       case MODE_SPLASH_SCREEN: {

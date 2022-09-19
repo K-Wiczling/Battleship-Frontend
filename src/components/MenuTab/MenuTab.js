@@ -9,7 +9,7 @@ const  MenuTab = (props) => {
   
     return (
         <div className="menu-tab">
-            
+            {props.children}
         </div>
     );
   }
