@@ -24,6 +24,7 @@ export const changeMode = (state=initialModeState, action={}) => {
     }
 }
 
+//Information for the GameMenager to start game
 const gameSetupState = {
     enemyType: server.Params.enemyTpes.AI,
     aiDifficulty: server.Params.aiDifficulty.easy,
