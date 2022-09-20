@@ -8,7 +8,8 @@ import {
     SETUP_GAME_BOARD_SIZE, 
     SETUP_GAME_ENEMY_TYPE, 
     SETUP_GAME_FLEET_TYPE, 
-    SETUP_GAME_FULL 
+    SETUP_GAME_FULL, 
+    SETUP_GAME_RANDOM
 } from "./constants";
 
 const  initialModeState = {
@@ -29,7 +30,8 @@ const gameSetupState = {
     enemyType: server.Params.enemyTpes.AI,
     aiDifficulty: server.Params.aiDifficulty.easy,
     fleetType: server.Params.fleetType.clasic,
-    boardSize: server.Params.boardSize.clasic
+    boardSize: server.Params.boardSize.clasic,
+    randomSetupShips: false
 }
 export const setupGame = (state=gameSetupState, action={}) => {
     switch (action.type) {
@@ -45,6 +47,7 @@ export const setupGame = (state=gameSetupState, action={}) => {
             case SETUP_GAME_AI_DIFFICULTY: return Object.assign({}, state, { aiDifficulty: action.payload});
             case SETUP_GAME_FLEET_TYPE: return Object.assign({}, state, { fleetType: action.payload});
             case SETUP_GAME_BOARD_SIZE: return Object.assign({}, state, { boardSize: action.payload});
+            case SETUP_GAME_RANDOM: return Object.assign({}, state, { randomSetupShips: action.payload});
            
         default:
             return state;

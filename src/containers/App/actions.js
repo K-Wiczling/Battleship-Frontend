@@ -5,7 +5,8 @@ import {
     SETUP_GAME_ENEMY_TYPE,
     SETUP_GAME_AI_DIFFICULTY,
     SETUP_GAME_FLEET_TYPE,
-    SETUP_GAME_BOARD_SIZE } from "./constants";
+    SETUP_GAME_BOARD_SIZE, 
+    SETUP_GAME_RANDOM} from "./constants";
 
 //Change game state
 export const changeModes = (mode) => ({
@@ -50,4 +51,9 @@ export const setupFleetType = (fleetType = server.Params.fleetType.clasic) => ({
 export const setupBoardSize = (boardSize = server.Params.boardSize.clasic) => ({
     type: SETUP_GAME_BOARD_SIZE,
     payload: boardSize
+});
+
+export const setupRandomShips = (isRandom = false) => ({
+    type: SETUP_GAME_RANDOM,
+    payload: isRandom
 });

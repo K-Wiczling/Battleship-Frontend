@@ -16,6 +16,7 @@ class GameMenager {
         this.aiDifficulty = params.aiDifficulty.easy;
         this.fleetType = params.fleetType.clasic;
         this.boardSize = params.boardSize.clasic;
+        this.randomShipsSetup = false;
 
         //Hold Refrence to the bptch players
         this.player = new Player(params.players.player);
@@ -37,6 +38,7 @@ class GameMenager {
         this.aiDifficulty = setup.aiDifficulty;
         this.fleetType = setup.fleetType;
         this.boardSize = setup.boardSize;
+        this.randomShipsSetup = setup.randomSetupShips;
     }
     updateGame = () => {
 

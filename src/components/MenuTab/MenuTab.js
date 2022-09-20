@@ -11,7 +11,8 @@ import {
     setupEnemyType,
     setupAiDifficulty,
     setupFleetType,
-    setupBoardSize
+    setupBoardSize,
+    setupRandomShips
 } from "../../containers/App/actions"
 
 const mapStateToProps = (state) => {
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
         changeAiDifficulty : (diff) => dispatch(setupAiDifficulty(diff)),
         changeFleetType : (type) => dispatch(setupFleetType(type)),
         changeBoardSize : (size) => dispatch(setupBoardSize(size)),
+        changeRandomShips : (isRandom) => dispatch(setupRandomShips(isRandom)),
     }
 }
 //Single tab for use iside the menu
@@ -42,6 +44,9 @@ const  MenuTab = (props) => {
                 <span className="enemy-type bord">
                     <input type={"radio"} name="gameType" disabled={true}/>
                     Multiplayer
+                </span>
+                <span className="enemy-type bord">
+                    
                 </span>
             </div>
 
@@ -150,6 +155,20 @@ const  MenuTab = (props) => {
                     <div>
                         <p>15x15</p>
                     </div>
+                </span>
+            </div>
+             {/* Other settings Type --------------- */}
+             <div className="flex-container">
+                <span className="enemy-type bord">
+                    <input type={"checkbox"} name="gameType" onChange={() => { 
+                        props.changeRandomShips(!props.gameSetup.randomSetupShips) }} />
+                    Random Setup Ships
+                </span> 
+                <span className="enemy-type bord">
+                   
+                </span>
+                <span className="enemy-type bord">
+                    
                 </span>
             </div>
             {props.children}
