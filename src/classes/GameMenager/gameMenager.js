@@ -11,6 +11,12 @@ class GameMenager {
         if (GameMenager.exists)
             return GameMenager.instance;
 
+        //Setup
+        this.playerType = params.enemyTpes.AI;
+        this.aiDifficulty = params.aiDifficulty.easy;
+        this.fleetType = params.fleetType.clasic;
+        this.boardSize = params.boardSize.clasic;
+
         //Hold Refrence to the bptch players
         this.player = new Player(params.players.player);
         this.enemy = new Player(params.players.enemy);
@@ -24,6 +30,13 @@ class GameMenager {
         GameMenager.exists = true;
         GameMenager.instance = this;
         return this;
+    }
+    setupTheGame = (setup) => {
+        console.log(setup);
+        this.playerType = setup.enemyTypes;
+        this.aiDifficulty = setup.aiDifficulty;
+        this.fleetType = setup.fleetType;
+        this.boardSize = setup.boardSize;
     }
     updateGame = () => {
 
@@ -64,6 +77,7 @@ class GameMenager {
         
     }
     endState = () => {
+
     }
     
     //Returns 

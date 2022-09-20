@@ -18,11 +18,11 @@ import {
 
 const mapStateToProps = (state) => {
     return {
-        gameMenager: state.changeBoard.gameMenager,
         consoleText: state.changeGameConsole.consoleText,
         consoleTime: state.changeGameConsole.consoleTime,
         playerBoard: state.changeBoard.playerBoard,
-        enemyBoard: state.changeBoard.enemyBoard
+        enemyBoard: state.changeBoard.enemyBoard,
+        setup: state.setupGame
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -34,7 +34,9 @@ const mapDispatchToProps = (dispatch) => {
 //Enetry point of the game in the view side
 class  Game extends Component {
     componentDidMount () {
+        gm.setupTheGame(this.props.setup);
         this.props.setupBoards(gm);
+        
     }
     render () {      
         return (
