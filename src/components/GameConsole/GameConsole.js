@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 //GameConsole shows all the messages form the playesrs and inside of the game 
 const GameConsole = (props) =>{
     return(
-        <div className="game-console">
+        <div className="game-console bg-dark-grade">
             {
                 props.log.map((line, i) =>{
                     return(

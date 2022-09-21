@@ -41,7 +41,7 @@ const  PopUpMenu = (props) => {
 
                         return (
                             <div className="menu-content grid-center" >
-                            <h3>Menu</h3>
+                            <h2>Menu</h2>
                             <Button text="Settings" onclick={ () => {} }/>
                             <Button text="Exit" onclick={ () => {
                                 props.toggle(!props.menuVisibility)

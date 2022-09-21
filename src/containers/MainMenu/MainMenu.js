@@ -63,7 +63,7 @@ class  MainMenu extends Component {
     }
     render () {
         return (
-            <div className="main-menu-container bg-grade">
+            <div className="main-menu-container">
 
                 <Head text="Battleship" />
                 {

@@ -1,5 +1,6 @@
 .pop-up-menu {
     position: fixed;
+    color: var(--light-color)
 }
 .menu-icon {
     position: fixed; 

@@ -51,7 +51,7 @@ class  App extends Component {
       case MODE_GAME: {
         return (
           <ErrorBoundries child="Game Compontent">
-            <div className="app bg-grade">
+            <div className="app">
                 <Game />
             </div>
           </ErrorBoundries>

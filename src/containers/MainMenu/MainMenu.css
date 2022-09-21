@@ -1,5 +1,7 @@
 .main-menu-container{
     height: 100vh;
+    display: block;
+    top: 0px;
 }
 .main-menu {
     
@@ -7,8 +9,3 @@
 h2, h3{
     text-align: center;
 }
-/* .grid-center{
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-} */

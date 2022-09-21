@@ -10,23 +10,3 @@
     bottom: 0;
     overflow-y:auto;
 }
-/* width */
-.game-console::-webkit-scrollbar {
-    width: 15px;
-    background: rgba(0, 0, 0, 0);
-  }
-  
-/* Track */
-.game-console::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-}
-
-/* Handle */
-.game-console::-webkit-scrollbar-thumb {
-    background-color: rgb(27, 7, 112);
-}
-
-/* Handle on hover */
-.game-console::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(23, 6, 100);
-}
