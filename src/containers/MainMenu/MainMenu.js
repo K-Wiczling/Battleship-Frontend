@@ -19,6 +19,7 @@ import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from '../App/constants'
 import Button from '../../components/Button/Button';
 import Head from '../../components/Head/Head';
 import MenuTab from "../../components/MenuTab/MenuTab";
+import Lobby from "./Lobby/Lobby";
 
 const mapStateToProps = (state) => {
     return {
@@ -62,7 +63,7 @@ class  MainMenu extends Component {
     }
     render () {
         return (
-            <div className="main-menu-container">
+            <div className="main-menu-container bg-grade">
 
                 <Head text="Battleship" />
                 {
@@ -88,9 +89,10 @@ class  MainMenu extends Component {
                                     <div className="lobby grid-center">
                                         <h3>Lobby</h3>
                                         <MenuTab>
+                                            <Lobby/>
                                             <Button text="Start Game" onclick={ this.props.startGame }/>
+                                            <Button text="Back To Main Menu" onclick={ this.showMainMenu }/>
                                         </MenuTab>
-                                        {/* <Button text="Back To Main Menu" onclick={ this.showMainMenu }/> */}
                                     </div>
                 
                                 );

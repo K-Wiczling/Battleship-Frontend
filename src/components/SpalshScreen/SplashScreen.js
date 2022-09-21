@@ -12,7 +12,7 @@ import Button from '../Button/Button';
 //Default screen to show if somthing go wrong
 const  SplashScreen = ({ onclick }) => {
     return (
-        <div className="splash-screen">
+        <div className="splash-screen bg-grade">
             <Head text={ "Battleship" }/>
             <Button onclick={ onclick } text={ "Start" }/>
         </div>

@@ -5,7 +5,8 @@ import {
     UPDATE_ENEMY_BOARD, 
     INSERT_IN_GAME_CONSOLE,
     UPDATE_BOTH_BOARDS,
-    SETUP_GAME
+    SETUP_GAME,
+    TOGGLE_IN_GAME_MENU
 } from "./game-constants";
 
 //Player setup actions
@@ -45,4 +46,10 @@ export const fillBothBoards = (player, enemy) => ({
         player: structuredClone(player), 
         enemy: structuredClone(enemy)
     }
+});
+
+//Setpup borads with information from the GameMenager
+export const toggleInGameMenu = (toggle) => ({
+    type: TOGGLE_IN_GAME_MENU,
+    payload: toggle
 });

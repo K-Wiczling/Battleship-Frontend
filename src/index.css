@@ -1,3 +1,7 @@
+:root {
+  --back-color-1: #4895e2;
+  --back-color-2: #cedef0;
+}
 body {
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
@@ -8,4 +12,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.bg-grade {
+  background-image: linear-gradient( var(--back-color-1), var(--back-color-2));
 }

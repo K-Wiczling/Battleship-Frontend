@@ -33,7 +33,7 @@ class GameMenager {
         return this;
     }
     setupTheGame = (setup) => {
-        console.log(setup);
+        // console.log(setup);
         this.playerType = setup.enemyTypes;
         this.aiDifficulty = setup.aiDifficulty;
         this.fleetType = setup.fleetType;
@@ -81,7 +81,9 @@ class GameMenager {
     endState = () => {
 
     }
-    
+    leaveTheGame = () => {
+        console.log("player run from the game");
+    } 
     //Returns 
     // true - putting a ship is posible and ship is palced on the board
     // false - putting a ship is NOT posible  

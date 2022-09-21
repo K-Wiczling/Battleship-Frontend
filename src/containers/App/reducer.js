@@ -13,7 +13,7 @@ import {
 } from "./constants";
 
 const  initialModeState = {
-    mode: MODE_MAIN_MENU,
+    mode: MODE_GAME,
 }
 //Change game state
 export const changeMode = (state=initialModeState, action={}) => {

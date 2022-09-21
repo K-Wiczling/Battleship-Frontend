@@ -5,6 +5,7 @@ import {
     UPDATE_ENEMY_BOARD, 
     INSERT_IN_GAME_CONSOLE, 
     UPDATE_BOTH_BOARDS,
+    TOGGLE_IN_GAME_MENU,
 } from "./game-constants";
 
 const params = server.Params
@@ -52,5 +53,19 @@ export const changeGameConsole = (state=initialGameConsoleState, action={}) =>{
         }
         default:
             return state;
+    }
+}
+
+//Manipulations on the player and enemy board
+const  initialInGameMenuState = {
+    menuVisibility: false,
+}
+export const inGameMenu = (state=initialInGameMenuState, action={}) => {
+    switch (action.type) {
+        case TOGGLE_IN_GAME_MENU: 
+            return Object.assign({}, state, { menuVisibility: action.payload })
+
+        default:
+            return state
     }
 }

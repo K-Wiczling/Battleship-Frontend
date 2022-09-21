@@ -1,3 +1,8 @@
 .app {
-    background-image: linear-gradient( rgb(155, 222, 174),rgb(194, 215, 224));
+    /* background-image: linear-gradient( rgb(155, 222, 174),rgb(194, 215, 224)); */
+}
+.grid-center{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
 }
