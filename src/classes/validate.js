@@ -9,10 +9,10 @@ class Validate {
     }
 
     //Valide if click is inside the boudries of the Clasic board
-    validateClasicBoardClick = (whichBoard, position) => {
+    validateBoardClick = (whichBoard, position, boardSize) => {
         if (whichBoard === this.player.enemy || this.player.player) {
-            if (position.x >= 1 && position.x <= 10) {
-                if (position.y >= 1 && position.y <= 10)
+            if (position.x >= 1 && position.x <= boardSize) {
+                if (position.y >= 1 && position.y <= boardSize)
                     return true;
             }
         }

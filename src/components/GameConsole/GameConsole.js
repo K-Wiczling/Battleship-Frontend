@@ -7,6 +7,7 @@ import React from "react";
 //Redux
 import { connect } from "react-redux";
 import ConsoleMessage from "./ConsoleMessage/ConsoleMessage";
+import MessageSender from "./MessageWriter/MessageSender";
 
 const mapStateToProps = (state) => {
     return { log: state.changeGameConsole.log, }
@@ -16,6 +17,7 @@ const mapStateToProps = (state) => {
 const GameConsole = (props) =>{
     return(
         <div className="game-console bg-dark-grade">
+            <MessageSender/>
             {
                 props.log.map((line, i) =>{
                     return(

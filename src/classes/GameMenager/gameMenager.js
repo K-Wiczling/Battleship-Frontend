@@ -19,8 +19,8 @@ class GameMenager {
         this.randomShipsSetup = false;
 
         //Hold Refrence to the bptch players
-        this.player = new Player(params.players.player);
-        this.enemy = new Player(params.players.enemy);
+        this.player = null;
+        this.enemy = null;
         
         
         this.validate = new Validate();
@@ -33,12 +33,13 @@ class GameMenager {
         return this;
     }
     setupTheGame = (setup) => {
-        // console.log(setup);
         this.playerType = setup.enemyTypes;
         this.aiDifficulty = setup.aiDifficulty;
         this.fleetType = setup.fleetType;
         this.boardSize = setup.boardSize;
         this.randomShipsSetup = setup.randomSetupShips;
+        this.player = new Player(params.players.player, this.fleetType, this.boardSize);
+        this.enemy = new Player(params.players.enemy, this.fleetType, this.boardSize);
     }
     updateGame = () => {
 
@@ -88,7 +89,7 @@ class GameMenager {
     // true - putting a ship is posible and ship is palced on the board
     // false - putting a ship is NOT posible  
     clickedBoard = (whichBoard, position) => {
-        if (this.validate.validateClasicBoardClick(whichBoard, position)) {
+        if (this.validate.validateBoardClick(whichBoard, position, (this.player.board.length - 1))) {
             
             if (this.gameState === params.gameState.game) {
                 //Shooting only allowed in game and only on the enemy board

@@ -36,9 +36,12 @@ const mapDispatchToProps = (dispatch) => {
 
 //Enetry point of the game in the view side
 class  Game extends Component {
-    
-    componentDidMount () {
+    constructor(props) {
+        super (props)
         gm.setupTheGame(this.props.setup);
+
+    }
+    componentDidMount () {
         this.props.setupBoards(gm);
     }
     render () {      
