@@ -10,28 +10,75 @@ class Player {
     diag = "diagonal";
     str = "streight";
     
-    constructor (name) {
-        this.board = structuredClone(this.params.clasicBoard);
-        this.setupBoard();
+    constructor (name, fleetType, boardSize) {
+        this.board = [];
+        this.setupBoard(boardSize);
         this.ships = [];
-        this.shipsSetup()
+        this.shipsSetup(fleetType);
         this.name = name;
         this.boardSize = 10;
         this.currentShipSize = 0;
         this.insideMesseges = [];
     }
     //Setup how much ships every sizes player should have
-    shipsSetup = ()  => { 
-        this.ships = [
-            new Ship(2, 4),
-            new Ship(3,  3),
-            new Ship(4, 2),
-            new Ship(5, 1)
-        ];
+    shipsSetup = (fleetType)  => { 
+        switch (fleetType) {
+            case this.params.fleetType.clasic: {
+                this.ships = [
+                    new Ship(2, 4), //Ship size 2
+                    new Ship(3,  3),  //Ship size 3
+                    new Ship(4, 2), //Ship size 4
+                    new Ship(5, 1) //Ship size 5
+                ];
+                break;
+            }
+
+            case this.params.fleetType.Long:{
+                this.ships = [
+                    new Ship(2, 2), //Ship size 2
+                    new Ship(3,  3), //Ship size 3
+                    new Ship(4, 3), //Ship size 4
+                    new Ship(5, 2) //Ship size 5
+                ];
+                break;
+            }
+            
+            case this.params.fleetType.Short:{
+                this.ships = [
+                    new Ship(2, 8), //Ship size 2
+                    new Ship(3,  4), //Ship size 3
+                    new Ship(4, 4), //Ship size 4
+                    new Ship(5, 1) //Ship size 5
+                ];
+                break;
+            }
+                
+            default:
+                break;
+        }
+       
     }
 
     //Fill the player board with tile classes
-    setupBoard = () => {
+    setupBoard = (boardSize) => {
+        switch (boardSize) {
+            case this.params.boardSize.clasic:{
+                this.board =  structuredClone(this.params.clasicBoard);
+                break;
+            }
+            case this.params.boardSize.small:{
+                this.board =  structuredClone(this.params.smallBoard);
+                break;
+            }
+            case this.params.boardSize.big:{
+                this.board =  structuredClone(this.params.bigBoard);
+                break;
+            }
+                
+        
+            default:
+                break;
+        }
         for (let i = 1; i < this.board.length; ++i) {
             for (let j = 1; j < this.board[i].length; ++j) {          
                 this.board[i][j] = new Tile(new Point(i,j), this.params.tileState.empty);
@@ -62,7 +109,7 @@ class Player {
     //When setup mode is active set value of the tile depending on the current state
     setTile = (whichBoard, position) => {
         if (whichBoard === this.name) {
-            //Default clic is not allowed
+            //Default click is not allowed
             let set = '[Not allowed] at';
 
             if (this.board[position.x][position.y].tileState === this.params.tileState.ship ){
@@ -75,7 +122,9 @@ class Player {
             }
             
             //Ship put on the board successfuly, and board is upadated with not allowed states
-            this.updateNotAllowed(position)
+            this.updateNotAllowed(position);
+            this.deepCheck();
+
             //Prepoare message to later be shown in the GameConsole
             let out = Outcome.buildOutcome(true, `Ship is ${set} the position [${this.params.abc[position.x]}${position.y}]`)
            
@@ -86,7 +135,41 @@ class Player {
         }
 
     }
+    recursiveCheck = (x , y, board, index) => {
+        console.log(board);
+        if (board[x, y] === this.params.tileState.empty){
+            return 0;
+        }
+        if (board[x, y] === this.params.tileState.notAllowed){
+            return 0;
+        }
+        if ( board[x + 1] === this.params.tileState.ship) {
 
+            return 1 + this.recursiveCheck(x+1, y, board)
+        }
+        if ( board[x - 1] === this.params.tileState.ship) {
+            return 1 + this.recursiveCheck(x+1, y, board)
+        }
+        if ( board[y + 1] === this.params.tileState.ship) {
+            return 1 + this.recursiveCheck(x+1, y, board)
+        }
+        if ( board[y - 1] === this.params.tileState.ship) {
+            return 1 + this.recursiveCheck(x+1, y, board,)
+        }
+        
+        // tile = 0;
+        // this.board[tile.point.x][tile.point.y].tileState = this.params.tileState.notAllowed;
+}
+    deepCheck = () => {
+        let tmpBoard = structuredClone(this.board)
+        for (let row of this.board) {
+            console.log(row);
+            for (let tile of row) {
+                // this.recursiveCheck(tile.point.x, tile.point.y, this.board, 0)
+                
+            }
+        }
+    }
     //Allowing ships to be set on the board
     chcekIfPutAllowed = (position) => {
         let info = "";
@@ -175,6 +258,7 @@ class Player {
         }
         return true;
     }
+
     //Simple tasks methods
     setShip = (position) => {
         this.changeTile(position, this.params.tileState.ship);
@@ -227,7 +311,7 @@ class Player {
     }
     //Check if given point is inside the game board
     ifPointOnBoard = (point) => {
-        const ifBoard = (point.x <= 10 && point.x >= 1) && (point.y <= 10 && point.y >= 1);
+        const ifBoard = (point.x <= (this.board.length - 1) && point.x >= 1) && (point.y <= (this.board.length - 1) && point.y >= 1);
         return ifBoard
     }
 
@@ -251,6 +335,7 @@ class Player {
             ++indexOfShip;
         }
     }
+
 }
 export default Player
 

@@ -129,7 +129,7 @@ const  Lobby = (props) => {
             <div className="flex-container">
                 <span className="board-size bord">
                     <input defaultChecked type={"radio"} name="boardSize" onClick={() => { 
-                        props.changeFleetType(server.Params.fleetType.clasic) }}/>
+                        props.changeBoardSize(server.Params.fleetType.clasic) }}/>
                     Clasic
                     <hr></hr>
 
@@ -138,8 +138,8 @@ const  Lobby = (props) => {
                     </div>
                 </span> 
                 <span className="board-size bord">
-                    <input disabled={true} type={"radio"} name="boardSize"  onClick={() => { 
-                        props.changeFleetType(server.Params.fleetType.Long) }}/>
+                    <input disabled={false} type={"radio"} name="boardSize"  onClick={() => { 
+                        props.changeBoardSize(server.Params.boardSize.small) }}/>
                     Small
                     <hr></hr>
                     <div>
@@ -148,8 +148,8 @@ const  Lobby = (props) => {
                     </div>
                 </span>
                 <span className="board-size bord">
-                    <input disabled={true} type={"radio"} name="boardSize"  onClick={() => { 
-                        props.changeFleetType(server.Params.fleetType.Short) }}/>
+                    <input disabled={false} type={"radio"} name="boardSize"  onClick={() => { 
+                        props.changeBoardSize(server.Params.boardSize.big,) }}/>
                     Big
                     <hr></hr>
                     <div>
