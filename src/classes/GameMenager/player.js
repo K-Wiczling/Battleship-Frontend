@@ -156,8 +156,9 @@ class Player {
         if ( board[y - 1] === this.params.tileState.ship) {
             return 1 + this.recursiveCheck(x+1, y, board,)
         }
-        
+         
         // tile = 0;
+        return 0;
         // this.board[tile.point.x][tile.point.y].tileState = this.params.tileState.notAllowed;
 }
     deepCheck = () => {
