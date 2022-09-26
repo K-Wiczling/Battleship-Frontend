@@ -160,7 +160,8 @@ class Player {
         // tile = 0;
         return 0;
         // this.board[tile.point.x][tile.point.y].tileState = this.params.tileState.notAllowed;
-}
+}   
+    //Checking if ships are put correctly on the board
     deepCheck = () => {
         let tmpBoard = structuredClone(this.board)
         for (let row of this.board) {
