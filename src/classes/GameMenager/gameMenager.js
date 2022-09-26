@@ -32,6 +32,7 @@ class GameMenager {
         GameMenager.instance = this;
         return this;
     }
+    //Start all the game content
     setupTheGame = (setup) => {
         this.playerType = setup.enemyTypes;
         this.aiDifficulty = setup.aiDifficulty;
