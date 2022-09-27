@@ -71,7 +71,7 @@ class  MainMenu extends Component {
                         let key = 1
                         switch (this.state.menuMode) {
 
-                            //Main menu
+                            //Display Main menu
                             case MENU_MODE_MAIN_MENU:{
                                 return (
                                     <div className="main-menu grid-center">
@@ -83,7 +83,7 @@ class  MainMenu extends Component {
                                     </div>
                                 );
                             }
-                            //Lobby
+                            //Display Lobby
                             case MENU_MODE_LOBBY:{
                                 return (
                                     <div className="lobby grid-center">
@@ -97,7 +97,7 @@ class  MainMenu extends Component {
                 
                                 );
                             }
-                            //Settings
+                            //Display Settings
                             case MENU_MODE_SETTINGS:{
                                 return (
                                     <div className="Settings grid-center">
@@ -106,7 +106,7 @@ class  MainMenu extends Component {
                                     </div>
                                 );
                             }
-                            //Rankings
+                            //Display Rankings
                             case MENU_MODE_RANKINGS:{
                                 return (
                                     <div className="Rankings grid-center">
