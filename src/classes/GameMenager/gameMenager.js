@@ -11,7 +11,7 @@ class GameMenager {
         if (GameMenager.exists)
             return GameMenager.instance;
 
-        //Setup
+        //Setup parameters 
         this.playerType = params.enemyTpes.AI;
         this.aiDifficulty = params.aiDifficulty.easy;
         this.fleetType = params.fleetType.clasic;
