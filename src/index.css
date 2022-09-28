@@ -4,14 +4,14 @@
   --black: #000;
 
   --lightes-color: rgb(194, 201, 249);
-  --light-color: rgb(152, 166, 255);
-  --medium-color: rgb(29, 33, 239);
-  --dark-color: rgb(23, 19, 112);
-  --darkest-color: rgb(6, 4, 48);
+  --light-color: #E94560;
+  --medium-color: #533483;
+  --dark-color: #0F3460;
+  --darkest-color: #16213E;
 
 }
 html {
-  background-image: linear-gradient( var(--back-color-1), var(--back-color-2));
+  /* background-image: linear-gradient( var(--back-color-1), var(--back-color-2)); */
 
 }
 body {

@@ -1,9 +1,9 @@
 .button {
-    color: var(--lightes-color);    
+    color: var(--light-color);    
     font-family: 'Courier New', Courier, monospace;
     width: 350px;
     height: 60px;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--dark-color);
     border-radius: 100px;
     /* display: block; */
     margin: 0.8rem 0 0 0;
@@ -12,6 +12,8 @@
 .button:hover {
     /* width: 400px;
     height: 80px; */
+    /* color: var(--medium-color); */
+    font-weight: bold;
     border-radius: 10px 10px 60px 25px;
-    background-color: rgb(51, 50, 50);
+    background-color: var(--darkest-color);
 }
