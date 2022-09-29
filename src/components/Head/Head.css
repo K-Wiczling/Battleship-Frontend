@@ -1,8 +1,20 @@
 h2 {
-    font-size:40px;
+    font-size:70px;
     margin: 0;
-    padding: 0;
 }
 a{
+    color: var(--darkest-color);
     text-decoration: none;
+}
+a:hover {
+    color: var(--medium-color);
+}
+
+.head {
+    background-color: var(--back-color);
+    border-bottom: 1px solid var(--darkest-color);
+    width: 100vw;
+    height: var(--top-space);
+    position: fixed;
+    top: 0;
 }

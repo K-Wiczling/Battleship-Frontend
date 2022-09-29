@@ -1,19 +1,15 @@
 .pop-up-menu {
     position: fixed;
-    color: var(--light-color)
+    color: var(--light-color);
 }
 .menu-icon {
     position: fixed; 
     left: 0px;
     top: 0px;
-    text-align: center;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    width: 36px;
-    height: 18px;
-    background-color: black;
     z-index: 10;
-    color: white;
+    display: grid;
+    align-items: center;
+    height: var(--top-space);
 }
 
 .menu-content {

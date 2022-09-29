@@ -9,7 +9,7 @@ const  Button = ({text, onclick, width, height}) => {
     const style = {
         width: `${width}px`,
         height: `${height}px`,
-        fontSize: `${height/1.5}px`
+        fontSize: `${height/2.5}px`
         
     }
     return (

@@ -33,7 +33,7 @@ const  PopUpMenu = (props) => {
     return (
         <div className="pop-up-menu">
             <div className="menu-icon" onClick={() => { props.toggle(!props.menuVisibility) }}>
-                M
+                <img className="rot" src="arrow.png"></img>
             </div>
             { 
                 (() => {

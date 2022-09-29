@@ -1,6 +1,5 @@
 :root {
-  --back-color-1: #4895e2;
-  --back-color-2: #cedef0;
+  --back-color: #fff;
   --black: #000;
 
   --lightes-color: rgb(194, 201, 249);
@@ -9,10 +8,10 @@
   --dark-color: #292C6D;
   --darkest-color: #161853;
 
+  --top-space: 80px;
 }
-html {
-  /* background-image: linear-gradient( var(--back-color-1), var(--back-color-2)); */
-
+html, body {
+  overflow-y: hidden;
 }
 body {
   margin: 0;
@@ -20,21 +19,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+h3 {
+  font-size: 4rem;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.bg-grade {
-  background-image: linear-gradient( var(--back-color-1), var(--back-color-2));
+.center{
+  display: grid;
+  align-items:  center;
+  justify-items:  center;
+  justify-content: space-around;
 }
-.bg-dark-grade {
-  background-image: linear-gradient( to left , var(--dark-color),  var(--darkest-color));
+.fixed-foot{
+  display: block;
+  position: fixed;
+  bottom: 0;
+}
+.fixed-head{
+  display: block;
+  position: fixed;
+  top: 0;
+}
+.spacer-top{
+  width: 100vw;
+  height: 7vh;
+  top: 0;
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: none;
   background: rgba(0, 0, 0, 0);
 }
 

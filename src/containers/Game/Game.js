@@ -16,6 +16,7 @@ import {
     fillBothBoards, toggleInGameMenu
 } from "./game-actions";
 import PopUpMenu from "../../components/PopUpMenu/PopUpMenu";
+import Head from "../../components/Head/Head";
 
 const mapStateToProps = (state) => {
     return {
@@ -46,25 +47,27 @@ class  Game extends Component {
     }
     render () {      
         return (
-            <div className="Game">
-
-                <PopUpMenu 
-                    toggle={this.props.toggleMenu} 
-                    menuVisibility={this.props.menuVisibility}
-                />
-        
-                <div className='player-board' >
-                    <Draw 
-                        whichBoard={ gm.player.name } 
-                    />
-                </div>
-                <div className='enemy-board'>
-                    <Draw 
-                        whichBoard={ gm.enemy.name } 
-                    />
-                </div>
+            <>
+                <Head text="Battleship"/>
+                    <div className="Game">
+                        <PopUpMenu 
+                            toggle={this.props.toggleMenu} 
+                            menuVisibility={this.props.menuVisibility}
+                            />
+                
+                        <div className='player-board' >
+                            <Draw 
+                                whichBoard={ gm.player.name } 
+                                />
+                        </div>
+                        <div className='enemy-board'>
+                            <Draw 
+                                whichBoard={ gm.enemy.name } 
+                                />
+                        </div>
+                    </div>
                 <GameConsole />
-            </div>
+            </>
     );
   }
 }
