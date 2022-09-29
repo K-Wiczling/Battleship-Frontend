@@ -11,11 +11,11 @@ const ConsoleMessage = ({ log: { consoleText, consoleTime, messageSender, messag
 
     //Choose color of the message based on the type of the message
     switch (messageType) {
-        case msgType.info: messageColor = "white"; break;
+        case msgType.info: messageColor = "var(--darkest-color)"; break;
         case msgType.warning: messageColor = "yellow"; break;
         case msgType.error: messageColor = "red"; break;
-        case msgType.enemy: messageColor = "blue"; break;
-        case msgType.player: messageColor = "green"; break;
+        case msgType.enemy: messageColor = "var(--medium-color)"; break;
+        case msgType.player: messageColor = "var(--darkest-color)"; break;
         default: messageColor = "lightblue"; break;
     }
     return (

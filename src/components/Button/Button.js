@@ -5,10 +5,21 @@ import "./Button.css"
 import React from 'react';
 
 //Simple Button Component
-const  Button = ({text, onclick}) => {
+const  Button = ({text, onclick, width, height}) => {
+    const style = {
+        width: `${width}px`,
+        height: `${height}px`,
+        fontSize: `${height/1.5}px`
+        
+    }
     return (
         <>
-            <button className='button' onClick={ onclick }>{ text }</button>
+            <button 
+                className='button' 
+                onClick={ onclick }
+                style={style}>
+                { text }
+            </button>
         </>
     );
   }

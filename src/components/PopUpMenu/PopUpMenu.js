@@ -42,12 +42,14 @@ const  PopUpMenu = (props) => {
                         return (
                             <div className="menu-content grid-center" >
                             <h2>Menu</h2>
-                            <Button text="Settings" onclick={ () => {} }/>
-                            <Button text="Exit" onclick={ () => {
-                                props.toggle(!props.menuVisibility)
-                                gm.leaveTheGame();
-                                props.leaveTheGame() 
-                            }}/>
+                            <Button text="Settings" onclick={ () => {} } width={350} height={70}/>
+                            <Button text="Exit" 
+                                width={350} height={70}
+                                onclick={ () => {
+                                    props.toggle(!props.menuVisibility)
+                                    gm.leaveTheGame();
+                                    props.leaveTheGame() 
+                                }}/>
                         </div>
                         );
                     }

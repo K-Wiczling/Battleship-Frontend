@@ -1,18 +1,14 @@
 .button {
     color: var(--light-color);    
     font-family: 'Courier New', Courier, monospace;
-    width: 350px;
-    height: 60px;
     background-color: var(--dark-color);
+    font-size: 3em;
     border-radius: 100px;
-    /* display: block; */
     margin: 0.8rem 0 0 0;
-    transition: height 0.3s, width 0.4s, border-radius 0.3s;
+    transition: height 0.3s, width 0.4s, border-radius 0.3s, padding 0.4s;
 }
 .button:hover {
-    /* width: 400px;
-    height: 80px; */
-    /* color: var(--medium-color); */
+    color: var(--medium-color);
     font-weight: bold;
     border-radius: 10px 10px 60px 25px;
     background-color: var(--darkest-color);

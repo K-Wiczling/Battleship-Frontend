@@ -5,7 +5,7 @@ input, select {
     width: 89%;
     background-color: transparent;
     border: 0;
-    color: white;
+    color: var(--darkest-color);
 }
 input:active{
     border: 0;

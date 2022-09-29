@@ -16,16 +16,18 @@ const mapStateToProps = (state) => {
 //GameConsole shows all the messages form the playesrs and inside of the game 
 const GameConsole = (props) =>{
     return(
-        <div className="game-console bg-dark-grade">
+        <div className="game-console">
             <MessageSender/>
-            {
-                props.log.map((line, i) =>{
-                    return(
-                        <ConsoleMessage key={i} log={line}/>
-                    )
-
-                })
-            }
+            <div className="overflow">
+                {
+                    props.log.map((line, i) =>{
+                        return(
+                            <ConsoleMessage key={i} log={line}/>
+                            )
+                            
+                        })
+                }
+            </div>
         </div>
     );
 }

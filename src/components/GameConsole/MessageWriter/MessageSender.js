@@ -10,15 +10,16 @@ import server from "../../../classes/server";
 //Redux
 import { connect } from "react-redux"
 import { insertInGameConsole } from '../../../containers/Game/game-actions';
+import Button from "../../Button/Button";
 
 const mapStateToProps = (state) => {
     return {
     }
   }
 const mapDispatchToProps = (dispatch) => {
-return {
-    insertInGameConsole: (msg, sender, info) => dispatch(insertInGameConsole(msg, info, sender))
-}
+    return {
+        insertInGameConsole: (msg, sender, info) => dispatch(insertInGameConsole(msg, info, sender))
+    }
 }
 //Input to for sanding messages to the console
 const MessageSender = (props) => {
@@ -28,18 +29,26 @@ const MessageSender = (props) => {
     
     return (
         <div className="message-sender console-message">
-                <button onClick={() => {
-                    props.insertInGameConsole(
-                        textInputVal.target.value,
-                        server.Params.gameConsoleSenderType.plyer,
-                        server.Params.gameConsoleMessageTypes.player
-                    )
-                    textInputVal.target.value = '';
-                }} >
-                Send</button>
-                <input placeholder="Write message" type={"text"} onChange={ (e) => {
-                    textInputVal = e;
-                    }}></input>
+                <input 
+                placeholder="Write message" 
+                type={"text"} 
+                onKeyUp={ 
+                    (e) => {
+                        if(e.keyCode === 13){
+                            props.insertInGameConsole(
+                                textInputVal.target.value,
+                                server.Params.gameConsoleSenderType.plyer,
+                                server.Params.gameConsoleMessageTypes.player
+                            )
+                            textInputVal.target.value = '';
+                        }
+                    }
+                }
+                onChange={ 
+                    (e) => {
+                        textInputVal = e;
+                    }
+                }></input>
         </div>
     );
 }

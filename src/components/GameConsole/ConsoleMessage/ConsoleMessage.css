@@ -1,8 +1,8 @@
 .console-message {
     padding: 2px 8px;
     margin: 4px 2px;
-    border-bottom: 1px solid var(--lightes-color);
-    border-left: 3px solid var(--lightes-color);
+    border-bottom: 1px solid var(--dark-color);
+    /* border-left: 3px solid var(--dark-color); */
     font-family: monospace;
     font-size: 1rem;
 }

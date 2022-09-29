@@ -43,7 +43,9 @@ class  MainMenu extends Component {
     constructor(props){
         super(props);
         this.state = {
-            menuMode: MENU_MODE_MAIN_MENU
+            menuMode: MENU_MODE_MAIN_MENU,
+            buttonWidth: 350,
+            buttonHeight: 70,
         }
     }
     showMainMenu = () => {
@@ -76,10 +78,10 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="main-menu grid-center">
                                         <h3>Main menu</h3>
-                                        <Button text="New Game" onclick={ this.showLobby }/>
-                                        <Button text="Settings" onclick={ this.showSettings }/>
-                                        <Button text="Rankings" onclick={ this.showRankings}/>
-                                        <Button text="Exit" onclick={ this.props.showSplashScreen }/>
+                                        <Button text="New Game" onclick={ this.showLobby } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Settings" onclick={ this.showSettings } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Rankings" onclick={ this.showRankings} width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Exit" onclick={ this.props.showSplashScreen } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                     </div>
                                 );
                             }
@@ -90,8 +92,8 @@ class  MainMenu extends Component {
                                         <h3>Lobby</h3>
                                         <MenuTab>
                                             <Lobby/>
-                                            <Button text="Start Game" onclick={ this.props.startGame }/>
-                                            <Button text="Back To Main Menu" onclick={ this.showMainMenu }/>
+                                            <Button text="Start Game" onclick={ this.props.startGame } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                            <Button text="Back To Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                         </MenuTab>
                                     </div>
                 
@@ -102,7 +104,7 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="Settings grid-center">
                                         <h3>Settings</h3>
-                                        <Button text="Back To Main Menu" onclick={ this.showMainMenu }/>
+                                        <Button text="Back To Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                     </div>
                                 );
                             }
@@ -111,7 +113,7 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="Rankings grid-center">
                                         <h3>Rankings</h3>
-                                        <Button text="Back To Main Menu" onclick={ this.showMainMenu }/>
+                                        <Button text="Back To Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                     </div>
                                 );
                             }
@@ -120,7 +122,7 @@ class  MainMenu extends Component {
                                 return(
                                 <div className="Rankings grid-center" >
                                     <h3>Empty</h3>
-                                    <Button text="Back To Main Menu" onclick={ this.showMainMenu }/>
+                                    <Button text="Back To Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                 </div>
                             );
                         }

@@ -136,7 +136,6 @@ class Player {
 
     }
     recursiveCheck = (x , y, board, index) => {
-        console.log(board);
         if (board[x, y] === this.params.tileState.empty){
             return 0;
         }
@@ -165,7 +164,6 @@ class Player {
     deepCheck = () => {
         let tmpBoard = structuredClone(this.board)
         for (let row of this.board) {
-            console.log(row);
             for (let tile of row) {
                 // this.recursiveCheck(tile.point.x, tile.point.y, this.board, 0)
                 
