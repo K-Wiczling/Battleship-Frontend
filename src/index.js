@@ -4,6 +4,7 @@ import './index.css';
 import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 
+// Redux 
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
