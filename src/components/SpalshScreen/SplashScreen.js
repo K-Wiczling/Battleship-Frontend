@@ -4,23 +4,39 @@ import "./SplashScreen.css"
 //React
 import React from 'react';
 
+// Redux
+import { connect } from "react-redux";
+import { changeModes } from "../../containers/App/actions";
+import { MODE_MAIN_MENU, MODE_WEBSITE } from "../../containers/App/constants";
+
 //Components
 import Head from '../Head/Head';
 import Button from '../Button/Button';
 
+const mapStateToProps = (state) => {
+    return {
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        goToMenu: () => dispatch(changeModes(MODE_MAIN_MENU)),
+        goToWebsite: () => dispatch(changeModes(MODE_WEBSITE))
+    }
+}
 //Splash screen component, shown before main menu starts
 //Default screen to show if somthing go wrong
-const  SplashScreen = ({ onclick }) => {
+const SplashScreen = (props) => {
     return (
         <div className="splash-screen">
             <div className="center">
-                <Head text={ "Battleship" } top="20"/>
-                <Button onclick={ onclick } text={ "Start" } width={450} height={110}/>
+                <Head text={"Battleship"} top="20" />
+                <Button onclick={props.goToMenu} text={"Start"} width={450} height={110} />
                 <div className="fixed-foot foot">
-                    <Button onclick={ onclick } text={ "Exit" } width={300} height={60}/>
+                    <Button onclick={props.goToWebsite} text={"Exit"} width={300} height={60} />
                 </div>
             </div>
         </div>
     );
-  }
-export default SplashScreen;
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
+

@@ -12,7 +12,7 @@ import gm from "../../classes/GameMenager/gameMenager"
 
 //Redux
 import { connect } from "react-redux"
-import { 
+import {
     fillBothBoards, toggleInGameMenu
 } from "./game-actions";
 import PopUpMenu from "../../components/PopUpMenu/PopUpMenu";
@@ -36,39 +36,39 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 //Enetry point of the game in the view side
-class  Game extends Component {
+class Game extends Component {
     constructor(props) {
-        super (props)
+        super(props)
         gm.setupTheGame(this.props.setup);
 
     }
-    componentDidMount () {
+    componentDidMount() {
         this.props.setupBoards(gm);
     }
-    render () {      
+    render() {
         return (
             <>
-                <Head text="Battleship"/>
-                    <div className="Game">
-                        <PopUpMenu 
-                            toggle={this.props.toggleMenu} 
-                            menuVisibility={this.props.menuVisibility}
-                            />
-                
-                        <div className='player-board' >
-                            <Draw 
-                                whichBoard={ gm.player.name } 
-                                />
-                        </div>
-                        <div className='enemy-board'>
-                            <Draw 
-                                whichBoard={ gm.enemy.name } 
-                                />
-                        </div>
+                <Head text="Battleship" />
+                <div className="Game">
+                    <PopUpMenu
+                        toggle={this.props.toggleMenu}
+                        menuVisibility={this.props.menuVisibility}
+                    />
+
+                    <div className='player-board' >
+                        <Draw
+                            whichBoard={gm.player.name}
+                        />
                     </div>
+                    <div className='enemy-board'>
+                        <Draw
+                            whichBoard={gm.enemy.name}
+                        />
+                    </div>
+                </div>
                 <GameConsole />
             </>
-    );
-  }
+        );
+    }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

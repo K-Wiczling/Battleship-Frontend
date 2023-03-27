@@ -4,6 +4,7 @@ export const CHANGE_MODE = 'CHANGE_MODE';
 export const MODE_SPLASH_SCREEN = 'MODE_SPLASH_SCREEN';
 export const MODE_MAIN_MENU = 'MODE_MAIN_MENU';
 export const MODE_GAME = 'MODE_GAME';
+export const MODE_WEBSITE = 'WEBSITE'
 
 //Game setup
 export const SETUP_GAME_FULL = 'SETUP_GAME';
