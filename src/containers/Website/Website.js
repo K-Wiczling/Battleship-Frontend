@@ -7,6 +7,8 @@ import React, { Component } from 'react';
 //Components
 import Head from '../../components/Head/Head';
 import Button from '../../components/Button/Button';
+import Register from '../../components/Register/Register';
+import Login from '../../components/Login/Login';
 
 //Containers
 
@@ -32,7 +34,13 @@ class Website extends Component {
     return (
         <div className="website">
           <div className="center">
+
             <Head text={"Battleship"} top="20" />
+            <div className='fl-center'>
+              <Button  text={"Register"} width={100} height={40} />
+              <Button  text={"Login"} width={100} height={40} />
+            </div>
+
 
             <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
             <p>Welcome to Battleship website</p>

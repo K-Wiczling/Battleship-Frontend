@@ -38,6 +38,11 @@ code {
   justify-items:  center;
   justify-content: space-around;
 }
+.fl-center {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
 .fixed-foot{
   display: block;
   position: fixed;
