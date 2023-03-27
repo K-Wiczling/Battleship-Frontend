@@ -33,12 +33,11 @@ class Website extends Component {
         <div className="website">
           <div className="center">
             <Head text={"Battleship"} top="20" />
+
             <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
-            Welcome to Battleship website
+            <p>Welcome to Battleship website</p>
           </div>
       </div>
-
-
     )
 
   }
