@@ -1,13 +1,13 @@
-import { LOGIN_INTERACTION, REGISTER_INTERACTION, SET_INTERACTION } from "./constants";
+import { PAGE, HOME_PAGE } from "./constants";
 
-const initialInteraction = {
-    interacton: none,
+const initialPage = {
+    page: HOME_PAGE,
 }
-//Change game state
-export const setInteraction = (state = initialInteraction, action = {}) => {
+//Change website page state
+export const setPage = (state = initialPage, action = {}) => {
     switch (action.type) {
-        case SET_INTERACTION:
-            return Object.assign({}, state, { interacton: action.payload })
+        case PAGE:
+            return Object.assign({}, state, { page: action.payload })
         default:
             return state
     }

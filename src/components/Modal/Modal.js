@@ -19,12 +19,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
     }
 }
-
 //Modal component
 const Modal = (props) => {
     return (
         <div className="modal" >
-
+            {props.children}
         </div>
     );
 }

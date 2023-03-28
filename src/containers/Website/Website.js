@@ -17,36 +17,51 @@ import { connect } from 'react-redux';
 import { changeModes } from '../App/actions';
 import { MODE_SPLASH_SCREEN } from '../App/constants';
 
+import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from './constants';
 
 const mapStateToProps = (state) => {
   return {
-    showSplash: state.showSplash
+    showSplash: state.showSplash,
+    page: state.websitePage
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN))
+    goToGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
   }
 }
 //Main entrance to the app 
 class Website extends Component {
   render() {
-    return (
-        <div className="website">
-          <div className="center">
+    switch (this.props.page) {
+      case HOME_PAGE:
+        return (
+          <div className="website">
+            <div className="center">
 
-            <Head text={"Battleship"} top="20" />
-            <div className='fl-center'>
-              <Button  text={"Register"} width={100} height={40} />
-              <Button  text={"Login"} width={100} height={40} />
+              <Head text={"Battleship"} top="20" />
+              <div className='fl-center'>
+                <Button text={"Register"} width={100} height={40} />
+                <Button text={"Login"} width={100} height={40} />
+              </div>
+              <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
+              <p>Welcome to Battleship website</p>
             </div>
-
-
-            <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
-            <p>Welcome to Battleship website</p>
           </div>
-      </div>
-    )
+        )
+      case REGISTER_PAGE:
+        return (
+          <Register/>
+        )
+      case LOGIN_PAGE:
+        return (
+          <Login/>
+        )
+
+      default:
+        break;
+    }
+
 
   }
 }

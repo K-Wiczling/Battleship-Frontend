@@ -11,10 +11,18 @@ import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
 import { changeMode, setupGame } from './containers/App/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/game-reducer';
+import { setPage } from './containers/Website/reducer';
 
 //Redux section
-const logger = createLogger(); 
-const rootReducer = combineReducers({ changeMode, changeBoard, changeGameConsole, inGameMenu, setupGame });
+const logger = createLogger();
+const rootReducer = combineReducers({ 
+  changeMode, 
+  changeBoard, 
+  changeGameConsole, 
+  inGameMenu, 
+  setupGame, 
+  setPage 
+});
 const store = configureStore({ reducer: rootReducer }, applyMiddleware(logger));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

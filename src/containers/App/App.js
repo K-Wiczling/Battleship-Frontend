@@ -61,7 +61,7 @@ class  App extends Component {
       }
       //Show Websitge
       case MODE_WEBSITE: {
-        return(<Website showSplash={this.props.showSplashScreen}  />);
+        return(<Website/>);
       }
 
       //By default return SplashScreen 
