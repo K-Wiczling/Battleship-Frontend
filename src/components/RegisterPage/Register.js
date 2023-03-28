@@ -1,15 +1,15 @@
 //css
-import "./Login.css"
+import "./Register.css"
 
 //React
 import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { MODE_SPLASH_SCREEN } from "../../containers/App/constants";
+import { MODE_SPLASH_SCREEN } from "../../../containers/App/constants";
 import {
     changeModes
-} from "../../containers/App/actions"
+} from "../../../containers/App/actions"
 
 //Components
 
@@ -23,12 +23,12 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 //Pop up menu to display in the game
-const Login = (props) => {
+const Register = (props) => {
 
     return (
-        <div className="login">
-            <p>Login</p>
+        <div className="register">
+            <p>Register</p>
         </div>
     );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

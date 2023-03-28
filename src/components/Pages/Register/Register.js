@@ -6,10 +6,6 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { MODE_SPLASH_SCREEN } from "../../containers/App/constants";
-import {
-    changeModes
-} from "../../containers/App/actions"
 
 //Components
 
@@ -19,7 +15,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        // leaveTheGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN))
     }
 }
 //Pop up menu to display in the game

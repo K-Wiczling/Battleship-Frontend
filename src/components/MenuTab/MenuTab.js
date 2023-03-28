@@ -3,7 +3,6 @@ import "./MenuTab.css"
 
 //React
 import React from 'react';
-import server from "../../classes/server";
 
 //Redux
 import { connect } from "react-redux";

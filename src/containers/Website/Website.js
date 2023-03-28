@@ -5,17 +5,16 @@ import './Website.css';
 import React, { Component } from 'react';
 
 //Components
-import Head from '../../components/Head/Head';
-import Button from '../../components/Button/Button';
-import Register from '../../components/Register/Register';
-import Login from '../../components/Login/Login';
+import Register from '../../components/Pages/Register/Register';
+import Login from '../../components/Pages/Login/Login';
+import Home from '../../components/Pages/Home/Home';
 
 //Containers
 
 //Redux
 import { connect } from 'react-redux';
-import { changeModes } from '../App/actions';
-import { MODE_SPLASH_SCREEN } from '../App/constants';
+// import { changeModes } from '../App/actions';
+// import { MODE_SPLASH_SCREEN } from '../App/constants';
 
 import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from './constants';
 import { setPage } from './actions';
@@ -28,7 +27,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
     showLoginPage: () => dispatch(setPage(LOGIN_PAGE)),
     showRegisterPage: () => dispatch(setPage(REGISTER_PAGE)),
     showHomePage: () => dispatch(setPage(HOME_PAGE))
@@ -40,18 +38,7 @@ class Website extends Component {
     switch (this.props.page) {
       case HOME_PAGE:
         return (
-          <div className="website">
-            <div className="center">
-
-              <Head text={"Battleship"} top="20" />
-              <div className='fl-center'>
-                <Button text={"Register"} onclick={this.props.showRegisterPage} width={100} height={40} />
-                <Button text={"Login"} onclick={this.props.showLoginPage} width={100} height={40} />
-              </div>
-              <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
-              <p>Welcome to Battleship website</p>
-            </div>
-          </div>
+          <Home></Home>
         )
       case REGISTER_PAGE:
         return (
