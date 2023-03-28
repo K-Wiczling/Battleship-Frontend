@@ -18,19 +18,23 @@ import { changeModes } from '../App/actions';
 import { MODE_SPLASH_SCREEN } from '../App/constants';
 
 import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from './constants';
+import { setPage } from './actions';
 
 const mapStateToProps = (state) => {
   return {
     showSplash: state.showSplash,
-    page: state.websitePage
+    page: state.websitePage.page
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     goToGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
+    showLoginPage: () => dispatch(setPage(LOGIN_PAGE)),
+    showRegisterPage: () => dispatch(setPage(REGISTER_PAGE)),
+    showHomePage: () => dispatch(setPage(HOME_PAGE))
   }
 }
-//Main entrance to the app 
+//Website part of the app 
 class Website extends Component {
   render() {
     switch (this.props.page) {
@@ -41,8 +45,8 @@ class Website extends Component {
 
               <Head text={"Battleship"} top="20" />
               <div className='fl-center'>
-                <Button text={"Register"} width={100} height={40} />
-                <Button text={"Login"} width={100} height={40} />
+                <Button text={"Register"} onclick={this.props.showRegisterPage} width={100} height={40} />
+                <Button text={"Login"} onclick={this.props.showLoginPage} width={100} height={40} />
               </div>
               <Button onclick={this.props.goToGame} text={"Start"} width={450} height={110} />
               <p>Welcome to Battleship website</p>
