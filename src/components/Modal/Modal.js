@@ -1,19 +1,32 @@
 //css
-import "./Head.css"
+import "./Modal.css"
 
 //React
 import React from 'react';
 
-//Header component
-const  Head = ({ text, top }) => {
-    if(Number.isInteger(top)) top = 0;
+//Redux
+import { connect } from "react-redux";
+import { MODE_SPLASH_SCREEN } from "../../containers/App/constants";
+import {
+    changeModes
+} from "../../containers/App/actions"
+
+const mapStateToProps = (state) => {
+    return {
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+    }
+}
+
+//Modal component
+const Modal = (props) => {
     return (
-        <>
-            <div className="head" style={{top: `${top}vh`}}>
-                <h2><a href="index.html">{ text }</a></h2>
-            </div>
-            <div className="spacer-top"></div>
-        </>
+        <div className="modal" >
+
+        </div>
     );
-  }
-export default Head;
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+
