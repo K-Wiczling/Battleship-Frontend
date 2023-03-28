@@ -1,2 +1,29 @@
-.login {
+.home {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1f;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+}
+
+.head {
+    top: 20vh;
+}
+
+.foot {
+    bottom: 30vh;
+}
+
+@media only screen and (max-height: 700px) {
+    .foot {
+        bottom: 25vh;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    .foot {
+        bottom: 15vh;
+    }
 }

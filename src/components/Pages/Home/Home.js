@@ -35,7 +35,6 @@ const Home = (props) => {
     return (
         <div className="home">
             <div className="center">
-
                 <Head text={"Battleship"} top="20" />
                 <div className='fl-center'>
                     <Button text={"Register"} onclick={props.showRegisterPage} width={100} height={40} />
