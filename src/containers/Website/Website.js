@@ -46,7 +46,7 @@ class Website extends Component {
         )
       case LOGIN_PAGE:
         return (
-          <Login/>
+          <Login getToRegister={this.props.showRegisterPage}/>
         )
 
       default:

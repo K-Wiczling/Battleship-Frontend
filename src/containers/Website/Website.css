@@ -13,6 +13,19 @@
 .foot{
     bottom: 30vh;
 }
+
+form {
+    width: 500px;
+    margin: auto;
+    margin-top: 30vh;
+}
+input {
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+label, input {
+    width: 100%;
+}
 @media only screen and (max-height: 700px) {
     .foot{
         bottom: 25vh;

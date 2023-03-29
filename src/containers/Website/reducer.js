@@ -1,7 +1,7 @@
-import { PAGE, HOME_PAGE } from "./constants";
+import { PAGE, HOME_PAGE, LOGIN_PAGE } from "./constants";
 
 const initialPage = {
-    page: HOME_PAGE,
+    page: LOGIN_PAGE,
 }
 //Change website page state
 export const websitePage = (state = initialPage, action = {}) => {
