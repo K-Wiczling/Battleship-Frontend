@@ -5,6 +5,7 @@ import './Website.css';
 import React, { Component } from 'react';
 
 //Components
+import Navbar from '../../components/Pages/Navbar/Navbar'
 import Head from '../../components/Head/Head';
 import PageContainer from '../../components/Pages/PageContainer/PageContainer';
 
@@ -33,7 +34,9 @@ class Website extends Component {
   render() {
     return (
       <>
-        <Head text={'Battleship'}/>
+        <Navbar />
+        <Head text={'Battleship'} />
+
         <PageContainer />
       </>
     )
