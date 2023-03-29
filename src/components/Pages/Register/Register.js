@@ -32,7 +32,9 @@ const Register = (props) => {
                 <p>Create new account</p>
 
                 <label ><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required />
+                <input type="text" placeholder="Enter Email" name="email" id="email" required onChange={(e) => {
+                    console.log(e.target.value);
+                }}  />
 
                 <label ><b>Name</b></label>
                 <input type="text" placeholder="Enter Name" name="name" id="name" required />

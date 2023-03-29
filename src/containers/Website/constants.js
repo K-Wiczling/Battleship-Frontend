@@ -1,4 +1,5 @@
-export const PAGE = 'PAGE';
+export const PAGE = 'WEBSITE/PAGE';
+export const REGISTER = 'WEBSITE/REGISTER'
 
 // Interaction
 export const LOGIN_PAGE = 'LOGIN_PAGE';
