@@ -19,7 +19,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         showLoginPage: () => dispatch(setPage(LOGIN_PAGE)),
-    showRegisterPage: () => dispatch(setPage(REGISTER_PAGE)),
+        showRegisterPage: () => dispatch(setPage(REGISTER_PAGE)),
+        showHomePage: () => dispatch(setPage(HOME_PAGE)),
     }
 }
 //Pop up menu to display in the game
@@ -28,9 +29,10 @@ const Navbar = (props) => {
     return (
         <div className="navbar">
             <div className='fl-center'>
-                    <Button text={"Register"} onclick={props.showRegisterPage} width={100} height={40} />
-                    <Button text={"Login"} onclick={props.showLoginPage} width={100} height={40} />
-                </div>
+                <Button text={"Home"} onclick={props.showHomePage} width={100} height={40} />
+                <Button text={"Register"} onclick={props.showRegisterPage} width={100} height={40} />
+                <Button text={"Login"} onclick={props.showLoginPage} width={100} height={40} />
+            </div>
         </div>
     );
 }
