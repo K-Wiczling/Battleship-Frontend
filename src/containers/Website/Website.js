@@ -13,15 +13,12 @@ import PageContainer from '../../components/Pages/PageContainer/PageContainer';
 
 //Redux
 import { connect } from 'react-redux';
-// import { changeModes } from '../App/actions';
-// import { MODE_SPLASH_SCREEN } from '../App/constants';
-
-import { setPage } from './actions';
 
 const mapStateToProps = (state) => {
   return {
     showSplash: state.showSplash,
-    page: state.websitePage.page
+    page: state.websitePage.page,
+    reg: state.registerPage
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -32,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 //Website part of the app 
 class Website extends Component {
   render() {
+    console.log(this.props.reg);
     return (
       <>
         <Navbar />

@@ -11,10 +11,21 @@ export const websitePage = (state = initialPage, action = {}) => {
     return state;
 }
 
+const intialregisterData = {
+        email: 'em',
+        name: 'ne',
+        pass: 'ps',
+        passRepeat: 'psr',
+}
 //Change website page state
-export const registerPage = (state = initialPage, action = {}) => {
+export const registerPage = (state = intialregisterData, action = {}) => {
     if(action.type === REGISTER){
-        return Object.assign({}, state, { registerInputData: action.payload })
+        return Object.assign({}, state, { 
+            email: action.payload.email,
+            name: action.payload.name,
+            pass: action.payload.pass,
+            passRepeat: action.payload.passRepeat
+         })
     }
     return state;
 }
