@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
         updateRegiser: () => {
-            console.log(registerData);
             dispatch(updateRegister(registerData))
         }
     }

@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch) => {
 //Website part of the app 
 class Website extends Component {
   render() {
-    console.log(this.props.reg);
     return (
       <>
         <Navbar />
