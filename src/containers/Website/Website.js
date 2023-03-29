@@ -38,7 +38,7 @@ class Website extends Component {
     switch (this.props.page) {
       case HOME_PAGE:
         return (
-          <Home></Home>
+          <Home/>
         )
       case REGISTER_PAGE:
         return (
@@ -46,7 +46,7 @@ class Website extends Component {
         )
       case LOGIN_PAGE:
         return (
-          <Login getToRegister={this.props.showRegisterPage}/>
+          <Login/>
         )
 
       default:
