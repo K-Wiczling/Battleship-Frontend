@@ -38,7 +38,7 @@ const Login = (props) => {
                 <Button text={'Login'} width={200} height={40} />
 
                 <p>Don't have an account? </p>
-                <Button onClick={props.goToRegister} text={'Register'} width={200} height={30} />
+                <Button onclick={props.goToRegister} text={'Register'} width={200} height={30} />
 
             </div>
         </div>

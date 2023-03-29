@@ -46,7 +46,7 @@ const Register = (props) => {
                 <Button text={'Register'} width={200} height={40} />
 
                 <p>Already have an account? </p>
-                <Button onClick={props.goToLogin} text={'Sign in'} width={200} height={30} />
+                <Button onclick={props.goToLogin} text={'Sign in'} width={200} height={30} />
 
             </div>
         </div>

@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import Register from '../../components/Pages/Register/Register';
 import Login from '../../components/Pages/Login/Login';
 import Home from '../../components/Pages/Home/Home';
+import Head from '../../components/Head/Head';
 
 //Containers
 
@@ -35,18 +36,29 @@ const mapDispatchToProps = (dispatch) => {
 //Website part of the app 
 class Website extends Component {
   render() {
+    
     switch (this.props.page) {
       case HOME_PAGE:
         return (
+        <>
+          <Head text={"Battleship"} top="20" />
           <Home/>
+        </>
         )
       case REGISTER_PAGE:
         return (
+          <>
+          <Head text={"Battleship"} top="20" />
           <Register/>
+          </>
+
         )
       case LOGIN_PAGE:
         return (
+          <>
+          <Head text={"Battleship"} top="20" />
           <Login/>
+          </>
         )
 
       default:
