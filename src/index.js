@@ -11,7 +11,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
 import { changeMode, setupGame } from './containers/App/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/game-reducer';
-import { websitePage, registerPage } from './containers/Website/reducer';
+import { websitePage, registerPage, loginPage } from './containers/Website/reducer';
 
 //Redux section
 const logger = createLogger();
@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
   inGameMenu, 
   setupGame, 
   websitePage, 
-  registerPage
+  registerPage,
+  loginPage
 });
 const store = configureStore({ reducer: rootReducer }, applyMiddleware(logger));
 

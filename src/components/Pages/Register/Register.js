@@ -17,7 +17,7 @@ import Button from "../../Button/Button";
 const registerData = {
     email: '',
     name: '',
-    pass: '',
+    password: '',
     passRepeat: '',
 };
 
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 //Pop up menu to display in the game
 const Register = (props) => {
-    
+
     return (
         <div className="register">
             <div className="center former">
@@ -53,7 +53,7 @@ const Register = (props) => {
 
                 <label ><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pass" id="pass" required onChange={(e) => {
-                    registerData.pass = e.target.value;
+                    registerData.password = e.target.value;
                 }} />
 
                 <label ><b>Repeat Password</b></label>
@@ -61,7 +61,11 @@ const Register = (props) => {
                     registerData.passRepeat = e.target.value;
                 }} />
 
-                <Button onclick={props.updateRegiser} text={'Register'} width={200} height={40} />
+                <Button onclick={ () =>{
+                    props.updateRegiser()
+                    registerNewUser(props.registerPage);
+                }
+                } text={'Register'} width={200} height={40} />
 
                 <p>Already have an account? </p>
                 <Button onclick={props.goToLogin} text={'Sign in'} width={200} height={30} />
@@ -71,3 +75,19 @@ const Register = (props) => {
     );
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
+
+const registerNewUser = () => {
+    fetch('http://localhost:3001/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(registerData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // do something with the response data
+    })
+    .catch(error => console.error(error));
+}

@@ -12,10 +12,10 @@ export const websitePage = (state = initialPage, action = {}) => {
 }
 
 const intialregisterData = {
-        email: 'em',
-        name: 'ne',
-        pass: 'ps',
-        passRepeat: 'psr',
+        email: '',
+        name: '',
+        pass: '',
+        passRepeat: '',
 }
 //Change website page state
 export const registerPage = (state = intialregisterData, action = {}) => {
@@ -28,4 +28,19 @@ export const registerPage = (state = intialregisterData, action = {}) => {
          })
     }
     return state;
+}
+
+const intialLoginData = {
+    email: '',
+    pass: '',
+}
+//Change website page state
+export const loginPage = (state = intialLoginData, action = {}) => {
+if(action.type === REGISTER){
+    return Object.assign({}, state, { 
+        email: action.payload.email,
+        pass: action.payload.pass,
+     })
+}
+return state;
 }
