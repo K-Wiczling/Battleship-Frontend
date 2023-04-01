@@ -11,6 +11,7 @@ import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
 // Components
 import Button from "../../Atoms/Button/Button";
+import server from "../../../classes/server";
 
 // Local login data storage
 // Save in the redux state on sending form
@@ -21,6 +22,7 @@ const loginData = {
 
 const mapStateToProps = (state) => {
     return {
+        login: state.loginPage
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -52,7 +54,7 @@ const Login = (props) => {
 
                 <Button onclick={ () =>{
                     props.updateLogin()
-                    loginTo(props.registerPage);
+                    loginTo();
                 }} text={'Login'} width={200} height={40} />
 
                 <p>Don't have an account? </p>
@@ -67,17 +69,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 // Try to log in to the server
 const loginTo = () => {
-    fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // do something with the response data
-        })
-        .catch(error => console.error(error));
+    console.log(server.send(loginData, 'login'));
 }

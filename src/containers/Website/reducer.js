@@ -39,7 +39,7 @@ export const loginPage = (state = intialLoginData, action = {}) => {
 if(action.type === REGISTER){
     return Object.assign({}, state, { 
         email: action.payload.email,
-        pass: action.payload.pass,
+        password: action.payload.password,
      })
 }
 return state;
