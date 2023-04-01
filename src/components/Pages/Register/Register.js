@@ -61,6 +61,7 @@ const Register = (props) => {
                     registerData.passRepeat = e.target.value;
                 }} />
 
+                {/* Update state and connect to server */}
                 <Button onclick={() => {
                     props.updateRegiser()
                     registerNewUser(props.registerPage);

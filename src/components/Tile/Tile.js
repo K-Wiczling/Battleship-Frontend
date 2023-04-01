@@ -4,13 +4,13 @@ import "./Tile.css"
 //React
 import React from 'react';
 
-//Classes
-import gm from '../../classes/GameMenager/gameMenager'; 
-import server from '../../classes/server';
-
 //Redux
 import { connect } from "react-redux"
 import { insertInGameConsole, tileClickEnemyBoard, tileClickPlayerBoard } from '../../containers/Game/game-actions';
+
+//Classes
+import gm from '../../classes/GameMenager/gameMenager'; 
+import server from '../../classes/server';
 
 
 const mapStateToProps = (state) => {
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
       insertInGameConsole: (msg, sender, info) => dispatch(insertInGameConsole(msg, info, sender))
   }
 }
+
 //Represents single tile object grphically
 const  Tile = (props) => {
   return (

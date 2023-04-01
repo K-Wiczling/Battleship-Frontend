@@ -1,7 +1,7 @@
-//css
+// css
 import "./SplashScreen.css"
 
-//React
+// React
 import React from 'react';
 
 // Redux
