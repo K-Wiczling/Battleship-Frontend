@@ -10,7 +10,7 @@ import { setPage, updateRegister } from "../../../containers/Website/actions";
 import { LOGIN_PAGE } from "../../../containers/Website/constants";
 
 //Components
-import Button from "../../Button/Button";
+import Button from "../../Atoms/Button/Button";
 
 // Holds data for login before it will be updated in state
 const registerData = {

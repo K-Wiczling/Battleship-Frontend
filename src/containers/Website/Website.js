@@ -5,9 +5,9 @@ import './Website.css';
 import React, { Component } from 'react';
 
 //Components
-import Navbar from '../../components/Pages/Navbar/Navbar'
-import Head from '../../components/Head/Head';
-import PageContainer from '../../components/Pages/PageContainer/PageContainer';
+import Head from '../../components/Atoms/Head/Head';
+import Navbar from '../../components/PagesParts/Navbar/Navbar'
+import PageContainer from '../../components/PagesParts/PageContainer/PageContainer';
 
 //Containers
 

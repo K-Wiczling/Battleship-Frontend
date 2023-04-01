@@ -10,7 +10,7 @@ import { changeModes } from '../../../containers/App/actions';
 import { MODE_SPLASH_SCREEN } from '../../../containers/App/constants';
 
 //Components
-import Button from '../../Button/Button';
+import Button from '../../Atoms/Button/Button';
 
 
 const mapStateToProps = (state) => {

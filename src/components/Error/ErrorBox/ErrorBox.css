@@ -1,0 +1,10 @@
+.error-box {
+    position: absolute;
+    display: grid;
+    width: 40vw;
+    height: 20vh;
+    margin: 40vh 30vw 40vh 30vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: red;   
+    text-align: center;
+}

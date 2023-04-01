@@ -1,0 +1,19 @@
+.message-sender {
+    color: inherit;
+}
+input, select {
+    width: 89%;
+    background-color: transparent;
+    border: 0;
+    color: var(--darkest-color);
+}
+input:active{
+    border: 0;
+
+}
+button {
+    width: 9%;
+    border: 0;
+    background-color: black;
+    color: white;
+}

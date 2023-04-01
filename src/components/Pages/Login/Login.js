@@ -10,7 +10,7 @@ import { setPage, updateLogin } from "../../../containers/Website/actions";
 import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
 // Components
-import Button from "../../Button/Button";
+import Button from "../../Atoms/Button/Button";
 
 // Local login data storage
 // Save in the redux state on sending form

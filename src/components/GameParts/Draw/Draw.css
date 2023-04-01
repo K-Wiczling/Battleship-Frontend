@@ -1,0 +1,10 @@
+.board-row {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    color: var(--darkest-color)
+}
+.board { 
+    padding-top: 50px;
+}

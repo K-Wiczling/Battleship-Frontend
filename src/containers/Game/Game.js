@@ -4,8 +4,8 @@ import "./Game.css"
 import React, { Component } from 'react';
 
 //Components
-import Draw from '../../components/Draw/Draw';
-import GameConsole from "../../components/GameConsole/GameConsole"
+import Draw from '../../components/GameParts/Draw/Draw';
+import GameConsole from "../../components/GameParts/GameConsole/GameConsole"
 
 //Classes
 import gm from "../../classes/GameMenager/gameMenager"
@@ -15,8 +15,8 @@ import { connect } from "react-redux"
 import {
     fillBothBoards, toggleInGameMenu
 } from "./game-actions";
-import PopUpMenu from "../../components/PopUpMenu/PopUpMenu";
-import Head from "../../components/Head/Head";
+import PopUpMenu from "../../components/Atoms/PopUpMenu/PopUpMenu";
+import Head from "../../components/Atoms/Head/Head";
 
 const mapStateToProps = (state) => {
     return {

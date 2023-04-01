@@ -5,8 +5,8 @@ import './App.css';
 import React, { Component } from 'react';
 
 //Components
-import SplashScreen from '../../components/SpalshScreen/SplashScreen';
-import ErrorBoundries from '../../components/ErrorBoundries/ErrorBoundries';
+import SplashScreen from '../SpalshScreen/SplashScreen';
+import ErrorBoundries from '../../components/Error/ErrorBoundries/ErrorBoundries';
 
 //Containers
 import Game from '../Game/Game';

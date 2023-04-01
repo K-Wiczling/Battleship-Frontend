@@ -16,9 +16,9 @@ import {
 import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from '../App/constants';
 
 //Components
-import Button from '../../components/Button/Button';
-import Head from '../../components/Head/Head';
-import MenuTab from "../../components/MenuTab/MenuTab";
+import Button from '../../components/Atoms/Button/Button';
+import Head from '../../components/Atoms/Head/Head';
+import MenuTab from "../../components/Atoms/MenuTab/MenuTab";
 import Lobby from "./Lobby/Lobby";
 
 const mapStateToProps = (state) => {
