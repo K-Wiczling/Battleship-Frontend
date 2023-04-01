@@ -1,4 +1,4 @@
-.button {
+.button-component {
     color: var(--light-color);    
     font-family: 'Courier New', Courier, monospace;
     background-color: var(--dark-color);
