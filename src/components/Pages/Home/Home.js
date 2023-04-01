@@ -4,14 +4,13 @@ import "./Home.css"
 //React
 import React from 'react';
 
-//Components
-import Head from '../../Head/Head';
-import Button from '../../Button/Button';
-
 //Redux
 import { connect } from 'react-redux';
 import { changeModes } from '../../../containers/App/actions';
 import { MODE_SPLASH_SCREEN } from '../../../containers/App/constants';
+
+//Components
+import Button from '../../Button/Button';
 
 
 const mapStateToProps = (state) => {
@@ -21,10 +20,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goToGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
-    
   }
 }
-//Pop up menu to display in the game
+
+//Home page in the websites
 const Home = (props) => {
     return (
         <div className="home">
