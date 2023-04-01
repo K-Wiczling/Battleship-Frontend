@@ -4,6 +4,9 @@ import "./Draw.css"
 //React stuff
 import React from 'react';
 
+//Redux
+import { connect } from "react-redux";
+
 //Components
 import Tile from '../../components/Tile/Tile';
 
@@ -12,8 +15,6 @@ import Point from '../../classes/helpers/point';
 import EmptyTile from "../EmptyTile/EmptyTile";
 import server from "../../classes/server";
 
-//Redux
-import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
   return {
