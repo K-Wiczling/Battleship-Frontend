@@ -12,8 +12,7 @@ import { LOGIN_PAGE } from "../../../containers/Website/constants";
 //Components
 import Button from "../../Button/Button";
 
-//Components
-
+// Holds data for login before it will be updated in state
 const registerData = {
     email: '',
     name: '',
@@ -33,7 +32,8 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-//Pop up menu to display in the game
+
+// Register page 
 const Register = (props) => {
 
     return (
@@ -61,7 +61,7 @@ const Register = (props) => {
                     registerData.passRepeat = e.target.value;
                 }} />
 
-                <Button onclick={ () =>{
+                <Button onclick={() => {
                     props.updateRegiser()
                     registerNewUser(props.registerPage);
                 }
@@ -76,18 +76,19 @@ const Register = (props) => {
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
 
+// Fetch data to/from server
 const registerNewUser = () => {
     fetch('http://localhost:3001/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(registerData)
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(registerData)
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      // do something with the response data
-    })
-    .catch(error => console.error(error));
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // do something with the response data
+        })
+        .catch(error => console.error(error));
 }

@@ -6,10 +6,14 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import Button from "../../Button/Button";
 import { setPage, updateLogin } from "../../../containers/Website/actions";
 import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
+// Components
+import Button from "../../Button/Button";
+
+// Local login data storage
+// Save in the redux state on sending form
 const loginData = {
     email: '',
     password: ''
@@ -27,7 +31,8 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-//Pop up menu to display in the game
+
+// Login page 
 const Login = (props) => {
 
     return (
@@ -60,6 +65,7 @@ const Login = (props) => {
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
+// Try to log in to the server
 const loginTo = () => {
     fetch('http://localhost:3001/login', {
         method: 'POST',
