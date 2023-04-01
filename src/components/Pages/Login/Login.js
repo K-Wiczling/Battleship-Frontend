@@ -10,8 +10,6 @@ import Button from "../../Button/Button";
 import { setPage, updateLogin } from "../../../containers/Website/actions";
 import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
-//Components
-
 const loginData = {
     email: '',
     password: ''

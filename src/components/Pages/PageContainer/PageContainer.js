@@ -4,15 +4,14 @@ import './PageContainer.css';
 //React stuff
 import React, { Component } from 'react';
 
-//Components
-import Register from '../Register/Register';
-import Login from '../Login/Login';
-import Home from '../Home/Home';
-
 //Redux
 import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from '../../../containers/Website/constants';
 import { connect } from 'react-redux';
 
+//Components
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import Home from '../Home/Home';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,7 +22,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
   }
 }
-//Containt website conentnt
+
+// Containt website conentnt, wrapper for pages,
+// that show page based on the state of the app
 class PageContainer extends Component {
   render() {
     switch (this.props.page) {
@@ -45,5 +46,4 @@ class PageContainer extends Component {
     }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);
