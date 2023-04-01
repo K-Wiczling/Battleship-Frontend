@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+
 //Home page in the websites
 const Home = (props) => {
     return (
