@@ -10,8 +10,3 @@ export const updateRegister = (registerInputData) => ({
     type: REGISTER,
     payload: registerInputData
 });
-
-export const updateLogin = (loginInputData) => ({
-    type: REGISTER,
-    payload: loginInputData
-});

@@ -6,19 +6,14 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { setPage, updateRegister } from "../../../containers/Website/actions";
+import { setPage } from "../../../containers/Website/actions";
 import { LOGIN_PAGE } from "../../../containers/Website/constants";
 
 //Components
 import Button from "../../Atoms/Button/Button";
 
-// Holds data for login before it will be updated in state
-const registerData = {
-    email: '',
-    name: '',
-    password: '',
-    passRepeat: '',
-};
+// Classes
+import server from "../../../classes/server";
 
 const mapStateToProps = (state) => {
     return {
@@ -27,14 +22,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
-        updateRegiser: () => {
-            dispatch(updateRegister(registerData))
-        }
     }
 }
 
 // Register page 
 const Register = (props) => {
+    // Holds data for login before it will be updated in state
+    const registerData = {
+        email: '',
+        name: '',
+        password: '',
+        passRepeat: '',
+    };
 
     return (
         <div className="register">
@@ -57,16 +56,21 @@ const Register = (props) => {
                 }} />
 
                 <label ><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
+                <input type="password" minlength="10" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
                 }} />
 
-                {/* Update state and connect to server */}
-                <Button onclick={() => {
-                    props.updateRegiser()
-                    registerNewUser(props.registerPage);
-                }
-                } text={'Register'} width={200} height={40} />
+                {/* connect to server */}
+                <Button text={'Register'} width={200} height={40}
+                    onclick={async function () {
+                        try {
+                            const result = await server.send(registerData, 'register');
+                            console.log(result);
+                        }
+                        catch (error) {
+                            console.log(error);
+                        }
+                    }} />
 
                 <p>Already have an account? </p>
                 <Button onclick={props.goToLogin} text={'Sign in'} width={200} height={30} />
@@ -76,20 +80,3 @@ const Register = (props) => {
     );
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
-
-// Fetch data to/from server
-const registerNewUser = () => {
-    fetch('http://localhost:3001/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(registerData)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // do something with the response data
-        })
-        .catch(error => console.error(error));
-}

@@ -29,18 +29,3 @@ export const registerPage = (state = intialregisterData, action = {}) => {
     }
     return state;
 }
-
-const intialLoginData = {
-    email: '',
-    pass: '',
-}
-//Change website page state
-export const loginPage = (state = intialLoginData, action = {}) => {
-if(action.type === REGISTER){
-    return Object.assign({}, state, { 
-        email: action.payload.email,
-        password: action.payload.password,
-     })
-}
-return state;
-}

@@ -138,30 +138,20 @@ class Server {
         return structuredClone(globalParam);
     }
 
-    send = (dataToSend) => {
-        fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dataToSend)
-    })
-        .then(response => response.json())
-        .then(data => {
+    async send(dataToSend, path) {
+        try {
+            const response = await fetch(this.serverURL + path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            });
+            const data = await response.json();
             return data;
-        })
-        .catch(error => {return error});
-
-        // const returnedData = await fetch(`${this.serverURL}${destanation}`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(dataToSend)
-        // })
-        // await returnedData.response.json()
-        // await console.log(returnedData);
-        //     // .catch(error => console.error(error));
+        } catch (error) {
+            return error;
+        }
     }
 }
 const server = new Server();

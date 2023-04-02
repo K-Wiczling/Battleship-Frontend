@@ -6,56 +6,57 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { setPage, updateLogin } from "../../../containers/Website/actions";
+import { setPage } from "../../../containers/Website/actions";
 import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
 // Components
 import Button from "../../Atoms/Button/Button";
-import server from "../../../classes/server";
 
-// Local login data storage
-// Save in the redux state on sending form
-const loginData = {
-    email: '',
-    password: ''
-};
+// Classes
+import server from "../../../classes/server";
 
 const mapStateToProps = (state) => {
     return {
-        login: state.loginPage
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         goToRegister: () => dispatch(setPage(REGISTER_PAGE)),
-        updateLogin: () => {
-            dispatch(updateLogin(loginData))
-        }
+       
     }
 }
 
 // Login page 
 const Login = (props) => {
-
+    const loginData = {
+        email: 'test@mail.com',
+        password: 'test123456789'
+    };
     return (
         <div className="login">
             <div className="center former" action="none">
                 <p>Sign in</p>
 
                 <label ><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required onChange={(e) => {
+                <input type="text" placeholder="Enter Email" name="email" id="email" value={loginData.email} required onChange={(e) => {
                     loginData.email = e.target.value;
                 }} />
 
                 <label ><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass" id="pass" required onChange={(e) => {
+                <input type="password" placeholder="Enter Password" name="pass" value={loginData.password} id="pass" required onChange={(e) => {
                     loginData.password = e.target.value;
                 }} />
 
-                <Button onclick={ () =>{
-                    props.updateLogin()
-                    loginTo();
-                }} text={'Login'} width={200} height={40} />
+                <Button text={'Login'} width={200} height={40} 
+                onclick={ async function(){
+                    try {
+                        const result = await server.send(loginData, 'login');
+                        console.log(result);
+                    }
+                    catch(error){
+                        console.log(error);
+                    }
+                }}/>
 
                 <p>Don't have an account? </p>
                 <Button onclick={props.goToRegister} text={'Register'} width={200} height={30} />
@@ -66,8 +67,3 @@ const Login = (props) => {
     );
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// Try to log in to the server
-const loginTo = () => {
-    console.log(server.send(loginData, 'login'));
-}
