@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToRegister: () => dispatch(setPage(REGISTER_PAGE)),
-       
+
     }
 }
 
@@ -48,25 +48,26 @@ const Login = (props) => {
                     loginData.password = e.target.value;
                 }} />
 
-                <Button text={'Login'} width={200} height={40} 
-                onclick={ async function(){
-                    if(!Validate.validateEmail(loginData.email)){
-                        console.log('Use valid email');
-                        return 
-                    }
-                    if(!Validate.validatePassword(loginData.password)){
-                        console.log('Use valid password');
-                        return   
-                    }
+                <Button text={'Login'} width={200} height={40}
+                    onclick={async function () {
+                        if (!Validate.validateEmail(loginData.email)) {
+                            console.log('Use valid email');
+                            return
+                        }
+                        const passValidation = Validate.validatePassword(loginData.password)
+                        if (passValidation.result === false) {
+                            console.log(passValidation.rest);
+                            return
+                        }
 
-                    try {
-                        const result = await server.send(loginData, 'login');
-                        console.log(result);
-                    }
-                    catch(error){
-                        console.log(error);
-                    }
-                }}/>
+                        try {
+                            const result = await server.send(loginData, 'login');
+                            console.log(result);
+                        }
+                        catch (error) {
+                            console.log(error);
+                        }
+                    }} />
 
                 <p>Don't have an account? </p>
                 <Button onclick={props.goToRegister} text={'Register'} width={200} height={30} />

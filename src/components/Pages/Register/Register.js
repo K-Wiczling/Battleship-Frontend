@@ -64,15 +64,16 @@ const Register = (props) => {
                 {/* connect to server */}
                 <Button text={'Register'} width={200} height={40}
                     onclick={async function () {
-                        if(!Validate.validateEmail(registerData.email)){
+                        if (!Validate.validateEmail(registerData.email)) {
                             console.log('Use valid email');
-                            return 
+                            return
                         }
-                        if(!Validate.validatePassword(registerData.password)){
-                            console.log('Use valid password');
-                            return   
+                        const passValidation = Validate.validatePassword(registerData.password)
+                        if (passValidation.result === false) {
+                            console.log(passValidation.rest);
+                            return
                         }
-                        if(!(registerData.password === registerData.passRepeat)){
+                        if (!(registerData.password === registerData.passRepeat)) {
                             console.log('Passwords not matching');
                             return
                         }

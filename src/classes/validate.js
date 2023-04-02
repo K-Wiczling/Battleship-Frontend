@@ -1,3 +1,4 @@
+import Outcome from "./helpers/outcome";
 import server from "./server";
 
 //Main validator for the GameMenager
@@ -20,13 +21,35 @@ class Validate {
     }
 
     static validateEmail = (email) => {
-        return true;
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
     }
 
     static validatePassword = (pass) => {
-        if (pass.length < 10)
-            return false;
-        return true;
+        const missingRequirements = [];
+        let isPassValid = true;
+
+        const chackSingleRequirement = (reg, msg) => {
+            if (!pass.match(reg)) {
+                missingRequirements.push(msg);
+                isPassValid = false;
+            }
+        }
+        // Check for pass requirements
+        chackSingleRequirement(/[a-z]/, 'lowercase letter');
+        chackSingleRequirement(/[A-Z]/, 'capital letters');
+        chackSingleRequirement(/\d/, 'digits');
+        chackSingleRequirement(/[@$!%*?&]/, 'special character');
+        
+        // Check for lenght
+        if (pass.length < 10) {
+            missingRequirements.push('Pasword is to short')
+            isPassValid = false;
+
+        }
+
+        const result = Outcome.buildOutcome(isPassValid, 'validation password', missingRequirements)
+        return result;
     }
 }
 export default Validate;
