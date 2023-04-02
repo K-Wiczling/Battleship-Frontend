@@ -14,6 +14,7 @@ import Button from "../../Atoms/Button/Button";
 
 // Classes
 import server from "../../../classes/server";
+import Validate from "../../../classes/validate";
 
 const mapStateToProps = (state) => {
     return {
@@ -56,13 +57,26 @@ const Register = (props) => {
                 }} />
 
                 <label ><b>Repeat Password</b></label>
-                <input type="password" minlength="10" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
+                <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
                 }} />
 
                 {/* connect to server */}
                 <Button text={'Register'} width={200} height={40}
                     onclick={async function () {
+                        if(!Validate.validateEmail(registerData.email)){
+                            console.log('Use valid email');
+                            return 
+                        }
+                        if(!Validate.validatePassword(registerData.password)){
+                            console.log('Use valid password');
+                            return   
+                        }
+                        if(!(registerData.password === registerData.passRepeat)){
+                            console.log('Passwords not matching');
+                            return
+                        }
+
                         try {
                             const result = await server.send(registerData, 'register');
                             console.log(result);

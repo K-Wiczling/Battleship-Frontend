@@ -14,6 +14,7 @@ import Button from "../../Atoms/Button/Button";
 
 // Classes
 import server from "../../../classes/server";
+import Validate from "../../../classes/validate";
 
 const mapStateToProps = (state) => {
     return {
@@ -49,6 +50,15 @@ const Login = (props) => {
 
                 <Button text={'Login'} width={200} height={40} 
                 onclick={ async function(){
+                    if(!Validate.validateEmail(loginData.email)){
+                        console.log('Use valid email');
+                        return 
+                    }
+                    if(!Validate.validatePassword(loginData.password)){
+                        console.log('Use valid password');
+                        return   
+                    }
+
                     try {
                         const result = await server.send(loginData, 'login');
                         console.log(result);

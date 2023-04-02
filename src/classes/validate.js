@@ -3,7 +3,7 @@ import server from "./server";
 //Main validator for the GameMenager
 class Validate {
     params = server.Params;
-    constructor () {
+    constructor() {
         this.range = this.params.clasicBoard.length - 1;
         this.player = this.params.players;
     }
@@ -17,6 +17,16 @@ class Validate {
             }
         }
         return false;
+    }
+
+    static validateEmail = (email) => {
+        return true;
+    }
+
+    static validatePassword = (pass) => {
+        if (pass.length < 10)
+            return false;
+        return true;
     }
 }
 export default Validate;
