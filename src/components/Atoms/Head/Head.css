@@ -1,5 +1,5 @@
 h2 {
-    font-size:70px;
+    font-size:50px;
     margin: 0;
     color: var(--darkest-color);
 }
@@ -8,6 +8,6 @@ h2 {
     border-bottom: 1px solid var(--darkest-color);
     width: 100vw;
     height: var(--top-space);
-    position: fixed;
+    /* position: fixed; */
     top: 0;
 }
