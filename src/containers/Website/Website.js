@@ -32,7 +32,7 @@ class Website extends Component {
     return (
       <>
         <Navbar />
-        <Head text={'Battleship'} />
+        <Head text={'Battleship'}/>
 
         <PageContainer />
       </>
