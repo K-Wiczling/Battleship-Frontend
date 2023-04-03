@@ -14,14 +14,18 @@ To run the application locally,
 1. You need to install Node.js with version v16.17.0 or higher
  (If you do not have one visit node website: https://nodejs.dev/en/learn/how-to-install-nodejs/ ) 
 2. Clone this repository. 
-3. Clone that [Battleship Backend]( https://github.com/K-Wiczling/Battleship-Backend/blob/main/README.md) repository as well. And follow the instructuons there
-4. Open your console, go to the project folder and run command: npm install (This will install all dependencis)
-5. Affter all dependencis will be installed you can run command: npm start - this will automaticly start app and sholud open the browswer.
+3. Open your console, go to the repo folder and run command: npm install (This will install all dependencis)
+4. Affter all dependencis will be installed you can run command: npm start - this will automaticly start app and sholud open the browswer.
+
+5. Clone that [Battleship Backend]( https://github.com/K-Wiczling/Battleship-Backend/blob/main/README.md) repository as well. 
+6. Open second console go to the backend repo folder and run the same commands like in the 3, 4 step
+- npm install
+- npm start
 
 Both Forntend and Backend are separate entetis, and have to run at the same time, as well as the database.
 
 ## Database
-I will post DB structure here later, as well as sript to autoamticly build Postgress Databese.
+I will post DB structure here in the future, as well as sript to autoamticly build Postgress Databese.
 
 ## Credits
 
