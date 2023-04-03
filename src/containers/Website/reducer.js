@@ -1,4 +1,4 @@
-import { PAGE, REGISTER, HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, FORM_REQ } from "./constants";
+import { PAGE, REGISTER, HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, FORM_REQ, LOGIN_REQ } from "./constants";
 
 const initialPage = {
     page: HOME_PAGE,
@@ -29,6 +29,11 @@ export const registerPage = (state = intialregisterData, action = {}) => {
          })
     }
     if(action.type === FORM_REQ){
+        return Object.assign({}, state, { 
+            reqs: action.payload
+         })
+    }
+    if(action.type === LOGIN_REQ){
         return Object.assign({}, state, { 
             reqs: action.payload
          })

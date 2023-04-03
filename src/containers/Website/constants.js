@@ -1,6 +1,7 @@
 export const PAGE = 'WEBSITE/PAGE';
-export const REGISTER = 'WEBSITE/REGISTER'
-export const FORM_REQ  = 'WEBSITE/FORM_REQ'
+export const REGISTER = 'WEBSITE/REGISTER';
+export const FORM_REQ  = 'WEBSITE/FORM_REQ';
+export const LOGIN_REQ = 'WEBSITE/LOGIN_REQ';
 
 // Interaction
 export const LOGIN_PAGE = 'LOGIN_PAGE';

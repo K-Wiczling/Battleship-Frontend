@@ -24,26 +24,44 @@ class Validate {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
+    static sanitizePassword(password) {
+        // Remove any leading or trailing whitespace
+        const sanitizedPassword = password.trim();
+
+        // Remove any non-alphanumeric characters (except for some special characters)
+        const regex = /[^a-zA-Z0-9@$!%*?&-_]/g;
+        return sanitizedPassword.replace(regex, '');
+    }
+
+    static sanitizeEmail(email) {
+        // Remove any leading or trailing whitespace
+        const sanitizedEmail = email.trim();
+
+        // Remove any non-alphanumeric characters (except for some special characters)
+        const regex = /[^a-zA-Z0-9@._-]/g;
+        return sanitizedEmail.replace(regex, '');
+    }
 
     static validatePassword = (pass) => {
         const missingRequirements = [];
         let isPassValid = true;
 
+        // Check if given requirement is fulfilled
         const chackSingleRequirement = (reg, msg) => {
             if (!pass.match(reg)) {
                 missingRequirements.push(msg);
                 isPassValid = false;
             }
         }
-        // Check for pass requirements
-        chackSingleRequirement(/[a-z]/, {id:1 ,msg:'Use at leat one lowercase letter'});
-        chackSingleRequirement(/[A-Z]/,  {id:2 ,msg:'Use at leat one capital letters'});
-        chackSingleRequirement(/\d/,  {id:3 ,msg:'Use at leat one digit'});
-        chackSingleRequirement(/[@$!%*?&]/,  {id:4 ,msg:'Use at leat one special character'});
-        
+        // Run chackSingleRequirement() with all password requirments
+        chackSingleRequirement(/[a-z]/, { id: 1, msg: 'Use at leat one lowercase letter' });
+        chackSingleRequirement(/[A-Z]/, { id: 2, msg: 'Use at leat one capital letters' });
+        chackSingleRequirement(/\d/, { id: 3, msg: 'Use at leat one digit' });
+        chackSingleRequirement(/[@$!%*?&]/, { id: 4, msg: 'Use at leat one special character' });
+
         // Check for lenght
         if (pass.length < 10) {
-            missingRequirements.push({id:5 ,msg:'Pasword is to short, password has to be at least 10 characters long'})
+            missingRequirements.push({ id: 5, msg: 'Pasword is to short, password has to be at least 10 characters long' })
             isPassValid = false;
         }
 

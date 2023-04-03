@@ -63,7 +63,7 @@ const Register = (props) => {
                 <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
                 }}/>
-                <InputReq requirements={validationList}/>
+                <InputReq/>
 
                 {/* connect to server */}
                 <Button text={'Register'} width={200} height={40}
@@ -90,8 +90,14 @@ const Register = (props) => {
                         }
                         props.updateInputReqs(validationList);
                         validationList = [];
+
+                        
                         // Make api request if validation is succesfull
                         if(valid){
+                            // Sanitize input
+                            registerData.email = Validate.sanitizeEmail(registerData.email);
+                            registerData.password = Validate.sanitizePassword(registerData.password);
+                            
                             try {
                                 const result = await server.send(registerData, 'register');
                                 console.log(result);

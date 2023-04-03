@@ -6,7 +6,7 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { setPage } from "../../../containers/Website/actions";
+import { setPage, updatLoginRequirements } from "../../../containers/Website/actions";
 import { REGISTER_PAGE } from "../../../containers/Website/constants";
 
 // Components
@@ -15,6 +15,7 @@ import Button from "../../Atoms/Button/Button";
 // Classes
 import server from "../../../classes/server";
 import Validate from "../../../classes/validate";
+import InputReq from "../../Atoms/InputReq/InputReq";
 
 const mapStateToProps = (state) => {
     return {
@@ -23,7 +24,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToRegister: () => dispatch(setPage(REGISTER_PAGE)),
-
+        updatLoginRequirements: (validationList) => dispatch(updatLoginRequirements(validationList))
     }
 }
 
@@ -33,6 +34,7 @@ const Login = (props) => {
         email: 'test@mail.com',
         password: 'test123456789'
     };
+    let validationList = [];
     return (
         <div className="login">
             <div className="center former" action="none">
@@ -47,27 +49,44 @@ const Login = (props) => {
                 <input type="password" placeholder="Enter Password" name="pass" value={loginData.password} id="pass" required onChange={(e) => {
                     loginData.password = e.target.value;
                 }} />
-
+                <InputReq/>
                 <Button text={'Login'} width={200} height={40}
-                    onclick={async function () {
-                        if (!Validate.validateEmail(loginData.email)) {
-                            console.log('Use valid email');
-                            return
-                        }
-                        const passValidation = Validate.validatePassword(loginData.password)
-                        if (passValidation.result === false) {
-                            console.log(passValidation.rest);
-                            return
-                        }
+                
+                onclick={async function () {
+                    let valid = true;
 
+                    // Check Email
+                    if (!Validate.validateEmail(loginData.email)) {
+                        validationList.push({id:0 ,msg:'Use valid email ex. name@mail.com'});
+                        valid = false;
+                    }
+
+                    // Chack password
+                    const passValidation = Validate.validatePassword(loginData.password)
+                    if (passValidation.result === false) {
+                        validationList = validationList.concat(passValidation.rest);
+                        valid = false;
+                    }
+
+                    props.updatLoginRequirements(validationList);
+                    validationList = [];
+
+                    
+                    // Make api request if validation is succesfull
+                    if(valid){
+                        // Sanitize input
+                        loginData.email = Validate.sanitizeEmail(loginData.email);
+                        loginData.password = Validate.sanitizePassword(loginData.password);
+                        
                         try {
-                            const result = await server.send(loginData, 'login');
+                            const result = await server.send(loginData, 'register');
                             console.log(result);
                         }
                         catch (error) {
                             console.log(error);
                         }
-                    }} />
+                    }
+                }} />
 
                 <p>Don't have an account? </p>
                 <Button onclick={props.goToRegister} text={'Register'} width={200} height={30} />

@@ -1,4 +1,4 @@
-import { FORM_REQ, PAGE, REGISTER } from "./constants";
+import { FORM_REQ, LOGIN_REQ, PAGE, REGISTER } from "./constants";
 
 //Changeing page on wbsite
 export const setPage = (page) => ({
@@ -13,5 +13,10 @@ export const updateRegister = (registerInputData) => ({
 
 export const updatRequirementsList = (req) => ({
     type: FORM_REQ,
+    payload: req
+})
+
+export const updatLoginRequirements = (req) => ({
+    type: LOGIN_REQ,
     payload: req
 })
