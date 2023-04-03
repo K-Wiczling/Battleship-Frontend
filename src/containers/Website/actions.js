@@ -15,8 +15,3 @@ export const updatRequirementsList = (req) => ({
     type: FORM_REQ,
     payload: req
 })
-
-export const updatLoginRequirements = (req) => ({
-    type: LOGIN_REQ,
-    payload: req
-})

@@ -21,9 +21,26 @@ class Validate {
     }
 
     static validateEmail = (email) => {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(String(email).toLowerCase());
     }
+
+    static validateName = (name) => {
+        const nameRequirements = [];
+        let isNameValid = true;
+        const regex = /^[a-zA-Z\d]*$/;
+        if(!regex.test(name)){
+            isNameValid = false;
+            nameRequirements.push({id: 8, msg: 'Name: name can onaly contain Leters and numbers'});
+        }
+        if(name.length < 6){
+            isNameValid = false;
+            nameRequirements.push({id: 9, msg: 'Name: has to be at least 6 characters'});
+        }
+        const result = Outcome.buildOutcome(isNameValid, 'validation name', nameRequirements)
+        return result;
+    }
+
     static sanitizePassword(password) {
         // Remove any leading or trailing whitespace
         const sanitizedPassword = password.trim();
@@ -54,17 +71,18 @@ class Validate {
             }
         }
         // Run chackSingleRequirement() with all password requirments
-        chackSingleRequirement(/[a-z]/, { id: 1, msg: 'Use at leat one lowercase letter' });
-        chackSingleRequirement(/[A-Z]/, { id: 2, msg: 'Use at leat one capital letters' });
-        chackSingleRequirement(/\d/, { id: 3, msg: 'Use at leat one digit' });
-        chackSingleRequirement(/[@$!%*?&]/, { id: 4, msg: 'Use at leat one special character' });
+        chackSingleRequirement(/[a-z]/, { id: 1, msg: 'Password: Use at leat one lowercase letter' });
+        chackSingleRequirement(/[A-Z]/, { id: 2, msg: 'Password: Use at leat one capital letters' });
+        chackSingleRequirement(/\d/, { id: 3, msg: 'Password: Use at leat one digit' });
+        chackSingleRequirement(/[@$!%*?&]/, { id: 4, msg: 'Password: Use at leat one special character' });
 
         // Check for lenght
         if (pass.length < 10) {
-            missingRequirements.push({ id: 5, msg: 'Pasword is to short, password has to be at least 10 characters long' })
+            missingRequirements.push({ id: 5, msg: 'Password: is to short, password has to be at least 10 characters long' })
             isPassValid = false;
         }
 
+        // Create outcome object
         const result = Outcome.buildOutcome(isPassValid, 'validation password', missingRequirements)
         return result;
     }

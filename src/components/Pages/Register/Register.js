@@ -7,7 +7,7 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatRequirementsList } from "../../../containers/Website/actions";
-import { FORM_REQ, LOGIN_PAGE } from "../../../containers/Website/constants";
+import { LOGIN_PAGE } from "../../../containers/Website/constants";
 
 //Components
 import Button from "../../Atoms/Button/Button";
@@ -43,7 +43,6 @@ const Register = (props) => {
         <div className="register">
             <div className="center former">
                 <p>Create new account</p>
-
                 <label ><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" id="email" required onChange={(e) => {
                     registerData.email = e.target.value;
@@ -63,16 +62,24 @@ const Register = (props) => {
                 <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
                 }}/>
+
+                {/* Show list of the requirements to register account */}
                 <InputReq/>
 
                 {/* connect to server */}
                 <Button text={'Register'} width={200} height={40}
                     onclick={async function () {
                         let valid = true;
-
                         // Check Email
                         if (!Validate.validateEmail(registerData.email)) {
-                            validationList.push({id:0 ,msg:'Use valid email ex. name@mail.com'});
+                            validationList.push({id:0 ,msg:'Email: valid email ex. name@mail.com'});
+                            valid = false;
+                        }
+
+                        // Check Name
+                        const nameValidation = Validate.validateName(registerData.name)
+                        if (nameValidation.result === false) {
+                            validationList = validationList.concat(nameValidation.rest);
                             valid = false;
                         }
 
@@ -88,16 +95,18 @@ const Register = (props) => {
                             validationList.push({id:7 ,msg:'Passwords not matching, both passwords has to be the same'});
                             valid = false;
                         }
+
+                        // Upadate state with list of not fullfilled requirements
                         props.updateInputReqs(validationList);
                         validationList = [];
-
                         
                         // Make api request if validation is succesfull
                         if(valid){
                             // Sanitize input
                             registerData.email = Validate.sanitizeEmail(registerData.email);
                             registerData.password = Validate.sanitizePassword(registerData.password);
-                            
+
+                            // Api call
                             try {
                                 const result = await server.send(registerData, 'register');
                                 console.log(result);

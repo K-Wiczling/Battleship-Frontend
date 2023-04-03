@@ -33,10 +33,5 @@ export const registerPage = (state = intialregisterData, action = {}) => {
             reqs: action.payload
          })
     }
-    if(action.type === LOGIN_REQ){
-        return Object.assign({}, state, { 
-            reqs: action.payload
-         })
-    }
     return state;
 }
