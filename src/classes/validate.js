@@ -36,16 +36,15 @@ class Validate {
             }
         }
         // Check for pass requirements
-        chackSingleRequirement(/[a-z]/, 'lowercase letter');
-        chackSingleRequirement(/[A-Z]/, 'capital letters');
-        chackSingleRequirement(/\d/, 'digits');
-        chackSingleRequirement(/[@$!%*?&]/, 'special character');
+        chackSingleRequirement(/[a-z]/, {id:1 ,msg:'lowercase letter'});
+        chackSingleRequirement(/[A-Z]/,  {id:2 ,msg:'capital letters'});
+        chackSingleRequirement(/\d/,  {id:3 ,msg:'digits'});
+        chackSingleRequirement(/[@$!%*?&]/,  {id:4 ,msg:'special character'});
         
         // Check for lenght
         if (pass.length < 10) {
-            missingRequirements.push('Pasword is to short')
+            missingRequirements.push({id:5 ,msg:'Pasword is to short'})
             isPassValid = false;
-
         }
 
         const result = Outcome.buildOutcome(isPassValid, 'validation password', missingRequirements)
