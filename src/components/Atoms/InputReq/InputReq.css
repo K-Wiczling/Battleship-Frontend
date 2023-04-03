@@ -1,0 +1,7 @@
+.input-req{
+    width: var(--form-width);
+}
+
+li {
+    color: red;
+}

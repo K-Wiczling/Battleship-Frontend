@@ -6,11 +6,12 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { setPage } from "../../../containers/Website/actions";
-import { LOGIN_PAGE } from "../../../containers/Website/constants";
+import { setPage, updatRequirementsList } from "../../../containers/Website/actions";
+import { FORM_REQ, LOGIN_PAGE } from "../../../containers/Website/constants";
 
 //Components
 import Button from "../../Atoms/Button/Button";
+import InputReq from "../../Atoms/InputReq/InputReq";
 
 // Classes
 import server from "../../../classes/server";
@@ -23,6 +24,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
+        updateInputReqs: (validationList) => dispatch(updatRequirementsList(validationList))
     }
 }
 
@@ -35,6 +37,7 @@ const Register = (props) => {
         password: '',
         passRepeat: '',
     };
+    let validationList = [];
 
     return (
         <div className="register">
@@ -59,31 +62,43 @@ const Register = (props) => {
                 <label ><b>Repeat Password</b></label>
                 <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
-                }} />
+                }}/>
+                <InputReq requirements={validationList}/>
 
                 {/* connect to server */}
                 <Button text={'Register'} width={200} height={40}
                     onclick={async function () {
+                        let valid = true;
+
+                        // Check Email
                         if (!Validate.validateEmail(registerData.email)) {
-                            console.log('Use valid email');
-                            return
-                        }
-                        const passValidation = Validate.validatePassword(registerData.password)
-                        if (passValidation.result === false) {
-                            console.log(passValidation.rest);
-                            return
-                        }
-                        if (!(registerData.password === registerData.passRepeat)) {
-                            console.log('Passwords not matching');
-                            return
+                            validationList.push({id:0 ,msg:'Use valid email ex. name@mail.com'});
+                            valid = false;
                         }
 
-                        try {
-                            const result = await server.send(registerData, 'register');
-                            console.log(result);
+                        // Chack password
+                        const passValidation = Validate.validatePassword(registerData.password)
+                        if (passValidation.result === false) {
+                            validationList = validationList.concat(passValidation.rest);
+                            valid = false;
                         }
-                        catch (error) {
-                            console.log(error);
+
+                        // Check if both passwords are the same
+                        if (!(registerData.password === registerData.passRepeat)) {
+                            validationList.push({id:7 ,msg:'Passwords not matching, both passwords has to be the same'});
+                            valid = false;
+                        }
+                        props.updateInputReqs(validationList);
+                        validationList = [];
+                        // Make api request if validation is succesfull
+                        if(valid){
+                            try {
+                                const result = await server.send(registerData, 'register');
+                                console.log(result);
+                            }
+                            catch (error) {
+                                console.log(error);
+                            }
                         }
                     }} />
 

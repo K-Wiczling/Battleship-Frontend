@@ -9,6 +9,8 @@
   --darkest-color: #161853;
 
   --top-space: 80px;
+
+  --form-width: 500px;
 }
 html, body {
   overflow-y: hidden;

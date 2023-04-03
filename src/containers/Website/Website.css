@@ -1,3 +1,4 @@
+
 .website {
     height: 100vh;
     width: 100vw;
@@ -15,9 +16,9 @@
 }
 
 .former {
-    width: 500px;
+    width: var(--form-width);
     margin: auto;
-    margin-top: 30vh;
+    margin-top: 5vh;
 }
 input {
     border: 1px solid black;
