@@ -5,7 +5,8 @@ To run this project You need:
 
 1. Node v16.17.0
 2. npm 8.18.0 
-3. Postgress (Or other sql database, but it would requrie some changes in DB credentials) 
+3. Postgress (Or other sql database, but it would requrie some changes in DB credentials)
+4. Server side of the app [Battleship Backend]( https://github.com/K-Wiczling/Battleship-Backend/blob/main/README.md) for the app.
 
 ## Getting Started
 
@@ -13,8 +14,11 @@ To run the application locally,
 1. You need to install Node.js with version v16.17.0 or higher
  (If you do not have one visit node website: https://nodejs.dev/en/learn/how-to-install-nodejs/ ) 
 2. Clone this repository. 
-3. Clone that [Battleship Backend]( https://github.com/K-Wiczling/Battleship-Backend/blob/main/README.md) repository as well.
+3. Clone that [Battleship Backend]( https://github.com/K-Wiczling/Battleship-Backend/blob/main/README.md) repository as well. And follow the instructuons there
 4. Open your console, go to the project folder and run command: npm install (This will install all dependencis)
+5. Affter all dependencis will be installed you can run command: npm start - this will automaticly start app and sholud open the browswer.
+
+Both Forntend and Backend are separate entetis, and have to run at the same time, as well as the database.
 
 ## Database
 I will post DB structure here later, as well as sript to autoamticly build Postgress Databese.
@@ -23,7 +27,7 @@ I will post DB structure here later, as well as sript to autoamticly build Postg
 
 This application was created by [Karol Wiczling](https://github.com/K-Wiczling).
 You can visit my website for Dev log of this project [kwiczling.com](http://kwiczling.com/)
- Feel free to use and modify the code for your own purposes.
+Feel free to use and modify the code for your own purposes.
 
 ## License
 
