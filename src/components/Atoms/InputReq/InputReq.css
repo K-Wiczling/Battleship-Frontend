@@ -2,6 +2,11 @@
     width: var(--form-width);
 }
 
-li {
+.input-req li {
     color: red;
+    padding-bottom: 1px;
+}
+
+.input-req ul {
+    padding: 5px;
 }

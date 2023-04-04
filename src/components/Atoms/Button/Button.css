@@ -7,7 +7,7 @@
     margin: 0.8rem 0 0 0;
     transition: height 0.3s, width 0.4s, border-radius 0.3s, padding 0.4s;
 }
-.button:hover {
+.button-component:hover {
     color: var(--medium-color);
     font-weight: bold;
     border-radius: 10px 10px 60px 25px;

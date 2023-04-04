@@ -17,12 +17,16 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-//Modal component
-const InputReq = ({requirements}) => {
+// Display requirements for input to be submited
+const InputReq = ({ requirements }) => {
 
     return (
         <div className="input-req">
-            <ul>{requirements.map(singleReq => <li key={singleReq.id}> {singleReq.msg} </li>)}</ul>
+            <ul>{requirements.map((singleReq) =>
+                <li key={singleReq.id}>
+                    {singleReq.msg}
+                </li>)}
+            </ul>
         </div>
 
     );

@@ -48,7 +48,7 @@ class Game extends Component {
     render() {
         return (
             <>
-                <Head text="Battleship" />
+                <Head />
                 <div className="Game">
                     <PopUpMenu
                         toggle={this.props.toggleMenu}
