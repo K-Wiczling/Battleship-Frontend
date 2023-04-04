@@ -1,5 +1,5 @@
 //css
-import "./PopUpMenu.css"
+import "./InGameMenu.css"
 
 //React
 import React from 'react';
@@ -8,6 +8,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { MODE_SPLASH_SCREEN } from "../../../containers/App/constants";
 import { changeModes } from "../../../containers/App/actions"
+import { toggleInGameMenu } from "../../../containers/Game/game-actions";
 
 //Components
 import Button from '../Button/Button';
@@ -21,28 +22,41 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        toggleMenu: () => dispatch(toggleInGameMenu()),
         leaveTheGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN))
     }
 }
 
 //Pop up menu to display in the game
-const PopUpMenu = (props) => {
+const InGameMenu = (props) => {
 
     return (
-        <div className="pop-up-menu">
-            <div className="menu-icon" onClick={() => { props.toggle(!props.menuVisibility) }}>
+        <div className="in-game-menu">
+
+            <div className="in-game-menu-icon"
+                onClick={() => {
+                    props.toggle()
+                }}>
                 <img className="rot" src="arrow.png"></img>
             </div>
+
             {
                 (() => {
                     if (props.menuVisibility) {
 
                         return (
-                            <div className="menu-content grid-center" >
+                            <div className="in-game-menu-content grid-center" >
                                 <h2>Menu</h2>
-                                <Button text="Settings" onclick={() => { }} width={350} height={70} />
-                                <Button text="Exit"
-                                    width={350} height={70}
+                                <Button
+                                    text="Settings"
+                                    width={350}
+                                    height={70}
+                                    onclick={() => { }} />
+
+                                <Button
+                                    text="Exit"
+                                    width={350} 
+                                    height={70}
                                     onclick={() => {
                                         props.toggle(!props.menuVisibility)
                                         gm.leaveTheGame();
@@ -56,4 +70,4 @@ const PopUpMenu = (props) => {
         </div>
     );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PopUpMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(InGameMenu);

@@ -56,14 +56,15 @@ export const changeGameConsole = (state=initialGameConsoleState, action={}) =>{
     }
 }
 
-//Manipulations on the player and enemy board
+// In game manu
 const  initialInGameMenuState = {
     menuVisibility: false,
 }
+
 export const inGameMenu = (state=initialInGameMenuState, action={}) => {
     switch (action.type) {
         case TOGGLE_IN_GAME_MENU: 
-            return Object.assign({}, state, { menuVisibility: action.payload })
+            return Object.assign({}, state, { menuVisibility: !state.menuVisibility })
 
         default:
             return state

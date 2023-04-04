@@ -3,20 +3,18 @@ import "./Game.css"
 //React stuff
 import React, { Component } from 'react';
 
+//Redux
+import { connect } from "react-redux"
+import { fillBothBoards } from "./game-actions";
+
 //Components
 import Draw from '../../components/GameParts/Draw/Draw';
 import GameConsole from "../../components/GameParts/GameConsole/GameConsole"
+import Head from "../../components/Atoms/Head/Head";
+import InGameMenu from "../../components/Atoms/InGameMenu/InGameMenu";
 
 //Classes
 import gm from "../../classes/GameMenager/gameMenager"
-
-//Redux
-import { connect } from "react-redux"
-import {
-    fillBothBoards, toggleInGameMenu
-} from "./game-actions";
-import PopUpMenu from "../../components/Atoms/PopUpMenu/PopUpMenu";
-import Head from "../../components/Atoms/Head/Head";
 
 const mapStateToProps = (state) => {
     return {
@@ -30,7 +28,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleMenu: (toggle) => dispatch(toggleInGameMenu(toggle)),
         setupBoards: () => dispatch(fillBothBoards(gm.player.board, gm.enemy.board))
     }
 }
@@ -50,7 +47,7 @@ class Game extends Component {
             <>
                 <Head />
                 <div className="Game">
-                    <PopUpMenu
+                    <InGameMenu
                         toggle={this.props.toggleMenu}
                         menuVisibility={this.props.menuVisibility}
                     />

@@ -48,8 +48,7 @@ export const fillBothBoards = (player, enemy) => ({
     }
 });
 
-//Setpup borads with information from the GameMenager
-export const toggleInGameMenu = (toggle) => ({
+// Toggle the in game menu
+export const toggleInGameMenu = () => ({
     type: TOGGLE_IN_GAME_MENU,
-    payload: toggle
 });

@@ -1,8 +1,8 @@
-.pop-up-menu {
+.in-game-menu {
     position: fixed;
     color: var(--light-color);
 }
-.menu-icon {
+.in-game-menu-icon {
     position: fixed; 
     left: 0px;
     top: 0px;
@@ -12,7 +12,7 @@
     height: var(--top-space);
 }
 
-.menu-content {
+.in-game-menu-content {
     position: fixed; 
     left: 0px;
     top: 0px;

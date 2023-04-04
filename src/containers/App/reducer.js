@@ -1,6 +1,7 @@
 import server from "../../classes/server";
 import { 
     CHANGE_MODE, 
+    MODE_MAIN_MENU, 
     MODE_WEBSITE, 
     SETUP_GAME_AI_DIFFICULTY, 
     SETUP_GAME_BOARD_SIZE, 
@@ -11,7 +12,7 @@ import {
 } from "./constants";
 
 const  initialModeState = {
-    mode: MODE_WEBSITE,
+    mode: MODE_MAIN_MENU,
 }
 //Change game state
 export const changeMode = (state=initialModeState, action={}) => {

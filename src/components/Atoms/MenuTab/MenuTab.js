@@ -1,10 +1,10 @@
-//css
+// css
 import "./MenuTab.css"
 
-//React
+// React
 import React from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 import { 
     setupEnemyType,
@@ -28,12 +28,11 @@ const mapDispatchToProps = (dispatch) => {
         changeRandomShips : (isRandom) => dispatch(setupRandomShips(isRandom)),
     }
 }
-//Single tab for use iside the menu
+//Single tab for use iside the lobby
 const  MenuTab = (props) => {
   
     return (
         <div className="menu-tab">
-
             {props.children}
         </div>
     );
