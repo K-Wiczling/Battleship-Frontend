@@ -29,24 +29,24 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 //Represents single tile object grphically
-const  Tile = (props) => {
+const  Tile = ({tile, tileType, ...props}) => {
   return (
         <div 
-          className='tile' 
+          className={'tile ' + tileType} 
           onClick={ () => {
 
             //Processing the click iside the GameMenager
-            let out = gm.clickedBoard(props.tile.whichBoard, props.tile.position);
+            let out = gm.clickedBoard(tile.whichBoard, tile.position);
             
             //Player board click
-            if (props.tile.whichBoard === server.Params.players.player) {
+            if (tile.whichBoard === server.Params.players.player) {
               if (out.result !== false)
-                props.playerTileClick(props.tile.position)
+                props.playerTileClick(tile.position)
 
             //Enemy board click  
             } else {
               if (out.result !== false)
-                props.enemyTileClick(props.tile.position)
+                props.enemyTileClick(tile.position)
             }
 
             //Send message to the GameConsole

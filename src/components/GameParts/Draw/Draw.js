@@ -1,18 +1,18 @@
-//css
+// css
 import "./Draw.css"
 
-//React stuff
+// React stuff
 import React from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 
-//Components
+// Components
 import Tile from '../Tile/Tile';
+import EmptyTile from "../Tile/EmptyTile";
 
-//classes
+// classes
 import Point from '../../../classes/helpers/point';
-import EmptyTile from "../EmptyTile/EmptyTile";
 import server from "../../../classes/server";
 
 
@@ -22,10 +22,13 @@ const mapStateToProps = (state) => {
     enemyBoard: state.changeBoard.enemyBoard
   }
 }
+
+// Draw single baord on the screen
 const  Draw = (props) => {  
-  //Get the board
+  // Get the board
   let board = props.whichBoard === server.Params.players.player ? props.playerBoard : props.enemyBoard;
-  //Content of the single tile
+  
+  // Content of the single tile
   let insert = "";
 
   return (
@@ -60,7 +63,7 @@ const  Draw = (props) => {
 
                    // ---> for the rest tile uses Tile component 
                   } else {
-                    //Choose style class for the tile based on the tileState value
+                    // Choose style class for the tile based on the tileState value
                     const ts = server.Params.tileState;
                     switch (board[i][j].tileState) {
                       case ts.empty: {
@@ -72,28 +75,28 @@ const  Draw = (props) => {
                       }
                       case ts.hit: {
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ () =>{}} >
+                          <Tile key={key} tile={tileAtributes} >
                             <span>X</span>
                           </Tile>
                         )
                       }
                       case ts.hitted: {
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={  () =>{}} className="tile">
+                          <Tile key={key} tile={tileAtributes} tileType="tile">
                             <span>X</span>
                           </Tile>
                         )
                       }
                       case ts.ship: {
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} tileType="ship-tile">
                             <span>#</span>
                           </Tile>
                         )
                       }
                       case ts.notAllowed: {
                         return (
-                          <Tile key={key} tile={tileAtributes} onClick={ props.onTileClick} className="tile">
+                          <Tile key={key} tile={tileAtributes} tileType="tile">
                             <span>-</span>
                           </Tile>
                         )

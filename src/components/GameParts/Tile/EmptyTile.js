@@ -1,14 +1,14 @@
-//css
+// css
 import "./Tile.css"
 
-//Recat
+// Recat
 import React from 'react';
 
-//Component for empty tile
-const  EmptyTile = (props) => {
+// Empty tile component
+const  EmptyTile = ({children}) => {
   return (
         <div className='tile EmptyTile' >
-            {props.children}
+            {children}
         </div>
   );
 }

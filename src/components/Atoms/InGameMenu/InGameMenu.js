@@ -35,9 +35,9 @@ const InGameMenu = (props) => {
 
             <div className="in-game-menu-icon"
                 onClick={() => {
-                    props.toggle()
+                    props.toggleMenu()
                 }}>
-                <img className="rot" src="arrow.png"></img>
+                <img className="hamburger-icon" src="hamburger.png"></img>
             </div>
 
             {

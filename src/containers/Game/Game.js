@@ -48,7 +48,6 @@ class Game extends Component {
                 <Head />
                 <div className="Game">
                     <InGameMenu
-                        toggle={this.props.toggleMenu}
                         menuVisibility={this.props.menuVisibility}
                     />
 
