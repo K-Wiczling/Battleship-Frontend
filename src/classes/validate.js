@@ -1,13 +1,15 @@
 import Outcome from "./helpers/outcome";
 import server from "./server";
 
-//Main validator for the GameMenager
+// Frontend Validation 
 class Validate {
     params = server.Params;
     constructor() {
         this.range = this.params.clasicBoard.length - 1;
         this.player = this.params.players;
     }
+
+    // GAME VALIDATORS
 
     //Valide if click is inside the boudries of the Clasic board
     validateBoardClick = (whichBoard, position, boardSize) => {
@@ -20,24 +22,40 @@ class Validate {
         return false;
     }
 
+    // WEBSITE FORM VALIDATORS & SANITIZERS
+    
     static validateEmail = (email) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(String(email).toLowerCase());
     }
 
     static validateName = (name) => {
-        const nameRequirements = [];
+        const missingRequirements = [];
         let isNameValid = true;
+
+        // Allow only Letters and Numbers
         const regex = /^[a-zA-Z\d]*$/;
+        
+        // Check name for regex
         if(!regex.test(name)){
             isNameValid = false;
-            nameRequirements.push({id: 8, msg: 'Name: name can onaly contain Leters and numbers'});
+            missingRequirements.push({
+                id: 8, 
+                msg: 'Name: name can onaly contain Leters and numbers'
+            });
         }
+        
+        // Check if name is proper lenght 
         if(name.length < 6){
             isNameValid = false;
-            nameRequirements.push({id: 9, msg: 'Name: has to be at least 6 characters'});
+            missingRequirements.push({
+                id: 9, 
+                msg: 'Name: has to be at least 6 characters'
+            });
         }
-        const result = Outcome.buildOutcome(isNameValid, 'validation name', nameRequirements)
+        
+        // Retrun Outcom object 
+        const result = Outcome.buildOutcome(isNameValid, 'validation name', missingRequirements)
         return result;
     }
 
@@ -82,7 +100,7 @@ class Validate {
             isPassValid = false;
         }
 
-        // Create outcome object
+        // Return outcome object
         const result = Outcome.buildOutcome(isPassValid, 'validation password', missingRequirements)
         return result;
     }

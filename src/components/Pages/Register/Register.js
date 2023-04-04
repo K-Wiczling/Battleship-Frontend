@@ -1,4 +1,4 @@
-//css
+//CSS
 import "./Register.css"
 
 //React

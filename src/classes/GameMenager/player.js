@@ -1,11 +1,14 @@
+// Imports
 import Tile from "./tile";
 import server from "../server";
 import Point from "../helpers/point";
 import Ship from "./ship"
 import Outcome from '../helpers/outcome'
 
+// Holds information about player in the game 
 class Player {
-    //Sortcuts for player class only use
+
+    // Sortcuts for player class only use
     params = server.Params;
     diag = "diagonal";
     str = "streight";
@@ -20,35 +23,35 @@ class Player {
         this.currentShipSize = 0;
         this.insideMesseges = [];
     }
-    //Setup how much ships every sizes player should have
+    // Setup how much ships every sizes player should have
     shipsSetup = (fleetType)  => { 
         switch (fleetType) {
             case this.params.fleetType.clasic: {
                 this.ships = [
-                    new Ship(2, 4), //Ship size 2
-                    new Ship(3,  3),  //Ship size 3
-                    new Ship(4, 2), //Ship size 4
-                    new Ship(5, 1) //Ship size 5
+                    new Ship(2, 4), // Ship size 2
+                    new Ship(3,  3),  // Ship size 3
+                    new Ship(4, 2), // Ship size 4
+                    new Ship(5, 1) // Ship size 5
                 ];
                 break;
             }
 
             case this.params.fleetType.Long:{
                 this.ships = [
-                    new Ship(2, 2), //Ship size 2
-                    new Ship(3,  3), //Ship size 3
-                    new Ship(4, 3), //Ship size 4
-                    new Ship(5, 2) //Ship size 5
+                    new Ship(2, 2), // Ship size 2
+                    new Ship(3,  3), // Ship size 3
+                    new Ship(4, 3), // Ship size 4
+                    new Ship(5, 2) // Ship size 5
                 ];
                 break;
             }
             
             case this.params.fleetType.Short:{
                 this.ships = [
-                    new Ship(2, 8), //Ship size 2
-                    new Ship(3,  4), //Ship size 3
-                    new Ship(4, 4), //Ship size 4
-                    new Ship(5, 1) //Ship size 5
+                    new Ship(2, 8), // Ship size 2
+                    new Ship(3,  4), // Ship size 3
+                    new Ship(4, 4), // Ship size 4
+                    new Ship(5, 1) // Ship size 5
                 ];
                 break;
             }
@@ -59,7 +62,7 @@ class Player {
        
     }
 
-    //Fill the player board with tile classes
+    // Fill the player board with tile classes
     setupBoard = (boardSize) => {
         switch (boardSize) {
             case this.params.boardSize.clasic:{
@@ -86,7 +89,8 @@ class Player {
         }
     
     }
-    //Change state of the single tile
+
+    // Change state of the single tile
     changeTile = (position, newTileState) => {
         for (let state in this.params.tileState) {
             if (state === newTileState) {
@@ -96,7 +100,8 @@ class Player {
         }
         return false;
     }
-    //
+
+    // Runs every time enemy shoot to check if enamy hit something
     getShoot = (whichBoard, position) => {
         if (whichBoard === this.name) {
             this.changeTile(position, this.paramstileState.hit);
@@ -106,10 +111,11 @@ class Player {
         }           
 
     }
-    //When setup mode is active set value of the tile depending on the current state
+
+    // When setup mode is active set value of the tile depending on the current state
     setTile = (whichBoard, position) => {
         if (whichBoard === this.name) {
-            //Default click is not allowed
+            // Default click is not allowed
             let set = '[Not allowed] at';
 
             if (this.board[position.x][position.y].tileState === this.params.tileState.ship ){
@@ -121,11 +127,11 @@ class Player {
                 this.setShip(position);
             }
             
-            //Ship put on the board successfuly, and board is upadated with not allowed states
+            // Ship put on the board successfuly, and board is upadated with not allowed states
             this.updateNotAllowed(position);
             this.deepCheck();
 
-            //Prepoare message to later be shown in the GameConsole
+            // Prepoare message to later be shown in the GameConsole
             let out = Outcome.buildOutcome(true, `Ship is ${set} the position [${this.params.abc[position.x]}${position.y}]`)
            
             return out;
@@ -135,6 +141,9 @@ class Player {
         }
 
     }
+
+    // In progress
+    // Chacking if placeing a ship on given positon is valid move
     recursiveCheck = (x , y, board, index) => {
         if (board[x, y] === this.params.tileState.empty){
             return 0;
@@ -160,7 +169,7 @@ class Player {
         return 0;
         // this.board[tile.point.x][tile.point.y].tileState = this.params.tileState.notAllowed;
 }   
-    //Checking if ships are put correctly on the board
+    // Checking if ships are put correctly on the board
     deepCheck = () => {
         let tmpBoard = structuredClone(this.board)
         for (let row of this.board) {
@@ -170,7 +179,8 @@ class Player {
             }
         }
     }
-    //Allowing ships to be set on the board
+
+    // Allowing ships to be set on the board
     chcekIfPutAllowed = (position) => {
         let info = "";
         let x = position.x;
@@ -188,7 +198,7 @@ class Player {
             return false;
         }
 
-        //Zero depth
+        // Zero depth
         if (this.board[x][y].tileState === this.params.tileState.empty) {
             //first depth
             let itterated = true;
@@ -198,7 +208,7 @@ class Player {
                     itterated = false;
             });
             
-            //Check if diagonals are clear
+            // Check if diagonals are clear
             if (itterated) {
                 itterated = true;
                 this.iterateAround(position, this.str, (point) => {
@@ -206,16 +216,14 @@ class Player {
                         itterated = false;
                 });
 
-                //If there are no continuity
+                // If there are no continuity
                 if (itterated) {
                     this.currentShipSize = 1;
-                    // console.log("not contiunity");
                     let out = Outcome.buildOutcome(true, "This is the first ship tile in row or column");
                     this.insideMesseges.push(out);
                     return out.result;
-                //If continuity exist
+                // If continuity exist
                 } else {
-                    // console.log("continuity");
                     if (this.currentShipSize < this.biggestShip()) {
                         this.currentShipSize++;
 
@@ -245,7 +253,8 @@ class Player {
 
 
     }
-    //Itarate throught the board to update if all the not allowed points
+
+    // Itarate throught the board to update if all the not allowed points
     updateNotAllowed = (position) => {
         for (let row of this.board) {
             for (let tile of row) {
@@ -259,31 +268,34 @@ class Player {
         return true;
     }
 
-    //Simple tasks methods
+    // Simple tasks methods
     setShip = (position) => {
         this.changeTile(position, this.params.tileState.ship);
     }
+
+    // Remove ship form the board
     unsetShip = (position) => {
         this.changeTile(position, this.params.tileState.empty);
         this.iterateAround(position, this.diag, (point) => {
             this.board[point.x][point.y].tileState = this.params.tileState.empty;
         });
     }
-    //Itarate around given point on 
-    //All 4 diagonals 
-    //All 4 streights
+
+    // Itarate around given point on 
+    // All 4 diagonals 
+    // All 4 streights
     iterateAround = (point, axies, funk) => {
         const x = point.x;
         const y = point.y;
 
-        //First depth diagonal points
+        // First depth diagonal points
         const  diagonals = [
             new Point(x+1, y+1),
             new Point(x+1, y-1),
             new Point(x-1, y+1),
             new Point(x-1, y-1),
         ];
-        //First depth streight points
+        // First depth streight points
         const  streights = [
             new Point(x, y+1),
             new Point(x, y-1),
@@ -292,7 +304,7 @@ class Player {
         ];
         let direction; 
 
-        //Set direction of iteration
+        // Set direction of iteration
         if (axies === this.diag) {
             direction = diagonals
         } else if (axies === this.str) {
@@ -302,14 +314,15 @@ class Player {
             return false;
         }
 
-        //Iterating al 4 points
+        // Iterating al 4 points
         for (let point of direction) {
             if (this.ifPointOnBoard(point)) 
                 funk(point)
         }
         return true;
     }
-    //Check if given point is inside the game board
+
+    // Check if given point is inside the game board
     ifPointOnBoard = (point) => {
         const ifBoard = (point.x <= (this.board.length - 1) && point.x >= 1) && (point.y <= (this.board.length - 1) && point.y >= 1);
         return ifBoard

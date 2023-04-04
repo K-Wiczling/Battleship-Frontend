@@ -1,3 +1,4 @@
+// Temporary stored in frontend later fetch from the server
 const globalParam = {
 
     //All states that game can by in 
@@ -121,23 +122,26 @@ const globalParam = {
     }
 
 }
-//Singletone Class
-//Hold all the information required for the game to be setup correctly
+// Singletone Class
+// Hold all the information required for the game to be setup correctly
 class Server {
     constructor() {
+        // Singleton
         if (Server.exists)
             return Server.instance;
 
         this.Params = this.fetchGlobalParams();
         this.serverURL = 'http://localhost:3001/';
 
+        // Singleton
         return this;
     }
-    //In the future method will fetch from API 
+    // In the future method will fetch from API 
     fetchGlobalParams = () => {
         return structuredClone(globalParam);
     }
 
+    // Make Post API request to the server
     async send(dataToSend, path) {
         try {
             const response = await fetch(this.serverURL + path, {
@@ -154,6 +158,7 @@ class Server {
         }
     }
 }
+// Return created object rather then a class
 const server = new Server();
 export default server;
 
