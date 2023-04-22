@@ -1,10 +1,10 @@
-//css
+// Css
 import "./InputReq.css"
 
-//React
+// React
 import React from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {

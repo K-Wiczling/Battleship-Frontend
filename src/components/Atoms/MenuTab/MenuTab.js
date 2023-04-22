@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
         changeRandomShips : (isRandom) => dispatch(setupRandomShips(isRandom)),
     }
 }
-//Single tab for use iside the lobby
+// Single tab for use iside the lobby
 const  MenuTab = (props) => {
   
     return (

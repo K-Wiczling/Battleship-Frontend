@@ -1,10 +1,10 @@
-//css
+// Css
 import "./Button.css"
 
-//React
+// React
 import React from 'react';
 
-//Simple Button Component
+// Simple Button Component
 const Button = ({ 
     text='Default Click?', 
     onclick, 

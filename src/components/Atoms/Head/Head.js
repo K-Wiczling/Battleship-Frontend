@@ -1,10 +1,10 @@
-//css
+// Css
 import "./Head.css"
 
-//React
+// React
 import React from 'react';
 
-//Header wrapper component 
+// Header wrapper component 
 const Head = ({
     text = 'Battleship',
 }) => {

@@ -1,10 +1,10 @@
-//css
+// Css
 import "./Modal.css"
 
-//React
+// React
 import React from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-//Modal component
+// Modal component
 const Modal = (props) => {
     return (
         <div className="modal" >

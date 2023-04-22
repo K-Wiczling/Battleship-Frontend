@@ -1,16 +1,16 @@
-//css
+// Css
 import "./InGameMenu.css"
 
-//React
+// React
 import React from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 import { MODE_SPLASH_SCREEN } from "../../../containers/App/constants";
 import { changeModes } from "../../../containers/App/actions"
 import { toggleInGameMenu } from "../../../containers/Game/game-actions";
 
-//Components
+// Components
 import Button from '../Button/Button';
 import gm from "../../../classes/GameMenager/gameMenager";
 
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-//Pop up menu to display in the game
+// Pop up menu to display in the game
 const InGameMenu = (props) => {
 
     return (
