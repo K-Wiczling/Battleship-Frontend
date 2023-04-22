@@ -1,4 +1,4 @@
-//Class to store position of the click
+// Class to store position of the click
 class Point {
     constructor (x, y) {
       this.x = x;

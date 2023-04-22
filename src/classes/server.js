@@ -1,26 +1,26 @@
 // Temporary stored in frontend later fetch from the server
 const globalParam = {
 
-    //All states that game can by in 
+    // All states that game can by in 
     modes: {
         splash: "mode-splash",
         menu: "mode-menu",
         game: "mode-game"
     },
 
-    //standar nameing for player and enemy
+    // Standar nameing for player and enemy
     players: {
         player: "player",
         enemy: "enemy"
     },
 
-    //Posible enemy types
+    // Posible enemy types
     enemyTpes: {
         AI: 'enemyTypeAI',
         Multi: 'enemyTypeMulti'
     },
 
-    //AI Difficulty levels
+    // AI Difficulty levels
     aiDifficulty: {
         none: 'aiDifficultyNone', //Multiplayer
         easy: 'aiDifficultyEasy',
@@ -28,20 +28,21 @@ const globalParam = {
         hard: 'aiDifficultyHard',
     },
 
-    //What kind of fleet player want to play with
+    // What kind of fleet player want to play with
     fleetType: {
         clasic: 'fleetTypeClasic',
         Long: 'fleetTypeLong',
         Short: 'fleetTypeShort'
     },
-    //Board sizes
+
+    // Board sizes
     boardSize: {
         clasic: 'boardSizeClasic-10x10',
         small: 'boardSizeSmall-5x5',
         big: 'boardSizeBig-15x15',
     },
 
-    //All posible states that Tile can be at
+    // All posible states that Tile can be at
     tileState: {
         hit: "hit",
         empty: "empty",
@@ -64,7 +65,7 @@ const globalParam = {
         ['I', '', '', '', '', '', '', '', '', '', ''],
         ['J', '', '', '', '', '', '', '', '', '', ''],
     ],
-    // small 5x5 game field for drawing
+    // Small 5x5 game field for drawing
     smallBoard: [
         ['x', 1, 2, 3, 4, 5],
         ['A', '', '', '', '', ''],
@@ -74,7 +75,7 @@ const globalParam = {
         ['E', '', '', '', '', ''],
 
     ],
-    // big 15x15 game field for drawing
+    // Big 15x15 game field for drawing
     bigBoard: [
         ['x', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         ['A', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
@@ -93,10 +94,10 @@ const globalParam = {
         ['N', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
         ['O', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
     ],
-    //Transition table to change the Position from (x,y) to ([letter][nuber]) exaple [A1]
+    // Transition table to change the Position from (x,y) to ([letter][nuber]) exaple [A1]
     abc: ["X", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", 'K', 'L', 'M', 'N', 'O'],
 
-    //Standard game states 
+    // Standard game states 
     gameState: {
         pre: "pre",
         setup: "setup",
@@ -104,7 +105,7 @@ const globalParam = {
         end: "end"
     },
 
-    //Type of console messeges 
+    // Type of console messeges 
     gameConsoleMessageTypes: {
         info: 'consoleTypeInfo',
         warning: 'consoleTypeWarning',
@@ -113,7 +114,7 @@ const globalParam = {
         player: 'consoleTypePlayer'
     },
 
-    //Type of console sender 
+    // Type of console sender 
     gameConsoleSenderType: {
         game: 'Game',
         system: 'System',

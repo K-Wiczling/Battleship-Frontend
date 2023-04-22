@@ -11,7 +11,7 @@ class Validate {
 
     // GAME VALIDATORS
 
-    //Valide if click is inside the boudries of the Clasic board
+    // Valide if click is inside the boudries of the Clasic board
     validateBoardClick = (whichBoard, position, boardSize) => {
         if (whichBoard === this.player.enemy || this.player.player) {
             if (position.x >= 1 && position.x <= boardSize) {

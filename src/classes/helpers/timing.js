@@ -1,5 +1,5 @@
 class Timing {
-    //Get the current time in the format [HH:MM]
+    // Get the current time in the format [HH:MM]
     static getCurrentTime = () => {
         const currentdate = new Date();
         let h = currentdate.getHours();
