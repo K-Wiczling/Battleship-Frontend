@@ -1,14 +1,14 @@
-//css
+// CSS
 import './PageContainer.css';
 
-//React stuff
+// React
 import React, { Component } from 'react';
 
-//Redux
+// Redux
 import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from '../../../containers/Website/constants';
 import { connect } from 'react-redux';
 
-//Components
+// Components
 import Register from '../../Pages/Register/Register';
 import Login from '../../Pages/Login/Login';
 import Home from '../../Pages/Home/Home';
