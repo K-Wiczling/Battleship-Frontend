@@ -1,4 +1,4 @@
-// css
+// Css
 import "./SplashScreen.css"
 
 // React
@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { changeModes } from "../App/actions";
 import { MODE_MAIN_MENU, MODE_WEBSITE } from "../App/constants";
 
-//Components
+// Components
 import Head from '../../components/Atoms/Head/Head';
 import Button from '../../components/Atoms/Button/Button';
 
@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch) => {
         goToWebsite: () => dispatch(changeModes(MODE_WEBSITE))
     }
 }
-//Splash screen component, shown before main menu starts
-//Default screen to show if somthing go wrong
+// Splash screen component, shown before main menu starts
+// Default screen to show if somthing go wrong
 const SplashScreen = (props) => {
     return (
         <div className="splash-screen">

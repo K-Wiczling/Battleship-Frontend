@@ -15,7 +15,7 @@ import {
 const  initialModeState = {
     mode: MODE_GAME,
 }
-//Change game state
+// Change game state
 export const changeMode = (state=initialModeState, action={}) => {
     switch (action.type) {
         case CHANGE_MODE:
@@ -25,7 +25,7 @@ export const changeMode = (state=initialModeState, action={}) => {
     }
 }
 
-//Information for the GameMenager to start game
+// Information for the GameMenager to start game
 const gameSetupState = {
     enemyType: server.Params.enemyTpes.AI,
     aiDifficulty: server.Params.aiDifficulty.easy,

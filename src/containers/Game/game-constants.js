@@ -1,10 +1,10 @@
-//Game 
+// Game 
 export const UPDATE_PLAYER_BOARD = 'UPDATE_PLAYER_BOARD';
 export const UPDATE_ENEMY_BOARD = 'UPDATE_ENEMY_BOARD';
 export const UPDATE_BOTH_BOARDS = 'UPDATE_BOTH_BOARDS';
 
-//GameConsole
+// GameConsole
 export const INSERT_IN_GAME_CONSOLE = 'INSERT_IN_GAME_CONSOLE';
 
-//In game menu
+// In game menu
 export const TOGGLE_IN_GAME_MENU = 'TOGGLE_IN_GAME_MENU'; 

@@ -1,17 +1,15 @@
-//css
+// CSS
 import './Website.css';
 
-//React stuff
+// React stuff
 import React, { Component } from 'react';
 
-//Components
+// Components
 import Head from '../../components/Atoms/Head/Head';
 import Navbar from '../../components/PagesParts/Navbar/Navbar'
 import PageContainer from '../../components/PagesParts/PageContainer/PageContainer';
 
-//Containers
-
-//Redux
+// Redux
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -26,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
 
   }
 }
-//Website part of the app 
+
+// Website part of the app 
 class Website extends Component {
   render() {
     return (

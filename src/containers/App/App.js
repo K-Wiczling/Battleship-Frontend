@@ -1,19 +1,19 @@
-//css
+// Css
 import './App.css';
 
-//React stuff
+// React
 import React, { Component } from 'react';
 
-//Components
+// Components
 import SplashScreen from '../SpalshScreen/SplashScreen';
 import ErrorBoundries from '../../components/Error/ErrorBoundries/ErrorBoundries';
 
-//Containers
+// Containers
 import Game from '../Game/Game';
 import MainMenu from '../MainMenu/MainMenu';
 import Website from '../Website/Website';
 
-//Redux
+// Redux
 import { connect } from "react-redux"
 import { changeModes } from "./actions"
 import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './constants';
@@ -33,15 +33,16 @@ const mapDispatchToProps = (dispatch) => {
     goToWebsite: () => dispatch(changeModes(MODE_WEBSITE))
   }
 }
-//Main entrance to the app 
+
+// Main entrance to the app 
 class  App extends Component {
   render () {
     switch (this.props.mode) {
-      //Show Splashscreen
+      // Show Splashscreen
       case MODE_SPLASH_SCREEN: {
         return(<SplashScreen />);
       }
-      //Open Menu
+      // Open Menu
       case MODE_MAIN_MENU: {
         return(
           <ErrorBoundries>
@@ -49,7 +50,7 @@ class  App extends Component {
           </ErrorBoundries>
           );
       }
-      //Start Game
+      // Start Game
       case MODE_GAME: {
         return (
           <ErrorBoundries child="Game Compontent">
@@ -59,12 +60,13 @@ class  App extends Component {
           </ErrorBoundries>
         );
       }
-      //Show Websitge
+
+      // Show Websitge
       case MODE_WEBSITE: {
         return(<Website/>);
       }
 
-      //By default return SplashScreen 
+      // By default return SplashScreen 
       default: return (<SplashScreen />);
     }
   }

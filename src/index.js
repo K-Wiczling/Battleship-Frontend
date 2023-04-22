@@ -4,7 +4,7 @@ import './index.css';
 import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 
-// Redux 
+// Redux imports
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
@@ -13,7 +13,7 @@ import { changeMode, setupGame } from './containers/App/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/game-reducer';
 import { websitePage, registerPage } from './containers/Website/reducer';
 
-//Redux section
+// Redux section
 const logger = createLogger();
 const rootReducer = combineReducers({ 
   changeMode, 

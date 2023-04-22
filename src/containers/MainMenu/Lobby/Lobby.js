@@ -1,11 +1,11 @@
-//css
+// Css
 import "./Lobby.css"
 
-//React
+// React
 import React from 'react';
 import server from "../../../classes/server";
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 import { 
     setupEnemyType,
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         changeRandomShips : (isRandom) => dispatch(setupRandomShips(isRandom)),
     }
 }
-//Single tab for use iside the menu
+// Single tab for use iside the menu
 const  Lobby = (props) => {
   
     return (

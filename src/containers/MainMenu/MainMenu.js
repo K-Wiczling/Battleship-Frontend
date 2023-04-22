@@ -1,10 +1,10 @@
-//css
+// Css
 import "./MainMenu.css";
 
-//React
+// React
 import React, { Component } from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux";
 import { 
     changeModes,
@@ -15,7 +15,7 @@ import {
 } from "../App/actions"
 import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from '../App/constants';
 
-//Components
+// Components
 import Button from '../../components/Atoms/Button/Button';
 import Head from '../../components/Atoms/Head/Head';
 import MenuTab from "../../components/Atoms/MenuTab/MenuTab";
@@ -32,13 +32,13 @@ return {
     startGame: () => dispatch(changeModes(MODE_GAME)),
 }
 }
-//Menu Constants
+// Menu Constants
 const MENU_MODE_MAIN_MENU = "MENU_MODE_MAIN_MENU";
 const MENU_MODE_LOBBY = "MENU_MODE_LOBBY";
 const MENU_MODE_SETTINGS = "MENU_MODE_SETTINGS";
 const MENU_MODE_RANKINGS = "MENU_MODE_RANKINGS";
 
-//Display main menu and take care of the whole logic in here
+// Display main menu and take care of the whole logic in here
 class  MainMenu extends Component {
     constructor(props){
         super(props);
@@ -73,7 +73,7 @@ class  MainMenu extends Component {
                         let key = 1
                         switch (this.state.menuMode) {
 
-                            //Display Main menu
+                            // Display Main menu
                             case MENU_MODE_MAIN_MENU:{
                                 return (
                                     <div className="main-menu grid-center">
@@ -85,7 +85,7 @@ class  MainMenu extends Component {
                                     </div>
                                 );
                             }
-                            //Display Lobby
+                            // Display Lobby
                             case MENU_MODE_LOBBY:{
                                 return (
                                     <div className="lobby grid-center">
@@ -99,7 +99,7 @@ class  MainMenu extends Component {
                 
                                 );
                             }
-                            //Display Settings
+                            // Display Settings
                             case MENU_MODE_SETTINGS:{
                                 return (
                                     <div className="Settings grid-center">
@@ -108,7 +108,7 @@ class  MainMenu extends Component {
                                     </div>
                                 );
                             }
-                            //Display Rankings
+                            // Display Rankings
                             case MENU_MODE_RANKINGS:{
                                 return (
                                     <div className="Rankings grid-center">

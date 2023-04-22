@@ -1,19 +1,20 @@
-//css
+// Css
 import "./Game.css"
-//React stuff
+
+// React stuff
 import React, { Component } from 'react';
 
-//Redux
+// Redux
 import { connect } from "react-redux"
 import { fillBothBoards } from "./game-actions";
 
-//Components
+// Components
 import Draw from '../../components/GameParts/Draw/Draw';
 import GameConsole from "../../components/GameParts/GameConsole/GameConsole"
 import Head from "../../components/Atoms/Head/Head";
 import InGameMenu from "../../components/Atoms/InGameMenu/InGameMenu";
 
-//Classes
+// Classes
 import gm from "../../classes/GameMenager/gameMenager"
 
 const mapStateToProps = (state) => {
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-//Enetry point of the game in the view side
+// Enetry point of the game in the view side
 class Game extends Component {
     constructor(props) {
         super(props)

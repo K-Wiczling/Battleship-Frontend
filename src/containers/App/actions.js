@@ -8,13 +8,13 @@ import {
     SETUP_GAME_BOARD_SIZE, 
     SETUP_GAME_RANDOM} from "./constants";
 
-//Change game state
+// Change game state
 export const changeModes = (mode) => ({
     type: CHANGE_MODE,
     payload: mode
 });
 
-//Setup game 
+// Setup game 
 export const setupGame = (
     enemyType = server.Params.enemyTpes.AI,
     aiDifficulty = server.Params.aiDifficulty.easy,

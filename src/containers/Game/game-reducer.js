@@ -10,7 +10,7 @@ import {
 
 const params = server.Params
 
-//Manipulations on the player and enemy board
+// Manipulations on the player and enemy board
 const  initialGameState = {
     gameMenager:{},
     playerBoard: [],
@@ -32,7 +32,7 @@ export const changeBoard = (state=initialGameState, action={}) => {
     }
 }
 
-//Manipulations on the GameConosole
+// Manipulations on the GameConosole
 const initialGameConsoleState = {
     log: [{
             id: 0,
