@@ -70,11 +70,12 @@ class GameMenager {
         }
     }
 
+    // Pending - waiting for implementation
     preState = () => {
 
     }
 
-    // 
+    // Pending - waiting for implementation
     setupState = () => {
         if (this.gameState !== params.gameState.setup) {
             return false;
@@ -82,12 +83,19 @@ class GameMenager {
         return true;
 
     }
+
+    // Pending - waiting for implementation
     gameState = () => {
 
     }
+
+    // Pending - waiting for implementation
     endState = () => {
 
     }
+
+    // Pending - waiting for implementation
+    // Run when player leave the game before end
     leaveTheGame = () => {
         console.log("player run from the game");
     }
@@ -99,11 +107,13 @@ class GameMenager {
         if (this.validate.validateBoardClick(whichBoard, position, (this.player.board.length - 1))) {
 
             if (this.gameState === params.gameState.game) {
-                //Shooting only allowed in game and only on the enemy board
+                // Shooting only allowed in game and only on the enemy board
                 return this.enemy.getShoot(whichBoard, position)
 
-            } else if (this.gameState === params.gameState.setup)
+            } else if (this.gameState === params.gameState.setup){
+                // Put ship tile on the board
                 return this.player.setTile(whichBoard, position);
+            }
         }
     }
 

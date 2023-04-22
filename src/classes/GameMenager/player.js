@@ -200,7 +200,7 @@ class Player {
 
         // Zero depth
         if (this.board[x][y].tileState === this.params.tileState.empty) {
-            //first depth
+            // First depth
             let itterated = true;
 
             this.iterateAround(position, this.diag, (point) => {
@@ -328,7 +328,7 @@ class Player {
         return ifBoard
     }
 
-    //Returns biggest ship that can be put on the board
+    // Returns biggest ship that can be put on the board
     biggestShip = () => {
         let biggestShip = 0;
         for (let ship of this.ships) {
@@ -339,7 +339,7 @@ class Player {
         }
         return biggestShip;
     }
-    //Get the index of the ship with the given size
+    // Get the index of the ship with the given size
     findShipOfSize = (size) => {
         let indexOfShip = 0;
         for (let ship of this.ships) {
