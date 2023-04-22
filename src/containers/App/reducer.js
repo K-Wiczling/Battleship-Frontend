@@ -13,7 +13,7 @@ import {
 } from "./constants";
 
 const  initialModeState = {
-    mode: MODE_GAME,
+    mode: MODE_WEBSITE,
 }
 // Change game state
 export const changeMode = (state=initialModeState, action={}) => {
