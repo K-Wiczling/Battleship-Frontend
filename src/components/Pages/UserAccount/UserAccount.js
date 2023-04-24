@@ -8,11 +8,13 @@ import React from 'react';
 import { connect } from "react-redux";
 import { setPage, updatRequirementsList } from "../../../containers/Website/actions";
 import { LOGIN_PAGE } from "../../../containers/Website/constants";
+import { userData } from "../../../containers/App/reducer";
 
 //Components
 
 const mapStateToProps = (state) => {
     return {
+        user: state.userData
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -24,8 +26,12 @@ const mapDispatchToProps = (dispatch) => {
 
 // User account page 
 const UserAccount = (props) => {
+    console.log(props.user);
+    return (
             <div>
-                User account
+                <p>Hello: <b>{ props.user.name}</b>, nice to see you again!! </p>
+                <p>Your score is: {props.user.score_to_rank}</p>
             </div>
+        )
 }
 export default connect(mapStateToProps, mapDispatchToProps)(UserAccount);

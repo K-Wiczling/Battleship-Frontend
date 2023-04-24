@@ -7,6 +7,7 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatLoginRequirements } from "../../../containers/Website/actions";
+import { setLoggedUser } from "../../../containers/App/actions";
 import { REGISTER_PAGE, USER_ACCOUNT_PAGE } from "../../../containers/Website/constants";
 
 // Components
@@ -24,8 +25,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToRegister: () => dispatch(setPage(REGISTER_PAGE)),
-        goToUserAccount: () => dispatch(setPage(USER_ACCOUNT_PAGE))
-    }
+        goToUserAccount: () => dispatch(setPage(USER_ACCOUNT_PAGE)),
+        setUserData: (userData) => dispatch(setLoggedUser(userData))
+    } 
 }
 
 // Login page 
@@ -59,7 +61,8 @@ const Login = (props) => {
                         // API call
                         try {
                             const result = await server.send(loginData, 'login');
-                            
+                            props.setUserData(result)
+                            props.goToUserAccount();
                         }
                         catch (error) {
                             console.log(error);

@@ -10,7 +10,7 @@ import {
     SETUP_GAME_FLEET_TYPE, 
     SETUP_GAME_FULL, 
     SETUP_GAME_RANDOM,
-    NEW_USER,
+    SET_USER,
 } from "./constants";
 
 const  initialModeState = {
@@ -54,11 +54,14 @@ export const setupGame = (state=gameSetupState, action={}) => {
             return state;
     }
 }
+const initialUserData = {
+    name: 'name',
+    joined: 'now'
 
-export const userData = (state = null, action={}) => {
+}
+export const userData = (state = initialUserData, action={}) => {
     switch (action.type) {
-        case NEW_USER:
-            return Object.assign({}, state, action.payload);          
+        case SET_USER: return Object.assign({}, state, action.payload);
            
         default:
             return state;

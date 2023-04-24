@@ -5,13 +5,14 @@ import './PageContainer.css';
 import React, { Component } from 'react';
 
 // Redux
-import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE } from '../../../containers/Website/constants';
+import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, USER_ACCOUNT_PAGE } from '../../../containers/Website/constants';
 import { connect } from 'react-redux';
 
 // Components
 import Register from '../../Pages/Register/Register';
 import Login from '../../Pages/Login/Login';
 import Home from '../../Pages/Home/Home';
+import UserAccount from '../../Pages/UserAccount/UserAccount';
 
 const mapStateToProps = (state) => {
   return {
@@ -36,9 +37,15 @@ class PageContainer extends Component {
         return (
           <Register />
         )
+      
       case LOGIN_PAGE:
         return (
           <Login />
+        )
+
+      case USER_ACCOUNT_PAGE:
+        return (
+          <UserAccount />
         )
 
       default:

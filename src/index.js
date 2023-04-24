@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
-import { changeMode, setupGame } from './containers/App/reducer';
+import { changeMode, setupGame, userData } from './containers/App/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/game-reducer';
 import { websitePage, registerPage } from './containers/Website/reducer';
 
@@ -23,6 +23,7 @@ const rootReducer = combineReducers({
   setupGame, 
   websitePage, 
   registerPage,
+  userData,
 });
 const store = configureStore({ reducer: rootReducer }, applyMiddleware(logger));
 
