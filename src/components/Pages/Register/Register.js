@@ -7,7 +7,8 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatRequirementsList } from "../../../containers/Website/actions";
-import { LOGIN_PAGE } from "../../../containers/Website/constants";
+import { setLoggedUser } from "../../../containers/App/actions";
+import { LOGIN_PAGE, USER_ACCOUNT_PAGE } from "../../../containers/Website/constants";
 
 //Components
 import Button from "../../Atoms/Button/Button";
@@ -24,6 +25,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
+        goToUserAccount: () => dispatch(setPage(USER_ACCOUNT_PAGE)),
+        setUserData: (userData) => dispatch(setLoggedUser(userData)),
         updateInputReqs: (validationList) => dispatch(updatRequirementsList(validationList))
     }
 }
@@ -109,7 +112,8 @@ const Register = (props) => {
                             // Api call
                             try {
                                 const result = await server.send(registerData, 'register');
-                                console.log(result);
+                                props.setUserData(result);
+                                props.goToUserAccount();
                             }
                             catch (error) {
                                 console.log(error);
