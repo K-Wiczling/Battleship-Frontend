@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 const UserAccount = (props) => {
     console.log(props.user);
     return (
-            <div>
+            <div className="user_account center">
                 <p>Hello: <b>{ props.user.name}</b>, nice to see you again!! </p>
                 <p>Your score is: {props.user.score_to_rank}</p>
             </div>

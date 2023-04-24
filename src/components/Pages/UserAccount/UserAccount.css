@@ -1,2 +1,4 @@
-.register {
+.user_account {
+    border: 1px solid var(--darkest-color);
+    margin: 50px;
 }
