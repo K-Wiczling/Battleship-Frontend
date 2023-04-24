@@ -2,7 +2,7 @@
 
 ## About Battleship
 
-Battleship is a classic two-player guessing game where each player places a fleet of ships on a board and takes turns guessing the coordinates of the other player's ships. This repository contains the code for a work-in-progress React + Node.js version of Battleship. The game features a modern user interface built with React, and the game logic and server-side functionality are handled by Node.js. Players will soon be able to choose to play against the computer or another player online, and the game will include various difficulty levels and game modes. Please note that the code is currently in development and may be subject to change. We welcome any feedback and contributions from the community.
+Battleship is a classic two-player guessing game where each player places a fleet of ships on a board and takes turns guessing the coordinates of the other player's ships. This repository contains the code for a work-in-progress React + Node.js version of Battleship. The game features a modern user interface built with React, and the game logic and server-side functionality are handled by Node.js. Players will soon be able to choose to play against the computer or another player online, and the game will include various difficulty levels and game modes. Please note that the code is currently in development and may be subject to change.
 
 ## Summery
 
