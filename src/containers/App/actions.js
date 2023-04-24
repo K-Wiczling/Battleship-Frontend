@@ -6,7 +6,8 @@ import {
     SETUP_GAME_AI_DIFFICULTY,
     SETUP_GAME_FLEET_TYPE,
     SETUP_GAME_BOARD_SIZE, 
-    SETUP_GAME_RANDOM} from "./constants";
+    SETUP_GAME_RANDOM,
+    SET_USER} from "./constants";
 
 // Change game state
 export const changeModes = (mode) => ({
@@ -56,4 +57,9 @@ export const setupBoardSize = (boardSize = server.Params.boardSize.clasic) => ({
 export const setupRandomShips = (isRandom = false) => ({
     type: SETUP_GAME_RANDOM,
     payload: isRandom
+});
+
+export const setLoggedUser = (user) => ({
+    type: SET_USER,
+    payload: user
 });

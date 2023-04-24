@@ -9,7 +9,8 @@ import {
     SETUP_GAME_ENEMY_TYPE, 
     SETUP_GAME_FLEET_TYPE, 
     SETUP_GAME_FULL, 
-    SETUP_GAME_RANDOM
+    SETUP_GAME_RANDOM,
+    NEW_USER,
 } from "./constants";
 
 const  initialModeState = {
@@ -43,11 +44,21 @@ export const setupGame = (state=gameSetupState, action={}) => {
                 boardSize: action.payload.boardSize
              });
              
-            case SETUP_GAME_ENEMY_TYPE: return Object.assign({}, state, { enemyType: action.payload});
-            case SETUP_GAME_AI_DIFFICULTY: return Object.assign({}, state, { aiDifficulty: action.payload});
-            case SETUP_GAME_FLEET_TYPE: return Object.assign({}, state, { fleetType: action.payload});
-            case SETUP_GAME_BOARD_SIZE: return Object.assign({}, state, { boardSize: action.payload});
-            case SETUP_GAME_RANDOM: return Object.assign({}, state, { randomSetupShips: action.payload});
+        case SETUP_GAME_ENEMY_TYPE: return Object.assign({}, state, { enemyType: action.payload});
+        case SETUP_GAME_AI_DIFFICULTY: return Object.assign({}, state, { aiDifficulty: action.payload});
+        case SETUP_GAME_FLEET_TYPE: return Object.assign({}, state, { fleetType: action.payload});
+        case SETUP_GAME_BOARD_SIZE: return Object.assign({}, state, { boardSize: action.payload});
+        case SETUP_GAME_RANDOM: return Object.assign({}, state, { randomSetupShips: action.payload});
+        
+        default:
+            return state;
+    }
+}
+
+export const userData = (state = null, action={}) => {
+    switch (action.type) {
+        case NEW_USER:
+            return Object.assign({}, state, action.payload);          
            
         default:
             return state;

@@ -7,7 +7,7 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatLoginRequirements } from "../../../containers/Website/actions";
-import { REGISTER_PAGE } from "../../../containers/Website/constants";
+import { REGISTER_PAGE, USER_ACCOUNT_PAGE } from "../../../containers/Website/constants";
 
 // Components
 import Button from "../../Atoms/Button/Button";
@@ -24,6 +24,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         goToRegister: () => dispatch(setPage(REGISTER_PAGE)),
+        goToUserAccount: () => dispatch(setPage(USER_ACCOUNT_PAGE))
     }
 }
 
@@ -57,8 +58,8 @@ const Login = (props) => {
 
                         // API call
                         try {
-                            const result = await server.send(loginData, 'register');
-                            console.log(result);
+                            const result = await server.send(loginData, 'login');
+                            
                         }
                         catch (error) {
                             console.log(error);
