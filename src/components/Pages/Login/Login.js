@@ -61,7 +61,8 @@ const Login = (props) => {
                         // API call
                         try {
                             const result = await server.send(loginData, 'login');
-                            props.setUserData(result)
+                            console.log('hi' + result);
+                            // props.setUserData(result)
                             props.goToUserAccount();
                         }
                         catch (error) {
