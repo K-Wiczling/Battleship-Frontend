@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 // Redux
 import { connect } from "react-redux"
-import { fillBothBoards } from "./game-actions";
+import { fillBothBoards } from "./redux/actions";
 
 // Components
 import Draw from '../../components/GameParts/Draw/Draw';

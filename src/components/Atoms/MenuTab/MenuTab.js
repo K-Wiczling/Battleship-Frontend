@@ -12,7 +12,7 @@ import {
     setupFleetType,
     setupBoardSize,
     setupRandomShips
-} from "../../../containers/App/actions"
+} from "../../../containers/App/redux/actions"
 
 const mapStateToProps = (state) => {
     return {

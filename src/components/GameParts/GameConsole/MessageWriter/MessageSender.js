@@ -9,7 +9,7 @@ import server from "../../../../classes/server";
 
 //Redux
 import { connect } from "react-redux"
-import { insertInGameConsole } from '../../../../containers/Game/game-actions';
+import { insertInGameConsole } from '../../../../containers/Game/actions';
 import Button from "../../../Atoms/Button/Button";
 
 const mapStateToProps = (state) => {

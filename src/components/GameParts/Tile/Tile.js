@@ -6,7 +6,7 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux"
-import { insertInGameConsole, tileClickEnemyBoard, tileClickPlayerBoard } from '../../../containers/Game/game-actions';
+import { insertInGameConsole, tileClickEnemyBoard, tileClickPlayerBoard } from '../../../containers/Game/actions';
 
 //Classes
 import gm from '../../../classes/GameMenager/gameMenager'; 

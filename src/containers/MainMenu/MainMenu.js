@@ -12,7 +12,7 @@ import {
     setupAiDifficulty,
     setupFleetType,
     setupBoardSize
-} from "../App/actions"
+} from "../App/redux/actions"
 import { MODE_GAME, MODE_MAIN_MENU, MODE_WEBSITE } from '../App/constants';
 
 // Components
