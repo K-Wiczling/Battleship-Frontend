@@ -59,14 +59,10 @@ const Login = (props) => {
                         loginData.password = Validate.sanitizePassword(loginData.password);
 
                         // API call
-                        try {
-                            const result = await server.send(loginData, 'login');
-                            console.log('hi' + result);
-                            // props.setUserData(result)
+                        const result = await server.send(loginData, 'login');
+                        if(result !== false) {
+                            props.setUserData(result)
                             props.goToUserAccount();
-                        }
-                        catch (error) {
-                            console.log(error);
                         }
                     }} />
 
