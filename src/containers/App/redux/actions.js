@@ -9,7 +9,7 @@ export const changeAppMode = (mode) => ({
 });
 
 
-export const setLoggedUser = (user) => ({
+export const setLoggedUserData = (user) => ({
     type: SET_USER,
     payload: user
 });

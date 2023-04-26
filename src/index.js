@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
-import { changeMode, userData } from './containers/App/redux/reducer';
+import { currentAppMode, userData } from './containers/App/redux/reducer';
 import { setupGame } from './containers/MainMenu/redux/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/redux/reducer';
 import { websitePage, registerPage } from './containers/Website/redux/reducer';
@@ -17,7 +17,7 @@ import { websitePage, registerPage } from './containers/Website/redux/reducer';
 // Redux section
 const logger = createLogger();
 const rootReducer = combineReducers({ 
-  changeMode, 
+  currentAppMode, 
   changeBoard, 
   changeGameConsole, 
   inGameMenu, 

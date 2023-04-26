@@ -1,8 +1,5 @@
-import server from "../../../classes/server";
 import { 
     CHANGE_MODE, 
-    MODE_GAME, 
-    MODE_MAIN_MENU, 
     MODE_WEBSITE, 
     SET_USER,
 } from "./constants";
@@ -11,7 +8,7 @@ const  initialModeState = {
     mode: MODE_WEBSITE,
 }
 // Change game state
-export const changeMode = (state=initialModeState, action={}) => {
+export const currentAppMode = (state=initialModeState, action={}) => {
     switch (action.type) {
         case CHANGE_MODE:
             return Object.assign({}, state, { mode: action.payload })
@@ -23,7 +20,6 @@ export const changeMode = (state=initialModeState, action={}) => {
 const initialUserData = {
     name: 'name',
     joined: 'now'
-
 }
 export const userData = (state = initialUserData, action={}) => {
     switch (action.type) {

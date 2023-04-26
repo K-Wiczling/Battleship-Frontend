@@ -7,7 +7,7 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatRequirementsList } from "../../../containers/Website/redux/actions";
-import { setLoggedUser } from "../../../containers/App/redux/actions";
+import { setLoggedUserData } from "../../../containers/App/redux/actions";
 import { LOGIN_PAGE, USER_ACCOUNT_PAGE } from "../../../containers/Website/redux/constants";
 
 //Components
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
         goToUserAccount: () => dispatch(setPage(USER_ACCOUNT_PAGE)),
-        setUserData: (userData) => dispatch(setLoggedUser(userData)),
+        setUserData: (userData) => dispatch(setLoggedUserData(userData)),
         updateInputReqs: (validationList) => dispatch(updatRequirementsList(validationList))
     }
 }
