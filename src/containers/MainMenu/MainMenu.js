@@ -19,7 +19,7 @@ import { MODE_GAME, MODE_WEBSITE } from '../App/redux/constants';
 import Button from '../../components/Atoms/Button/Button';
 import Head from '../../components/Atoms/Head/Head';
 import MenuTab from "../../components/Atoms/MenuTab/MenuTab";
-import Lobby from "./Lobby/Lobby";
+import Lobby from "../../components/MenuParts/Lobby/Lobby";
 
 const mapStateToProps = (state) => {
     return {
