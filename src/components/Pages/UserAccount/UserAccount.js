@@ -7,8 +7,8 @@ import React from 'react';
 //Redux
 import { connect } from "react-redux";
 import { setPage, updatRequirementsList } from "../../../containers/Website/redux/actions";
-import { LOGIN_PAGE } from "../../../containers/Website/constants";
-import { userData } from "../../../containers/App/reducer";
+import { LOGIN_PAGE } from "../../../containers/Website/redux/constants";
+import { userData } from "../../../containers/App/redux/reducer";
 
 //Components
 

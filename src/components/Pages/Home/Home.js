@@ -7,7 +7,7 @@ import React from 'react';
 //Redux
 import { connect } from 'react-redux';
 import { changeModes } from '../../../containers/App/redux/actions';
-import { MODE_MAIN_MENU } from '../../../containers/App/constants';
+import { MODE_MAIN_MENU } from '../../../containers/App/redux/constants';
 
 //Components
 import Button from '../../Atoms/Button/Button';

@@ -5,7 +5,7 @@ import './PageContainer.css';
 import React, { Component } from 'react';
 
 // Redux
-import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, USER_ACCOUNT_PAGE } from '../../../containers/Website/constants';
+import { HOME_PAGE, LOGIN_PAGE, REGISTER_PAGE, USER_ACCOUNT_PAGE } from '../../../containers/Website/redux/constants';
 import { connect } from 'react-redux';
 
 // Components

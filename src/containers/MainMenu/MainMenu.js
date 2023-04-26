@@ -13,7 +13,7 @@ import {
     setupFleetType,
     setupBoardSize
 } from "../App/redux/actions"
-import { MODE_GAME, MODE_MAIN_MENU, MODE_WEBSITE } from '../App/constants';
+import { MODE_GAME, MODE_WEBSITE } from '../App/redux/constants';
 
 // Components
 import Button from '../../components/Atoms/Button/Button';

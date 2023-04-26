@@ -15,7 +15,7 @@ import Website from '../Website/Website';
 // Redux
 import { connect } from "react-redux"
 import { changeModes } from "./redux/actions"
-import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './constants';
+import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './redux/constants';
 
 const mapStateToProps = (state) => {
   return {

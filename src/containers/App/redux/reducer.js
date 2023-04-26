@@ -1,4 +1,4 @@
-import server from "../../classes/server";
+import server from "../../../classes/server";
 import { 
     CHANGE_MODE, 
     MODE_GAME, 

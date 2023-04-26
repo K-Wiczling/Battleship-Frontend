@@ -6,7 +6,7 @@ import {
     INSERT_IN_GAME_CONSOLE, 
     UPDATE_BOTH_BOARDS,
     TOGGLE_IN_GAME_MENU,
-} from "./game-constants";
+} from "./constants";
 
 const params = server.Params
 

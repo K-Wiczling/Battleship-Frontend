@@ -6,7 +6,7 @@ import React from 'react';
 
 // Redux
 import { connect } from "react-redux";
-import { MODE_MAIN_MENU } from "../../../containers/App/constants";
+import { MODE_MAIN_MENU } from "../../../containers/App/redux/constants";
 import { changeModes } from "../../../containers/App/redux/actions"
 import { toggleInGameMenu } from "../../../containers/Game/redux/actions";
 
