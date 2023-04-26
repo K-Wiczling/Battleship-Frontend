@@ -23,7 +23,6 @@ import Lobby from "../../components/MenuParts/Lobby/Lobby";
 
 const mapStateToProps = (state) => {
     return {
-      mode: state.changeMode.mode,
     }
   }
 const mapDispatchToProps = (dispatch) => {

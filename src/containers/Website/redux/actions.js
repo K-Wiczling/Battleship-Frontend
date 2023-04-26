@@ -6,7 +6,7 @@ export const setPage = (page) => ({
     payload: page
 });
 
-export const updateRegister = (registerInputData) => ({
+export const updateRegisterData = (registerInputData) => ({
     type: REGISTER,
     payload: registerInputData
 });

@@ -4,7 +4,7 @@ const initialPage = {
     page: HOME_PAGE,
 }
 // Change website page state
-export const websitePage = (state = initialPage, action = {}) => {
+export const currentWebsitePage = (state = initialPage, action = {}) => {
     if(action.type === PAGE){
         return Object.assign({}, state, { page: action.payload })
     }

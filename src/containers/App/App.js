@@ -19,9 +19,9 @@ import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './r
 
 const mapStateToProps = (state) => {
   return {
-    mode: state.changeMode.mode,
-    testing: state.changeGameConsole.consoleText,
-    gameSetup: state.setupGame
+    mode: state.currentAppMode.mode,
+    testing: state.currentGameConsole.consoleText,
+    gameSetup: state.setupGameParameters
   }
 }
 const mapDispatchToProps = (dispatch) => {

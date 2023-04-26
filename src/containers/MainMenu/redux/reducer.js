@@ -17,7 +17,7 @@ const gameSetupState = {
     boardSize: server.Params.boardSize.clasic,
     randomSetupShips: false
 }
-export const setupGame = (state=gameSetupState, action={}) => {
+export const setupGameParameters = (state=gameSetupState, action={}) => {
     switch (action.type) {
         case SETUP_GAME_FULL:
             return Object.assign({}, state, { 

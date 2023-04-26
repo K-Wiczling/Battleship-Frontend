@@ -10,7 +10,7 @@ import ConsoleMessage from "./ConsoleMessage/ConsoleMessage";
 import MessageSender from "./MessageWriter/MessageSender";
 
 const mapStateToProps = (state) => {
-    return { log: state.changeGameConsole.log, }
+    return { log: state.currentGameConsole.log, }
 }
 
 //GameConsole shows all the messages form the playesrs and inside of the game 

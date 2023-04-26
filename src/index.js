@@ -10,9 +10,9 @@ import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
 import { currentAppMode, userData } from './containers/App/redux/reducer';
-import { setupGame } from './containers/MainMenu/redux/reducer';
+import { setupGameParameters } from './containers/MainMenu/redux/reducer';
 import { currentBords, currentGameConsole, inGameMenu } from './containers/Game/redux/reducer';
-import { websitePage, registerPage } from './containers/Website/redux/reducer';
+import { currentWebsitePage, registerPage } from './containers/Website/redux/reducer';
 
 // Redux section
 const logger = createLogger();
@@ -21,8 +21,8 @@ const rootReducer = combineReducers({
   currentBords, 
   currentGameConsole, 
   inGameMenu, 
-  setupGame, 
-  websitePage, 
+  setupGameParameters, 
+  currentWebsitePage, 
   registerPage,
   userData,
 });

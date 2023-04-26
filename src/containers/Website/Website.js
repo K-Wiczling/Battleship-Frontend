@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => {
   return {
     showSplash: state.showSplash,
-    page: state.websitePage.page,
+    page: state.currentWebsitePage.page,
     reg: state.registerPage
   }
 }

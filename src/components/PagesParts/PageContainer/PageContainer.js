@@ -16,7 +16,7 @@ import UserAccount from '../../Pages/UserAccount/UserAccount';
 
 const mapStateToProps = (state) => {
   return {
-    page: state.websitePage.page
+    page: state.currentWebsitePage.page
   }
 }
 const mapDispatchToProps = (dispatch) => {
