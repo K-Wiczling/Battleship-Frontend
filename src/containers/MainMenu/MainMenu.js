@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from "react-redux";
 import { 
-    changeModes,
+    changeAppMode,
     setupEnemyType,
     setupAiDifficulty,
     setupFleetType,
@@ -28,8 +28,8 @@ const mapStateToProps = (state) => {
   }
 const mapDispatchToProps = (dispatch) => {
 return {
-    startGame: () => dispatch(changeModes(MODE_GAME)),
-    exitGame: () => dispatch(changeModes(MODE_WEBSITE))
+    startGame: () => dispatch(changeAppMode(MODE_GAME)),
+    exitGame: () => dispatch(changeAppMode(MODE_WEBSITE))
 }
 }
 // Menu Constants

@@ -14,7 +14,7 @@ import Website from '../Website/Website';
 
 // Redux
 import { connect } from "react-redux"
-import { changeModes } from "./redux/actions"
+import { changeAppMode } from "./redux/actions"
 import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './redux/constants';
 
 const mapStateToProps = (state) => {
@@ -26,9 +26,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    openMenu: () => dispatch(changeModes(MODE_MAIN_MENU)),
-    startGame: () => dispatch(changeModes(MODE_GAME)),
-    goToWebsite: () => dispatch(changeModes(MODE_WEBSITE))
+    openMenu: () => dispatch(changeAppMode(MODE_MAIN_MENU)),
+    startGame: () => dispatch(changeAppMode(MODE_GAME)),
+    goToWebsite: () => dispatch(changeAppMode(MODE_WEBSITE))
   }
 }
 

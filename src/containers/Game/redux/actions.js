@@ -52,3 +52,4 @@ export const fillBothBoards = (player, enemy) => ({
 export const toggleInGameMenu = () => ({
     type: TOGGLE_IN_GAME_MENU,
 });
+

@@ -9,7 +9,8 @@ import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import { applyMiddleware, combineReducers } from 'redux';
-import { changeMode, setupGame, userData } from './containers/App/redux/reducer';
+import { changeMode, userData } from './containers/App/redux/reducer';
+import { setupGame } from './containers/MainMenu/redux/reducer';
 import { changeBoard, changeGameConsole, inGameMenu } from './containers/Game/redux/reducer';
 import { websitePage, registerPage } from './containers/Website/redux/reducer';
 

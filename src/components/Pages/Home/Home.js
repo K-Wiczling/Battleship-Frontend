@@ -6,7 +6,7 @@ import React from 'react';
 
 //Redux
 import { connect } from 'react-redux';
-import { changeModes } from '../../../containers/App/redux/actions';
+import { changeAppMode } from '../../../containers/App/redux/actions';
 import { MODE_MAIN_MENU } from '../../../containers/App/redux/constants';
 
 //Components
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToGame: () => dispatch(changeModes(MODE_MAIN_MENU)),
+    goToGame: () => dispatch(changeAppMode(MODE_MAIN_MENU)),
   }
 }
 

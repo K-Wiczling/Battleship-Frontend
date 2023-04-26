@@ -12,7 +12,7 @@ import { fillBothBoards } from "./redux/actions";
 import Draw from '../../components/GameParts/Draw/Draw';
 import GameConsole from "../../components/GameParts/GameConsole/GameConsole"
 import Head from "../../components/Atoms/Head/Head";
-import InGameMenu from "../../components/Atoms/InGameMenu/InGameMenu";
+import InGameMenu from "../../components/GameParts/InGameMenu/InGameMenu";
 
 // Classes
 import gm from "../../classes/GameMenager/gameMenager"

@@ -7,11 +7,11 @@ import React from 'react';
 // Redux
 import { connect } from "react-redux";
 import { MODE_MAIN_MENU } from "../../../containers/App/redux/constants";
-import { changeModes } from "../../../containers/App/redux/actions"
+import { changeAppMode } from "../../../containers/App/redux/actions"
 import { toggleInGameMenu } from "../../../containers/Game/redux/actions";
 
 // Components
-import Button from '../Button/Button';
+import Button from '../../Atoms/Button/Button';
 import gm from "../../../classes/GameMenager/gameMenager";
 
 
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleMenu: () => dispatch(toggleInGameMenu()),
-        leaveTheGame: () => dispatch(changeModes(MODE_MAIN_MENU))
+        leaveTheGame: () => dispatch(changeAppMode(MODE_MAIN_MENU))
     }
 }
 
