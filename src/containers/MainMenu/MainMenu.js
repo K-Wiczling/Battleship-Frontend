@@ -13,7 +13,7 @@ import {
     setupFleetType,
     setupBoardSize
 } from "../App/actions"
-import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN } from '../App/constants';
+import { MODE_GAME, MODE_MAIN_MENU, MODE_WEBSITE } from '../App/constants';
 
 // Components
 import Button from '../../components/Atoms/Button/Button';
@@ -28,8 +28,8 @@ const mapStateToProps = (state) => {
   }
 const mapDispatchToProps = (dispatch) => {
 return {
-    showSplashScreen: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
     startGame: () => dispatch(changeModes(MODE_GAME)),
+    exitGame: () => dispatch(changeModes(MODE_WEBSITE))
 }
 }
 // Menu Constants
@@ -81,7 +81,7 @@ class  MainMenu extends Component {
                                         <Button text="New Game" onclick={ this.showLobby } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                         <Button text="Settings" onclick={ this.showSettings } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                         <Button text="Rankings" onclick={ this.showRankings} width={this.state.buttonWidth} height={this.state.buttonHeight}/>
-                                        <Button text="Exit" onclick={ this.props.showSplashScreen } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Exit" onclick={ this.props.exitGame } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                     </div>
                                 );
                             }

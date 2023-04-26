@@ -1,3 +1,5 @@
+## THIS REPOSITORY IS GOING TO BE REWRITTEN IN TYPESCRIPT
+
 # Battleship 
 
 ## About Battleship

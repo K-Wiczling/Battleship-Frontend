@@ -6,7 +6,7 @@ import React from 'react';
 
 // Redux
 import { connect } from "react-redux";
-import { MODE_SPLASH_SCREEN } from "../../../containers/App/constants";
+import { MODE_MAIN_MENU } from "../../../containers/App/constants";
 import { changeModes } from "../../../containers/App/actions"
 import { toggleInGameMenu } from "../../../containers/Game/game-actions";
 
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleMenu: () => dispatch(toggleInGameMenu()),
-        leaveTheGame: () => dispatch(changeModes(MODE_SPLASH_SCREEN))
+        leaveTheGame: () => dispatch(changeModes(MODE_MAIN_MENU))
     }
 }
 

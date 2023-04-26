@@ -5,7 +5,6 @@ import './App.css';
 import React, { Component } from 'react';
 
 // Components
-import SplashScreen from '../SpalshScreen/SplashScreen';
 import ErrorBoundries from '../../components/Error/ErrorBoundries/ErrorBoundries';
 
 // Containers
@@ -28,7 +27,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     openMenu: () => dispatch(changeModes(MODE_MAIN_MENU)),
-    showSplashScreen: () => dispatch(changeModes(MODE_SPLASH_SCREEN)),
     startGame: () => dispatch(changeModes(MODE_GAME)),
     goToWebsite: () => dispatch(changeModes(MODE_WEBSITE))
   }
@@ -38,10 +36,6 @@ const mapDispatchToProps = (dispatch) => {
 class  App extends Component {
   render () {
     switch (this.props.mode) {
-      // Show Splashscreen
-      case MODE_SPLASH_SCREEN: {
-        return(<SplashScreen />);
-      }
       // Open Menu
       case MODE_MAIN_MENU: {
         return(
@@ -67,7 +61,7 @@ class  App extends Component {
       }
 
       // By default return SplashScreen 
-      default: return (<SplashScreen />);
+      default: return (<MainMenu />);
     }
   }
 }
