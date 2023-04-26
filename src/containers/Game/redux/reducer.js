@@ -16,7 +16,7 @@ const  initialGameState = {
     playerBoard: [],
     enemyBoard: []
 }
-export const changeBoard = (state=initialGameState, action={}) => {
+export const currentBords = (state=initialGameState, action={}) => {
     switch (action.type) {
         case UPDATE_BOTH_BOARDS: 
             return Object.assign({}, state, { playerBoard: action.payload.player, enemyBoard: action.payload.enemy })
@@ -42,7 +42,7 @@ const initialGameConsoleState = {
             messageType: params.gameConsoleMessageTypes.info,
         }]
 }
-export const changeGameConsole = (state=initialGameConsoleState, action={}) =>{
+export const currentGameConsole = (state=initialGameConsoleState, action={}) =>{
     switch (action.type) {
         case INSERT_IN_GAME_CONSOLE:{
             action.payload.id = state.log.length
