@@ -15,7 +15,7 @@ import Website from '../Website/Website';
 // Redux
 import { connect } from "react-redux"
 import { changeAppMode } from "./redux/actions"
-import { MODE_GAME, MODE_MAIN_MENU, MODE_SPLASH_SCREEN, MODE_WEBSITE } from './redux/constants';
+import { MODE_GAME, MODE_MAIN_MENU, MODE_WEBSITE } from './redux/constants';
 
 const mapStateToProps = (state) => {
   return {
@@ -33,23 +33,23 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 // Main entrance to the app 
-class  App extends Component {
-  render () {
+class App extends Component {
+  render() {
     switch (this.props.mode) {
       // Open Menu
       case MODE_MAIN_MENU: {
-        return(
-          <ErrorBoundries>
+        return (
+          <ErrorBoundries child="MainMenu Compontent" errorContent='MainMenu component crashed '>
             <MainMenu />
           </ErrorBoundries>
-          );
+        );
       }
       // Start Game
       case MODE_GAME: {
         return (
-          <ErrorBoundries child="Game Compontent">
+          <ErrorBoundries child="Game Compontent" errorContent='Game component crashed '>
             <div className="app">
-                <Game />
+              <Game />
             </div>
           </ErrorBoundries>
         );
@@ -57,11 +57,23 @@ class  App extends Component {
 
       // Show Websitge
       case MODE_WEBSITE: {
-        return(<Website/>);
+        return (
+          <ErrorBoundries child="Website Compontent" errorContent='Website component crashed '>
+            <div className="app">
+              <Website />
+            </div>
+          </ErrorBoundries>
+        );
       }
 
       // By default return SplashScreen 
-      default: return (<MainMenu />);
+      default: return (
+        <ErrorBoundries child="Website Compontent" errorContent='Website component crashed '>
+          <div className="app">
+            <Website />
+          </div>
+        </ErrorBoundries>
+      );
     }
   }
 }

@@ -9,7 +9,6 @@ class ErrorBoundries extends Component {
         super(props);
         this.state= {
             error: false,
-            errorContent: ""
         };
     }
     componentDidCatch(e){
@@ -20,7 +19,7 @@ class ErrorBoundries extends Component {
     render () {
         if (this.state.error) {
             return(
-                <ErrorBox errorTitle={this.props.child} errorContent={this.errorContent}/>
+                <ErrorBox errorTitle={this.props.child} errorContent={this.props.errorContent}/>
             );
         } else {
             return this.props.children;
