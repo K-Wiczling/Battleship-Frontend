@@ -64,10 +64,10 @@ const Register = (props) => {
                 <label ><b>Repeat Password</b></label>
                 <input type="password" placeholder="Repeat Password" name="pass-repeat" id="pass-repeat" required onChange={(e) => {
                     registerData.passRepeat = e.target.value;
-                }}/>
+                }} />
 
                 {/* Show list of the requirements to register account */}
-                <InputReq/>
+                <InputReq />
 
                 {/* connect to server */}
                 <Button text={'Register'} classes={'btn-medium'}
@@ -75,7 +75,7 @@ const Register = (props) => {
                         let valid = true;
                         // Check Email
                         if (!Validate.validateEmail(registerData.email)) {
-                            validationList.push({id:0 ,msg:'Email: valid email ex. name@mail.com'});
+                            validationList.push({ id: 0, msg: 'Email: valid email ex. name@mail.com' });
                             valid = false;
                         }
 
@@ -95,28 +95,27 @@ const Register = (props) => {
 
                         // Check if both passwords are the same
                         if (!(registerData.password === registerData.passRepeat)) {
-                            validationList.push({id:7 ,msg:'Passwords not matching, both passwords has to be the same'});
+                            validationList.push({ id: 7, msg: 'Passwords not matching, both passwords has to be the same' });
                             valid = false;
                         }
 
                         // Upadate state with list of not fullfilled requirements
                         props.updateInputReqs(validationList);
                         validationList = [];
-                        
+
                         // Make api request if validation is succesfull
-                        if(valid){
+                        if (valid) {
                             // Sanitize input
                             registerData.email = Validate.sanitizeEmail(registerData.email);
                             registerData.password = Validate.sanitizePassword(registerData.password);
 
                             // Api call
-                            try {
-                                const result = await server.send(registerData, 'register');
+
+                            const result = await server.send(registerData, 'register');
+                            
+                            if (result !== false) {
                                 props.setUserData(result);
                                 props.goToUserAccount();
-                            }
-                            catch (error) {
-                                console.log(error);
                             }
                         }
                     }} />
