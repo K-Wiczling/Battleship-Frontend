@@ -29,7 +29,16 @@
     height: 40px;
 }
 
+.btn-huge {
+    width: 300px;
+    height: 60px;
+}
+
 .btn-hollow {
     background-color: transparent;
     border: 1px solid var(--dark-color);
+    color: var(--darkest-color);
+}
+.btn-hollow:hover {
+    background-color: var(--lightes-color);
 }

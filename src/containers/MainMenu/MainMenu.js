@@ -64,7 +64,7 @@ class  MainMenu extends Component {
         return (
             <div className="main-menu-container">
 
-                <Head text="Battleship" />
+                <Head text="Battleship" classes={'btn-huge btn-hollow'}  />
                 {
                     (() => {
                         let key = 1
@@ -75,10 +75,10 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="main-menu grid-center">
                                         <h3>Main menu</h3>
-                                        <Button text="New Game" onclick={ this.showLobby }/>
-                                        <Button text="Settings" onclick={ this.showSettings } />
-                                        <Button text="Rankings" onclick={ this.showRankings} width={this.state.buttonWidth} height={this.state.buttonHeight}/>
-                                        <Button text="Exit" onclick={ this.props.exitGame } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="New Game" onclick={ this.showLobby }classes={'btn-huge btn-hollow'}  />
+                                        <Button text="Settings" onclick={ this.showSettings } classes={'btn-huge btn-hollow'}  />
+                                        <Button text="Rankings" onclick={ this.showRankings} classes={'btn-huge btn-hollow'}  />
+                                        <Button text="Exit" onclick={ this.props.exitGame }classes={'btn-huge btn-hollow'}  />
                                     </div>
                                 );
                             }
@@ -88,9 +88,9 @@ class  MainMenu extends Component {
                                     <div className="lobby grid-center">
                                         <h3>Lobby</h3>
                                         <MenuTab>
-                                            <Lobby/>
-                                            <Button text="Start Game" onclick={ this.props.startGame } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
-                                            <Button text="Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                            <Lobby />
+                                            <Button text="Start Game" onclick={ this.props.startGame } classes={'btn-huge btn-hollow'}  />
+                                            <Button text="Main Menu" onclick={ this.showMainMenu }classes={'btn-huge btn-hollow'}  />
                                         </MenuTab>
                                     </div>
                 
@@ -101,7 +101,7 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="Settings grid-center">
                                         <h3>Settings</h3>
-                                        <Button text="Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Main Menu" onclick={ this.showMainMenu } classes={'btn-huge btn-hollow'}  />
                                     </div>
                                 );
                             }
@@ -110,7 +110,7 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="Rankings grid-center">
                                         <h3>Rankings</h3>
-                                        <Button text="Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="Main Menu" onclick={ this.showMainMenu } classes={'btn-huge btn-hollow'}  />
                                     </div>
                                 );
                             }
@@ -119,7 +119,7 @@ class  MainMenu extends Component {
                                 return(
                                 <div className="Rankings grid-center" >
                                     <h3>Empty</h3>
-                                    <Button text="Main Menu" onclick={ this.showMainMenu } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                    <Button text="Main Menu" onclick={ this.showMainMenu } classes={'btn-huge btn-hollow'}  />
                                 </div>
                             );
                         }
