@@ -30,7 +30,7 @@ const Home = (props) => {
         <div className="home">
             <div className="center">
                 
-                <Button onclick={props.goToGame} text={"Start"} width={450} height={110} />
+                <Button onclick={props.goToGame} text={"Start"} classes={'btn-huge'}/>
                 <p>Welcome to Battleship website</p>
             </div>
         </div>

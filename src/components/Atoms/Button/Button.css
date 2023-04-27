@@ -15,18 +15,18 @@
 }
 
 .btn-small {
-    width: 100px;
-    height: 20px;
-}
-
-.btn-medium {
     width: 150px;
     height: 30px;
 }
 
-.btn-big {
+.btn-medium {
     width: 200px;
     height: 40px;
+}
+
+.btn-big {
+    width: 250px;
+    height: 50px;
 }
 
 .btn-huge {

@@ -29,9 +29,9 @@ const Navbar = (props) => {
     return (
         <div className="navbar">
             <div className='fl-center'>
-                <Button text={"Home"} onclick={props.showHomePage} width={100} height={40} />
-                <Button text={"Register"} onclick={props.showRegisterPage} width={100} height={40} />
-                <Button text={"Login"} onclick={props.showLoginPage} width={100} height={40} />
+                <Button text={"Home"} onclick={props.showHomePage} classes={'btn-medium'} />
+                <Button text={"Register"} onclick={props.showRegisterPage} classes={'btn-medium'} />
+                <Button text={"Login"} onclick={props.showLoginPage} classes={'btn-medium'} />
             </div>
         </div>
     );
