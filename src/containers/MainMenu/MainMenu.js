@@ -43,8 +43,6 @@ class  MainMenu extends Component {
         super(props);
         this.state = {
             menuMode: MENU_MODE_MAIN_MENU,
-            buttonWidth: 350,
-            buttonHeight: 70,
         }
     }
     showMainMenu = () => {
@@ -77,8 +75,8 @@ class  MainMenu extends Component {
                                 return (
                                     <div className="main-menu grid-center">
                                         <h3>Main menu</h3>
-                                        <Button text="New Game" onclick={ this.showLobby } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
-                                        <Button text="Settings" onclick={ this.showSettings } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
+                                        <Button text="New Game" onclick={ this.showLobby }/>
+                                        <Button text="Settings" onclick={ this.showSettings } />
                                         <Button text="Rankings" onclick={ this.showRankings} width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                         <Button text="Exit" onclick={ this.props.exitGame } width={this.state.buttonWidth} height={this.state.buttonHeight}/>
                                     </div>
