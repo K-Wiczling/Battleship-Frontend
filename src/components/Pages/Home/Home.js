@@ -6,8 +6,6 @@ import React from 'react';
 
 //Redux
 import { connect } from 'react-redux';
-import { changeAppMode } from '../../../containers/App/redux/actions';
-import { MODE_MAIN_MENU } from '../../../containers/App/redux/constants';
 
 //Components
 import Button from '../../Atoms/Button/Button';
@@ -19,7 +17,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToGame: () => dispatch(changeAppMode(MODE_MAIN_MENU)),
+    
   }
 }
 
@@ -30,7 +28,6 @@ const Home = (props) => {
         <div className="home">
             <div className="center">
                 
-                <Button onclick={props.goToGame} text={"Start"} classes={'btn-huge'}/>
                 <p>Welcome to Battleship website</p>
             </div>
         </div>

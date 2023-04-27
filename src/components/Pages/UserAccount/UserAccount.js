@@ -6,11 +6,12 @@ import React from 'react';
 
 //Redux
 import { connect } from "react-redux";
-import { setPage, updatRequirementsList } from "../../../containers/Website/redux/actions";
-import { LOGIN_PAGE } from "../../../containers/Website/redux/constants";
+import { changeAppMode } from '../../../containers/App/redux/actions';
+import { MODE_MAIN_MENU } from '../../../containers/App/redux/constants';
 import { userData } from "../../../containers/App/redux/reducer";
 
 //Components
+import Button from "../../Atoms/Button/Button";
 
 const mapStateToProps = (state) => {
     return {
@@ -19,8 +20,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        goToLogin: () => dispatch(setPage(LOGIN_PAGE)),
-        updateInputReqs: (validationList) => dispatch(updatRequirementsList(validationList))
+        goToGame: () => dispatch(changeAppMode(MODE_MAIN_MENU)),
     }
 }
 
@@ -31,6 +31,9 @@ const UserAccount = (props) => {
             <div className="user_account center">
                 <p>Hello: <b>{ props.user.name}</b>, nice to see you again!! </p>
                 <p>Your score is: {props.user.score_to_rank}</p>
+
+                <Button onclick={props.goToGame} text={"Start Game"} classes={'btn-huge'}/>
+
             </div>
         )
 }
