@@ -50,7 +50,7 @@ const Login = (props) => {
                 <input type="password" placeholder="Enter Password" name="pass" value={loginData.password} id="pass" required onChange={(e) => {
                     loginData.password = e.target.value;
                 }} />
-                <Button text={'Login'} width={200} height={40}
+                <Button text={'Login'} classes={'btn-medium'}
 
                     onclick={async function () {
 
@@ -67,7 +67,7 @@ const Login = (props) => {
                     }} />
 
                 <p>Don't have an account? </p>
-                <Button onclick={props.goToRegister} text={'Register'} width={200} height={30} />
+                <Button onclick={props.goToRegister} text={'Register'} classes={'btn-small'} />
 
             </div>
         </div>

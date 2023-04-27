@@ -70,7 +70,7 @@ const Register = (props) => {
                 <InputReq/>
 
                 {/* connect to server */}
-                <Button text={'Register'} width={200} height={40}
+                <Button text={'Register'} classes={'btn-medium'}
                     onclick={async function () {
                         let valid = true;
                         // Check Email
@@ -122,7 +122,7 @@ const Register = (props) => {
                     }} />
 
                 <p>Already have an account? </p>
-                <Button onclick={props.goToLogin} text={'Sign in'} width={200} height={30} />
+                <Button onclick={props.goToLogin} text={'Sign in'} classes={'btn-small'} />
 
             </div>
         </div>
