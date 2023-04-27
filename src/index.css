@@ -12,6 +12,8 @@
 
   --form-width: 500px;
 }
+
+/* Base Elements styles */
 html, body {
   overflow-y: hidden;
 }
@@ -20,6 +22,9 @@ body {
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+h2, h3 {
+  text-align: center;
 }
 h3 {
   font-size: 4rem;
@@ -34,32 +39,36 @@ code {
     monospace;
 }
 
+/* Utility classes */
 .center{
   display: grid;
   align-items:  center;
   justify-items:  center;
   justify-content: space-around;
 }
+.grid-center{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
 .fl-center {
   display: flex;
   width: 100%;
   justify-content: flex-end;
 }
-.fixed-foot{
+.fixed-foot {
   display: block;
   position: fixed;
   bottom: 0;
 }
-.fixed-head{
+.fixed-head {
   display: block;
   position: fixed;
   top: 0;
 }
-.spacer-top{
-  width: 100vw;
-  height: 7vh;
-  top: 0;
-}
+
+/* Scroll bar */
+
 /* width */
 ::-webkit-scrollbar {
   width: none;

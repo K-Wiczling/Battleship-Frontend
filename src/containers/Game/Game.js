@@ -47,7 +47,7 @@ class Game extends Component {
         return (
             <>
                 <Head />
-                <div className="Game">
+                <div className="game">
                     <InGameMenu
                         menuVisibility={this.props.menuVisibility}
                     />
