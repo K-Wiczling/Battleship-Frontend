@@ -28,11 +28,17 @@ const UserAccount = (props) => {
     console.log(props.user);
     return (
             <div className="user_account center">
-                <p>Hello: <b>{ props.user.name}</b>, nice to see you again!! </p>
-                <p>Your score is: {props.user.score_to_rank}</p>
+                <div className="user-info">
+                    <p>Hello: <b>{ props.user.name}</b>, nice to see you again!! </p>
 
+                </div>
+                <div className="tabs">
+                    <Button onclick={() => {}} text={"Settigns"} classes={'btn-small btn-holllow'}/>
+                    <Button onclick={() => {}} text={"Gamse history"} classes={'btn-small btn-holllow'}/>
+
+                </div>
                 <Button onclick={props.goToGame} text={"Start Game"} classes={'btn-huge'}/>
-
+                
             </div>
         )
 }
