@@ -139,7 +139,9 @@ class Server {
     }
     // In the future method will fetch from API 
     fetchGlobalParams = () => {
-        return structuredClone(globalParam);
+        let glob = {};
+        Object.assign(glob, globalParam)
+        return glob
     }
 
     // Make Post API request to the server
