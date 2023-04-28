@@ -8,7 +8,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { changeAppMode } from '../../../containers/App/redux/actions';
 import { MODE_MAIN_MENU } from '../../../containers/App/redux/constants';
-import { userData } from "../../../containers/App/redux/reducer";
 
 //Components
 import Button from "../../Atoms/Button/Button";
